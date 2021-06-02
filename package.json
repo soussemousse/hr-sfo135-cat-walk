@@ -1,0 +1,38 @@
+{
+  "name": "hr-sfo135-cat-walk",
+  "version": "1.0.0",
+  "description": "A team project by Brandon, Emma, Rose, and Susan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BERS-Cat-Walk/hr-sfo135-cat-walk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BERS-Cat-Walk/hr-sfo135-cat-walk/issues"
+  },
+  "homepage": "https://github.com/BERS-Cat-Walk/hr-sfo135-cat-walk#readme",
+  "dependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-react": "^7.13.13",
+    "aws-sdk": "^2.920.0",
+    "axios": "^0.21.1",
+    "chai": "^4.3.4",
+    "eslint": "^7.27.0",
+    "express": "^4.17.1",
+    "jest": "^27.0.3",
+    "mongoose": "^5.12.12",
+    "nodemon": "^2.0.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
+  }
+}
