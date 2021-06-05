@@ -29,14 +29,7 @@ app.get('/ratings', (req, res) => {
 app.get('/reviews', (req, res) => {
 
 });
-<<<<<<< HEAD
 
 app.get('/randomtest', (req, res) => {
 
 });
-=======
-///
-///
-///
-///
->>>>>>> 5df71a7941b441940f9662067eaf9ad350f56cdd
