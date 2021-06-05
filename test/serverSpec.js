@@ -2,15 +2,16 @@
 // import mocha from 'mocha';
 // import axios from 'axios';
 
-const expect = require('chai').expect;
-const mocha = require('assert');
+// const expect = require('chai').expect;
+// const mocha = require('assert');
 const axios = require('axios');
+import React from 'react';
 
-describe('test', function() {
+test('test', function() {
   it('responds to a GET request', function () {
     axios({
       url: "http://localhost:3001/products",
-      data: {id: "25167"}
+      data: {id: 25167}
     })
       .then((response) => {
         expect(JSON.stringify(response.data)).to.equal(
