@@ -2,9 +2,11 @@
   "name": "hr-sfo135-cat-walk",
   "version": "1.0.0",
   "description": "A team project by Brandon, Emma, Rose, and Susan",
-  "main": "index.js",
+  "main": "./server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "live-server": "nodemon run ./server/index.js",
+    "react-dev": "webpack --config ./webpack.config.js --mode development -w"
   },
   "repository": {
     "type": "git",
@@ -18,20 +20,30 @@
   "homepage": "https://github.com/BERS-Cat-Walk/hr-sfo135-cat-walk#readme",
   "dependencies": {
     "@babel/cli": "^7.14.3",
-    "@babel/core": "^7.14.3",
     "@babel/preset-react": "^7.13.13",
     "aws-sdk": "^2.920.0",
     "axios": "^0.21.1",
+    "babel-jest": "^27.0.2",
     "chai": "^4.3.4",
-    "eslint": "^7.27.0",
+    "eslint-config-airbnb": "^18.2.1",
     "express": "^4.17.1",
-    "jest": "^27.0.3",
+    "mocha": "^8.4.0",
     "mongoose": "^5.12.12",
     "nodemon": "^2.0.7",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@testing-library/jest-dom": "^5.13.0",
+    "@testing-library/react": "^11.2.7",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.27.0",
+    "eslint-plugin-react": "^7.24.0",
+    "jest": "^27.0.4",
+    "supertest": "^6.1.3",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0"
   }
