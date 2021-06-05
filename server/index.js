@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const port = 3001;
 const productController = require('./controller/products.js');
-const questionController = require('./controller/question.js');
+const questionController = require('./controller/questions.js');
 const ratingsController = require('./controller/ratings.js');
 const relatedItemsController = require('./controller/relatedItems.js');
 
@@ -29,7 +29,14 @@ app.get('/ratings', (req, res) => {
 app.get('/reviews', (req, res) => {
 
 });
+<<<<<<< HEAD
 
 app.get('/randomtest', (req, res) => {
 
 });
+=======
+///
+///
+///
+///
+>>>>>>> 5df71a7941b441940f9662067eaf9ad350f56cdd
