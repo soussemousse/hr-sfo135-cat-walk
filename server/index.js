@@ -29,3 +29,7 @@ app.get('/ratings', (req, res) => {
 app.get('/reviews', (req, res) => {
 
 });
+
+app.get('/randomtest', (req, res) => {
+
+});
