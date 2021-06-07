@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../modules/ProductOverview/Header.jsx';
+import ProductOverview from '../modules/ProductOverview/ProductOverview.jsx';
 
 
 const App = function () {
   return (
     <div>
-      <Header />
+      <ProductOverview />
     </div>
   );
 }
