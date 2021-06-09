@@ -7,6 +7,8 @@ class ReviewList extends React.Component {
     this.state = {};
   }
 
+  
+
   //render the review list starting with the first two reviews based off of the sort method
   render () {
     return (

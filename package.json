@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "live-server": "nodemon run ./server/index.js",
-    "react-dev": "webpack --config ./webpack.config.js --mode developm t -w"
+    "react-dev": "webpack --config ./webpack.config.js -w"
   },
   "repository": {
     "type": "git",

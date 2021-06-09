@@ -6,7 +6,7 @@ import RatingsAndReviews from '../modules/ratingsAndReviews/ratingsAndReviews.js
 const App = function () {
   return (
     <div>
-      <ProductOverview />
+      <ProductOverview/>
       <RatingsAndReviews/>
     </div>
   );
