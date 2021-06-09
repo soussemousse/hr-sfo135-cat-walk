@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductOverview from '../modules/ProductOverview/ProductOverview.jsx';
 import RatingsAndReviews from '../modules/ratingsAndReviews/ratingsAndReviews.jsx';
+import QuestionsAndAnswers from '../modules/questionsAnswers/questionsAnswers.jsx';
 
 
 const App = function () {
@@ -8,6 +9,7 @@ const App = function () {
     <div>
       <ProductOverview />
       <RatingsAndReviews/>
+      <QuestionsAndAnswers/>
     </div>
   );
 }
