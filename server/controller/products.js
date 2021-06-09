@@ -1,3 +1,5 @@
+const productModel = require('../model/productDetailOverview.js');
+const tokenObj = require('../../token.js');
 
 const productDetailOverview = function (id, res) {
   const options = {
@@ -8,7 +10,7 @@ const productDetailOverview = function (id, res) {
       "Authorization": tokenObj.token
     }
   }
+  productModel.productAxios(options, res);
 }
-
 
 module.exports.productDetailOverview = productDetailOverview;
