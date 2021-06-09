@@ -10,6 +10,7 @@ const productDetailOverview = function (id, res) {
       "Authorization": tokenObj.token
     }
   }
+
   productModel.productAxios(options, res);
 }
 

@@ -30,6 +30,12 @@ app.get('/reviews', (req, res) => {
 
 });
 
-app.get('/randomtest', (req, res) => {
-
+app.get('/qa/questions', (req, res) => {
+  questionController.getAllQuestions(req.body.id, res);
 });
+
+
+app.get('/qa/questions/:question_id/answers', (req, res) => {
+  console.log(req.body.question_id);
+  questionController.getAllAnswers(req.body.question_id, res);
+})
