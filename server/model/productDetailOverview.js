@@ -1,5 +1,6 @@
+const axios = require('axios');
 
-const productAxios = function (options) {
+const productAxios = function (options, res) {
   axios(options)
     .then((response) => {
       res.send(response.data)
@@ -10,4 +11,4 @@ const productAxios = function (options) {
     })
 }
 
-module.exports
+module.exports.productAxios = productAxios;

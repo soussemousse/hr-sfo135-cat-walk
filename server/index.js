@@ -30,8 +30,8 @@ app.get('/reviews', (req, res) => {
 
 });
 
-app.get('/randomtest', (req, res) => {
-
+app.get('/qa/questions', (req, res) => {
+  questionController.getAllQuestions(req.body.id, res);
 });
 
 app.get('/related/:id', (req, res) => {
@@ -39,3 +39,7 @@ app.get('/related/:id', (req, res) => {
 
   relatedProductsController.relatedProductsController(id, res);
 });
+
+app.get('/qa/questions/:question_id/answers', (req, res) => {
+  questionController.getAllAnswers(req.body.question_id, res);
+})
