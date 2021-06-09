@@ -36,6 +36,5 @@ app.get('/qa/questions', (req, res) => {
 
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  console.log(req.body.question_id);
   questionController.getAllAnswers(req.body.question_id, res);
 })
