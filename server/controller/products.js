@@ -10,5 +10,4 @@ const productDetailOverview = function (id, res) {
   }
 }
 
-
 module.exports.productDetailOverview = productDetailOverview;
