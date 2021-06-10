@@ -62,3 +62,33 @@
 .radioStar {
   display: none;
 }
+
+.QuestionsAndAnswers {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+.questions-searchbox {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+#questions-search-input {
+  background-color: transparent;
+  border: 1px solid red;
+  flex-grow: 1;
+}
+
+
+#questions-search-button {
+  background-color: transparent;
+  border: 1px solid blue;
+  flex-grow: 0;
+}

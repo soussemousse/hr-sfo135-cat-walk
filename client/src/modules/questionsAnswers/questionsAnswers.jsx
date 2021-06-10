@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionsList from './QuestionsList.jsx';
+import SearchBox from './SearchBox.jsx';
 
 
 class QuestionsAndAnswers extends React.Component {
@@ -14,7 +15,8 @@ class QuestionsAndAnswers extends React.Component {
   render() {
     return (
       <div className="QuestionsAndAnswers">
-        <input id="questions-search" type="text" placeholder="Search..."></input>
+        <h3>{'QUESTIONS & ANSWERS'} </h3>
+        <SearchBox />
         <QuestionsList />
       </div>
     )
