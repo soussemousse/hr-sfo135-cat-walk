@@ -35,7 +35,7 @@ class Related extends React.Component {
       relatedProductsList: [],
       relatedCarosel: [],
       //currentUser: this.props.currentUser,
-      userOutfit: [],
+      yourOutfit: [],
       start: 0,
       end: 6,
       outfitShown: [],
@@ -44,10 +44,14 @@ class Related extends React.Component {
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
     this.caroselClickLeft = this.caroselClickLeft.bind(this);
     this.caroselClickRight = this.caroselClickRight.bind(this);
+    this.addToOutfit = this.addToOutfit.bind(this);
   }
 
   componentDidMount() {
+    const yourOutfit = localStorage.yourOutfit ? JSON.parse(localStorage.yourOutfit) : this.state.yourOutfit;
+
     this.getRelatedProducts(this.state.currentProduct.id);
+    this.setState({yourOutfit: yourOutfit});
   }
 
   caroselClickRight () {
@@ -63,9 +67,20 @@ class Related extends React.Component {
     const end = this.state.end - 1;
     const carosel = this.state.relatedProductsList.slice(start, end);
 
-    console.log(carosel);
-
     this.setState({relatedCarosel: carosel, start: start, end: end});
+  }
+
+  addToOutfit (product) {
+    const newOutfit = this.state.yourOutfit.slice();
+    const outfitIds = newOutfit.map(product => {return product.id});
+
+    if (outfitIds.includes(product.id) === false) {
+      newOutfit.push(product);
+      this.setState({yourOutfit: newOutfit});
+      localStorage.setItem('yourOutfit', JSON.stringify(newOutfit));
+    } else {
+      console.log('Already there!');
+    }
   }
 
   getRelatedProducts (id) {
@@ -87,11 +102,11 @@ class Related extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='relatedProducts'>
         <h3>Related Products</h3>
         <RelatedProducts relatedInfo={this.state} products={this.state.relatedCarosel} caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} comparison={this.comparisonClick}/>
         <h3>Your Outfit</h3>
-        <YourOutfit caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} />
+        <YourOutfit caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} outfitInfo={this.state} />
       </div>
     )
   }
