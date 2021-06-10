@@ -4,7 +4,7 @@ const path = require('path');
 const port = 3001;
 const productController = require('./controller/products.js');
 const questionController = require('./controller/questions.js');
-const ratingsController = require('./controller/ratings.js');
+//const ratingsController = require('./controller/ratings.js');
 const relatedProductsController = require('./controller/RelatedProductsController.js');
 
 app.listen(port, (err = `connected to ${port}`) => {
@@ -19,16 +19,16 @@ app.get('/products', (req, res) => {
 })
 
 app.get('/reviews', (req, res) => {
-
+  ratingsController.ratingsAndReviews(req.body.id, res);
 });
 
-app.get('/ratings', (req, res) => {
+// app.get('/ratings', (req, res) => {
 
-});
+// });
 
-app.get('/reviews', (req, res) => {
+// app.get('/reviews', (req, res) => {
 
-});
+// });
 
 app.get('/qa/questions', (req, res) => {
   questionController.getAllQuestions(req.body.id, res);

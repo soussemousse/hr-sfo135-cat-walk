@@ -8,7 +8,7 @@ class ProductAverages extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="averages averages">
         product averages
       </div>
     )
