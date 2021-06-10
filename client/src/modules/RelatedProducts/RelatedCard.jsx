@@ -3,7 +3,7 @@ import React from 'react';
 function RelatedCard (props) {
   return (
     <article className='card'>
-      <span className='upperleft'><label>&#9733;<input type='radio' className='radio'></input></label></span>
+      <span className='upperleft'><label>&#9733;<input type='radio' className='radio' onClick={(event) => {props.open(props.product)}}></input></label></span>
       <img></img>
       <small>{props.product.category}</small>
       <h4>{props.product.name}</h4>
