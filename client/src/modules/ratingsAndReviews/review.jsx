@@ -8,6 +8,7 @@ class Review extends React.Component {
 
   render () {
     const review = this.props.currentReview;
+    console.log(review);
     return (
       <div className="review">
         <div className="reviewRating">{review.rating + ' stars'}</div>
