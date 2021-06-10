@@ -5,16 +5,19 @@ class QuestionsList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
-
+      isExpanded: false,
+      sortedQuestions: this.props.questions
     };
   }
 
+  //if not expanded, render first two
+  //if expanded, render all
   render() {
     return (
       <div className="questions-list">
-        <QuestionItem QA={this.props.questions[1]}/>
-        <QuestionItem QA={this.props.questions[2]}/>
+        {this.state.sortedQuestions.slice(0, 4).map((question, index) => {
+          return <QuestionItem QA={question} key={index}/>
+        })}
       </div>
     )
   }
