@@ -1,0 +1,46 @@
+
+.carosel {
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  border: 2px solid saddlebrown;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+  grid-template-rows: repeat(1, 1fr);
+
+}
+
+.nav {
+  display: flex;
+  height: 35px;
+  align-self: center;
+  font-size: 15px;
+  text-align: center;
+}
+
+.card {
+  background-color: cornsilk;
+  border: 2px outset peru;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.upperleft {
+  font-size: 30%;
+  display: flex;
+  align-self: flex-start;
+  justify-content: flex-end;
+  color: fuchsia;
+}
+
+.upperleft :hover {
+  color: forestgreen;
+}
+
+.radioStar {
+  display: none;
+}

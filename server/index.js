@@ -5,7 +5,7 @@ const port = 3001;
 const productController = require('./controller/products.js');
 const questionController = require('./controller/questions.js');
 const ratingsController = require('./controller/ratings.js');
-const relatedItemsController = require('./controller/relatedItems.js');
+const relatedProductsController = require('./controller/RelatedProductsController.js');
 
 app.listen(port, (err = `connected to ${port}`) => {
   console.log(err);
@@ -34,6 +34,11 @@ app.get('/qa/questions', (req, res) => {
   questionController.getAllQuestions(req.body.id, res);
 });
 
+app.get('/related/:id', (req, res) => {
+  const id = req.params.id;
+
+  relatedProductsController.relatedProductsController(id, res);
+});
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
   questionController.getAllAnswers(req.body.question_id, res);
