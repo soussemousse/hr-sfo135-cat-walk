@@ -1,7 +1,17 @@
 const axios = require('axios');
+import React from 'react';
+import {render, screen} from '@testing-library/react';
+import RatingsAndReviews from '../client/src/modules/ratingsAndReviews/ratingsAndReviews.jsx';
 
-// test('API', function() {
-  it('should respond to a reviews GET request', function () {
+describe('Ratings and reviews', () => {
+  test('renders Review', () => {
+    const {container} = render(<RatingsAndReviews />);
+    expect(container.contains(screen.getByText("Review"))).toBe(true);
+  });
+});
+
+describe('test API connection', function() {
+  test('should respond to a GET request for reviews', function () {
     axios({
       url: "http://localhost:3001/reviews",
       data: {id: 25167}
@@ -79,4 +89,4 @@ const axios = require('axios');
       })
       .catch(console.error)
   });
-// });
+});
