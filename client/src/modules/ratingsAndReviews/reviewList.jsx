@@ -1,13 +1,21 @@
 import React from 'react';
 import Review from './review.jsx';
+import ReviewFormModal from './reviewFormModal.jsx';
 
 class ReviewList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {};
+    this.state = {
+      openPortal: false
+    };
+    this.closePortal = this.closePortal.bind(this);
   }
 
-  render () {
+  closePortal() {
+    this.setState({openPortal: false});
+  }
+
+  render() {
     if (this.props.list.productReviews) {
       const max = this.props.list.reviewsToRender;
       const list = this.props.list.productReviews.slice(0, max);
@@ -19,9 +27,8 @@ class ReviewList extends React.Component {
             })}
           </div>
           <button onClick={this.props.pressButton}>more reviews</button>
-          <div className="addReview">
-            <button>add review</button>
-          </div>
+          <button onClick={() => {this.setState({openPortal: true})}}>add review</button>
+          {this.state.openPortal ? <ReviewFormModal closePortal={this.closePortal}/> : null}
         </div>
        )
     } else {
