@@ -1,12 +1,13 @@
 import React from 'react';
 import QuestionsList from './QuestionsList.jsx';
+import SearchBox from './SearchBox.jsx';
 
 
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      questions: this.props.questions
 
     };
   }
@@ -14,8 +15,9 @@ class QuestionsAndAnswers extends React.Component {
   render() {
     return (
       <div className="QuestionsAndAnswers">
-        <input id="questions-search" type="text" placeholder="Search..."></input>
-        <QuestionsList />
+        <h3>{'QUESTIONS & ANSWERS'} </h3>
+        <SearchBox />
+        <QuestionsList questions={this.state.questions}/>
       </div>
     )
   }
