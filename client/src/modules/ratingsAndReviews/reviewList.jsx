@@ -5,17 +5,30 @@ class ReviewList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {};
+    this.mapReviews = this.mapReviews.bind(this);
   }
 
 
 
   //render the review list starting with the first two reviews based off of the sort method
+  mapReviews () {
+  }
+
   render () {
-    return (
-      <div className="reviewList">
-        <Review/>
-      </div>
-    )
+    console.log(this.props.productReviews);
+    if (this.props.productReviews) {
+     return (
+       <div className="reviewList">
+         {this.props.productReviews.map((review) => {
+           return <Review key={review.review_id} currentReview={review}/>
+         })}
+       </div>
+      )
+    } else {
+      return (
+        <div>loading..</div>
+      )
+    }
   }
 }
 
