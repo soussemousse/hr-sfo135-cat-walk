@@ -1,4 +1,4 @@
-[
+const questionsData = [
   {
       "question_id": 183492,
       "question_body": "Does this product run big or small?",
@@ -150,4 +150,6 @@
       "reported": false,
       "answers": {}
   }
-]
+];
+
+export default questionsData;

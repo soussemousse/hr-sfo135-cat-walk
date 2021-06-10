@@ -7,7 +7,7 @@ class QuestionsAndAnswers extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      questions: this.props.questions
 
     };
   }
@@ -17,7 +17,7 @@ class QuestionsAndAnswers extends React.Component {
       <div className="QuestionsAndAnswers">
         <h3>{'QUESTIONS & ANSWERS'} </h3>
         <SearchBox />
-        <QuestionsList />
+        <QuestionsList questions={this.state.questions}/>
       </div>
     )
   }
