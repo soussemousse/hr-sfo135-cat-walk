@@ -1,5 +1,5 @@
 const axios = require('axios');
-const token = require('../../token.js');
+const tokenObj = require('../../token.js');
 
 const relatedProductsModel = (options, res) => {
   axios(options)
@@ -11,7 +11,7 @@ const relatedProductsModel = (options, res) => {
           "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${product}`,
           "headers": {
             "user-agent": 'request',
-            "Authorization": token.token
+            "Authorization": tokenObj.token
           }
         })
           .then(response => {

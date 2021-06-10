@@ -53,7 +53,7 @@ class Related extends React.Component {
     }
     Axios(option)
       .then(response => {
-        this.setState({relatedProductsList: response.data});
+        this.setState({relatedProductsList: response.data, relatedCarosel: response.data.slice(this.state.start, this.state.end)});
       })
       .catch(err => {
         console.log(err);

@@ -1,5 +1,5 @@
 const relatedProductsModel = require('../model/RelatedProductsModel.js');
-const token = require('../../token.js')
+const tokenObj = require('../../token.js')
 
 const relatedProductsController = (id, res) => {
   const options = {
@@ -7,7 +7,7 @@ const relatedProductsController = (id, res) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}/related`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": token.token
+      "Authorization": tokenObj.token
     }
   }
 
