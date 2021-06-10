@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import RelatedProducts from './RelatedProducts.jsx';
-//import YourOutfit from './YourOutfit.jsx';
+import YourOutfit from './YourOutfit.jsx';
 
 class Related extends React.Component {
   constructor (props) {
@@ -42,6 +42,8 @@ class Related extends React.Component {
       starClick: false
     }
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
+    this.caroselClickLeft = this.caroselClickLeft.bind(this);
+    this.caroselClickRight = this.caroselClickRight.bind(this);
   }
 
   componentDidMount() {
@@ -91,6 +93,7 @@ class Related extends React.Component {
         <h3>Related Products</h3>
         <RelatedProducts relatedInfo={this.state} products={this.state.relatedCarosel} caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} comparison={this.comparisonClick}/>
         <h3>Your Outfit</h3>
+        <YourOutfit caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} />
       </div>
     )
   }
