@@ -9,8 +9,8 @@ const App = function () {
     <div>
       <ProductOverview />
       <Related />
-      <QuestionsAndAnswers/>
-      <RatingsAndReviews/>
+      <QuestionsAndAnswers />
+      <RatingsAndReviews />
     </div>
   );
 }

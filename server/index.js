@@ -19,7 +19,7 @@ app.get('/products', (req, res) => {
 })
 
 app.get('/reviews', (req, res) => {
-
+  ratingsController.ratingsAndReviews(req.body.id, res);
 });
 
 app.get('/ratings', (req, res) => {
