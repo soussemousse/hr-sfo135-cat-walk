@@ -9,8 +9,12 @@
 }
 
 .reviewList {
-  padding: 100px;
-  background-color: grey;
+  padding: 5px;
+}
+
+.review {
+  padding: 10px;
+  border-bottom: 1px solid slategray;
 }
 
 .carosel {
