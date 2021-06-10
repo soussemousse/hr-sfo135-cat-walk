@@ -7,13 +7,40 @@ class Related extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
-      relatedProductsList: []
+      relatedProductsList: [],
+      relatedCarosel: [],
+      //currentUser: this.props.currentUser,
+      userOutfit: [],
+      start: 0,
+      end: 6,
+      outfitShown: [],
+      starClick: false
     }
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
   }
 
   componentDidMount() {
     this.getRelatedProducts(25167);
+  }
+
+  caroselClickRight () {
+    const start = this.state.start + 1;
+    const end = this.state.end + 1;
+    const carosel = this.state.relatedProductsList.slice(start, end);
+
+    console.log(carosel);
+
+    this.setState({relatedCarosel: carosel, start: start, end: end});
+  }
+
+  caroselClickLeft () {
+    const start = this.state.start - 1;
+    const end = this.state.end - 1;
+    const carosel = this.state.relatedProductsList.slice(start, end);
+
+    console.log(carosel);
+
+    this.setState({relatedCarosel: carosel, start: start, end: end});
   }
 
   getRelatedProducts (id) {
@@ -26,7 +53,7 @@ class Related extends React.Component {
     }
     Axios(option)
       .then(response => {
-        this.setState({relatedProductsList: response.data});
+        this.setState({relatedProductsList: response.data, relatedCarosel: response.data.slice(this.state.start, this.state.end)});
       })
       .catch(err => {
         console.log(err);
@@ -37,7 +64,7 @@ class Related extends React.Component {
     return (
       <div>
         <h3>Related Products</h3>
-        <RelatedProducts products={this.state.relatedProductsList} />
+        <RelatedProducts relatedInfo={this.state} products={this.state.relatedCarosel} caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} comparison={this.comparisonClick}/>
         <h3>Your Outfit</h3>
       </div>
     )
