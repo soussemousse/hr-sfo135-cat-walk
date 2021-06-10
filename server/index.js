@@ -20,6 +20,7 @@ app.get('/products', (req, res) => {
 
 app.get('/reviews/:id', (req, res) => {
   const id = req.params.id;
+  // res.send(id);
   ratingsController.ratingsAndReviews(id, res);
 });
 
