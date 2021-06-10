@@ -59,37 +59,37 @@ test("first hello test", () => {
 //   expect(1+2).toBe(3);
 // });
 
-describe('test', function() {
-  it('responds to a GET request', function () {
-    axios({
-      url: "http://localhost:3001/products",
-      data: {id: 25167}
-    })
-      .then((response) => {
-        expect(JSON.stringify(response.data)).toBe(
-          JSON.stringify({
-            "id": 25167,
-            "campus": "hr-sfo",
-            "name": "Camo Onesie",
-            "slogan": "Blend in to your crowd",
-            "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-            "category": "Jackets",
-            "default_price": "140.00",
-            "created_at": "2021-06-02T16:53:33.359Z",
-            "updated_at": "2021-06-02T16:53:33.359Z",
-            "features": [
-                {
-                    "feature": "Fabric",
-                    "value": "Canvas"
-                },
-                {
-                    "feature": "Buttons",
-                    "value": "Brass"
-                }
-            ]
-        })
-        );
-      })
-      .catch(console.error)
-  });
-});
+// describe('test', function() {
+//   it('responds to a GET request', function () {
+//     axios({
+//       url: "http://localhost:3001/products",
+//       data: {id: 25167}
+//     })
+//       .then((response) => {
+//         expect(JSON.stringify(response.data)).toBe(
+//           JSON.stringify({
+//             "id": 25167,
+//             "campus": "hr-sfo",
+//             "name": "Camo Onesie",
+//             "slogan": "Blend in to your crowd",
+//             "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
+//             "category": "Jackets",
+//             "default_price": "140.00",
+//             "created_at": "2021-06-02T16:53:33.359Z",
+//             "updated_at": "2021-06-02T16:53:33.359Z",
+//             "features": [
+//                 {
+//                     "feature": "Fabric",
+//                     "value": "Canvas"
+//                 },
+//                 {
+//                     "feature": "Buttons",
+//                     "value": "Brass"
+//                 }
+//             ]
+//         })
+//         );
+//       })
+//       .catch(console.error)
+//   });
+// });

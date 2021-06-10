@@ -1,3 +1,17 @@
+.RatingsAndReviews {
+  display: flex;
+  justify-content: space-around;
+}
+
+.averages {
+  padding: 50px;
+  background-color: grey;
+}
+
+.reviewList {
+  padding: 100px;
+  background-color: grey;
+}
 
 .carosel {
   display: flex;
