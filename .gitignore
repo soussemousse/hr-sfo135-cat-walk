@@ -1,3 +1,3 @@
 node_modules
 token.js
-coverage
+client/dist/bundle.js
