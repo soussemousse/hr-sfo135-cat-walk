@@ -55,8 +55,6 @@ class Related extends React.Component {
     const end = this.state.end + 1;
     const carosel = this.state.relatedProductsList.slice(start, end);
 
-    console.log(carosel);
-
     this.setState({relatedCarosel: carosel, start: start, end: end});
   }
 
