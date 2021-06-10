@@ -18,8 +18,9 @@ app.get('/products', (req, res) => {
   productController.productDetailOverview(req.body.id, res);
 })
 
-app.get('/reviews', (req, res) => {
-  ratingsController.ratingsAndReviews(req.body.id, res);
+app.get('/reviews/:id', (req, res) => {
+  const id = req.params.id;
+  ratingsController.ratingsAndReviews(id, res);
 });
 
 // app.get('/ratings', (req, res) => {
