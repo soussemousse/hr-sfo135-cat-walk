@@ -21,6 +21,7 @@ class Related extends React.Component {
     this.caroselClickLeft = this.caroselClickLeft.bind(this);
     this.caroselClickRight = this.caroselClickRight.bind(this);
     this.addToOutfit = this.addToOutfit.bind(this);
+    this.getProductInfo = this.getProductInfo.bind(this);
   }
 
   componentDidMount() {
@@ -69,12 +70,29 @@ class Related extends React.Component {
     }
     Axios(option)
       .then(response => {
-        this.setState({relatedProductsList: response.data, relatedCarosel: response.data.slice(this.state.start, this.state.end)});
+        this.getProductInfo(response.data);
       })
       .catch(err => {
         console.log(err);
       })
+  }
+
+  getProductInfo (relatedIds) {
+    const option = {
+      "method": 'post',
+      "url": `related/productInfo`,
+      "data": {
+        "products": relatedIds
+      }
     }
+    Axios(option)
+      .then((response) => {
+        console.log('related products API data:', response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
   render () {
     return (
