@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import {render, screen, waitFor, fireEvent} from '@testing-library/react';
 import dom from '@testing-library/jest-dom';
-import Related from '../client/src/modules/RelatedProducts/RealatedProductsYourOutfit.jsx';
+import Related from '/Users/Emma/HackReactorApril2021/hr-sfo135-cat-walk/client/src/modules/RelatedProducts/RelatedProductsYourOutfit.jsx';
 import RelatedProducts from '../client/src/modules/RelatedProducts/RelatedProducts.jsx';
 import RelatedCard from '../client/src/modules/RelatedProducts/RelatedCard.jsx';
 import YourOutfit from '../client/src/modules/RelatedProducts/YourOutfit.jsx';

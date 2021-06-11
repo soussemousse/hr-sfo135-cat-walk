@@ -18,8 +18,11 @@
   border-bottom: 1px solid slategray;
 }
 
-/******* Related Products CSS *******/
+.reviewForm {
+  z-index: 1
+}
 
+/******* Related Products CSS *******/
 .carosel {
   display: flex;
   justify-content: center;
@@ -141,6 +144,8 @@
   width: 70%;
   border: 3px solid green;
   padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .questions-searchbox {
@@ -165,20 +170,66 @@
   flex-grow: 0;
 }
 
-/* .questions-list {
-  display: flex;
-  flex-direction: column;
-} */
+.question-buttons > * {
+  background: none;
+  border: 1px solid black;
+  font-weight: bold;
+  margin-right: 20px;
+  padding: 15px;
+}
 
-.answers-box {
-  /* border: 1px solid black; */
+.questions-list {
+  border: 2px solid yellow;
+  padding-bottom: 20px;
+}
+
+.question-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+h4 {
+  /* border: 3px solid pink; */
+}
+
+.question-info {
   display: flex;
   flex-direction: row;
+  /* border: 3px solid magenta; */
+}
+
+.question-helpful {
+  padding-right: 10px;
+  border-right: 2px solid black;
+}
+.answer-add {
+  padding-left: 10px;
+}
+
+.question-item {
+  /* border: 2px dotted purple; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* align-items: space-around; */
+}
+
+.answers-list {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 100%;
+}
+
+.answers-box {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
   white-space: pre-wrap;
 }
 
 .answer {
   border: 1px solid blue;
+  margin-bottom: 10px;
 }
 
 .answer-info {

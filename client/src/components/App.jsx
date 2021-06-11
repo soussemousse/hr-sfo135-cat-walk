@@ -4,7 +4,7 @@ import Related from '../modules/RelatedProducts/RelatedProductsYourOutfit.jsx';
 import RelatedSample from '../modules/RelatedProducts/SampleRelated.js';
 import RatingsAndReviews from '../modules/ratingsAndReviews/ratingsAndReviews.jsx';
 import QuestionsAndAnswers from '../modules/questionsAnswers/questionsAnswers.jsx';
-import questionsData from '../modules/questionsAnswers/sampleData_Questions.js';
+ import questionsData from '../modules/questionsAnswers/sampleData_Questions.js';
 
 const App = function () {
   return (
