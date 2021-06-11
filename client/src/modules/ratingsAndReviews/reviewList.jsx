@@ -37,8 +37,9 @@ class ReviewList extends React.Component {
   }
 
   handleStarRating(value) {
-    console.log(value);
     this.setState({rating: value})
+    const valueMeaning = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
+    return ReactDOM.createPortal(<div>{valueMeaning[value - 1]}</div>, document.getElementById('reactiveStarText'));
   }
 
   //<span name="rating" value={1} onClick={()=>{this.handleInputChange({target: {value: 1, name: 'rating'}})}}>&#9734;</span>
@@ -48,15 +49,17 @@ class ReviewList extends React.Component {
     return ReactDOM.createPortal(
       <div className="reviewForm">
         <div className="reviewStarRating">
+          <div id="reactiveStarText"></div>
           <span onClick={()=>{this.handleStarRating(5)}}>&#9734;</span>
           <span onClick={()=>{this.handleStarRating(4)}}>&#9734;</span>
           <span onClick={()=>{this.handleStarRating(3)}}>&#9734;</span>
           <span onClick={()=>{this.handleStarRating(2)}}>&#9734;</span>
           <span onClick={()=>{this.handleStarRating(1)}}>&#9734;</span>
+          gnitar llarevO
         </div>
         <form>
           <label>
-            Recommended:
+          Do you recommend this product?
             <input
               name="recommend"
               type="checkbox"
@@ -65,22 +68,22 @@ class ReviewList extends React.Component {
           </label>
           <br></br>
           <label>
-            summary
+            Review summary
             <input type="text" name="summary" value={this.state.summary} onChange={this.handleInputChange}></input>
           </label>
           <br></br>
           <label>
-            body
+            Review Body
             <input type="text" name="body" value={this.state.body} onChange={this.handleInputChange}></input>
           </label>
           <br></br>
           <label>
-            name
+            What is your nickname
             <input type="text" name="name" value={this.state.name} onChange={this.handleInputChange}></input>
           </label>
           <br></br>
           <label>
-            email
+            Your emal
             <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange}></input>
           </label>
           <br></br>
