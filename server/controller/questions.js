@@ -14,10 +14,10 @@ module.exports.getAllQuestions = (id, page, count, res) => {
   questionsModel.getAllQuestions(options, res);
 }
 
-module.exports.getAllAnswers = (question_id, res) => {
+module.exports.getAllAnswers = (question_id, page, count, res) => {
   const options = {
     "method": "get",
-    "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${question_id}/answers`,
+    "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${question_id}/answers?page=${page}&count=${count}`,
     "headers": {
       "user-agent": 'request',
       "Authorization": tokenObj.token

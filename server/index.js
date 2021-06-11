@@ -42,6 +42,6 @@ app.get('/related/:id', (req, res) => {
   relatedProductsController.relatedProductsController(id, res);
 });
 
-app.get('/qa/questions/:question_id/answers', (req, res) => {
-  questionController.getAllAnswers(req.params.question_id, res);
+app.get('/qa/questions/:question_id/answers/:page/:count', (req, res) => {
+  questionController.getAllAnswers(req.params.question_id, req.params.page, req.params.count, res);
 })
