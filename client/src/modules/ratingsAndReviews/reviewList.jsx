@@ -28,34 +28,38 @@ class ReviewList extends React.Component {
   }
 
   handleInputChange(event) {
+    console.log(event);
+    console.log(event.target.value);
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
     this.setState({[name]: value});
   }
 
+  handleStarRating(value) {
+    this.setState({rating: value})
+    const valueMeaning = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
+    return ReactDOM.createPortal(<div>{valueMeaning[value - 1]}</div>, document.getElementById('reactiveStarText'));
+  }
+
+  //<span name="rating" value={1} onClick={()=>{this.handleInputChange({target: {value: 1, name: 'rating'}})}}>&#9734;</span>
   reviewFormModal() {
     //work on page overlay, star rating system and uploading images
+    //could use conditional rendering inside the body of the span to keep stars filled after clicking
     return ReactDOM.createPortal(
       <div className="reviewForm">
+        <div className="reviewStarRating">
+          <div id="reactiveStarText"></div>
+          <span onClick={()=>{this.handleStarRating(5)}}>&#9734;</span>
+          <span onClick={()=>{this.handleStarRating(4)}}>&#9734;</span>
+          <span onClick={()=>{this.handleStarRating(3)}}>&#9734;</span>
+          <span onClick={()=>{this.handleStarRating(2)}}>&#9734;</span>
+          <span onClick={()=>{this.handleStarRating(1)}}>&#9734;</span>
+          gnitar llarevO
+        </div>
         <form>
           <label>
-            rating
-            <input type="text" name="rating" value={this.state.rating} onChange={this.handleInputChange}></input>
-          </label>
-          <br></br>
-          <label>
-            summary
-            <input type="text" name="summary" value={this.state.summary} onChange={this.handleInputChange}></input>
-          </label>
-          <br></br>
-          <label>
-            body
-            <input type="text" name="body" value={this.state.body} onChange={this.handleInputChange}></input>
-          </label>
-          <br></br>
-          <label>
-            Recommended:
+          Do you recommend this product?
             <input
               name="recommend"
               type="checkbox"
@@ -64,12 +68,22 @@ class ReviewList extends React.Component {
           </label>
           <br></br>
           <label>
-            name
+            Review summary
+            <input type="text" name="summary" value={this.state.summary} onChange={this.handleInputChange}></input>
+          </label>
+          <br></br>
+          <label>
+            Review Body
+            <input type="text" name="body" value={this.state.body} onChange={this.handleInputChange}></input>
+          </label>
+          <br></br>
+          <label>
+            What is your nickname
             <input type="text" name="name" value={this.state.name} onChange={this.handleInputChange}></input>
           </label>
           <br></br>
           <label>
-            email
+            Your emal
             <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange}></input>
           </label>
           <br></br>

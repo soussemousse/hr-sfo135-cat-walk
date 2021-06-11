@@ -17,6 +17,7 @@ class RatingsAndReviews extends React.Component {
     axios.get(`http://localhost:3001/reviews/${this.props.product_id}`)
     .then((response) => {
       this.setState({productReviews: response.data.results})
+      console.log('promise in component did mount')
       console.log(response);
       if (response.data.results.length > 1) {
         this.setState({reviewsToRender: 2})

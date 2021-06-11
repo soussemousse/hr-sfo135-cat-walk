@@ -22,7 +22,32 @@
   z-index: 1
 }
 
+
+/* */
+.reviewStarRating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+/* .reviewStarRating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+} */
+.reviewStarRating > span:hover:before,
+.reviewStarRating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+/* .reviewStarRating > span:click:before,
+.reviewStarRating > span:click ~ span:before {
+   content: "\2605";
+   position: absolute;
+} */
+/* */
+
+
 /******* Related Products CSS *******/
+
 .carosel {
   display: flex;
   justify-content: center;
