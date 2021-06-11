@@ -5,7 +5,9 @@ class Answer extends React.Component {
     super(props)
 
     this.state = {
-      answer: this.props.answer
+      answer: this.props.answer,
+      isSeller: (this.props.answer.answerer_name === 'Seller'),
+      username: this.props.answer.answerer_name
     }
 
   }
@@ -22,13 +24,20 @@ class Answer extends React.Component {
   }
 
   render() {
+    var username = (this.state.isSeller) ? <b>Seller</b> : <>{this.state.username}</>;
     return (
       <div className="answer">
         <div className="answer-text">{this.state.answer.body}</div>
+
+        {/* <div className="answer-pics"></div> */}
+
         <div className="answer-info">
-            <div className="answer-user">{`by ${this.state.answer.answerer_name}, ${this.getFormattedDate()}`}</div>
+            <div className="answer-user">{`by `}{username}{`, ${this.getFormattedDate()}`}</div>
+
             <div className="answer-helpful">{`Helpful? `}<u>Yes</u>{` (${this.state.answer.helpfulness})`}</div>
+
             <div className="answer-report"><u>Report</u></div>
+
         </div>
       </div>
     )

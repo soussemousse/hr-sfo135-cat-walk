@@ -1,3 +1,4 @@
+/******* Ratings and Reviews CSS *******/
 .RatingsAndReviews {
   display: flex;
   justify-content: space-around;
@@ -21,6 +22,7 @@
   z-index: 1
 }
 
+
 /* */
 .reviewStarRating {
   unicode-bidi: bidi-override;
@@ -43,19 +45,22 @@
 } */
 /* */
 
+
+/******* Related Products CSS *******/
+
 .carosel {
   display: flex;
   justify-content: center;
 }
 
 .list {
-  border: 2px solid saddlebrown;
-  border-radius: 3px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 3px;
   grid-template-rows: repeat(1, 1fr);
-
+  margin: 10% 15%;
+  height: 40%;
+  width: 80%;
 }
 
 .nav {
@@ -71,6 +76,8 @@
   border: 2px outset peru;
   border-radius: 3px;
   padding: 3px;
+  display: flex;
+  flex-direction: column;
 }
 
 .upperleft {
@@ -91,9 +98,10 @@
 
 .relatedProducts {
   z-index: 0;
-  position: absolute;
+  position: relative;
   left: 50%;
   transform: translate(-50%, 0);
+  height: 20%;
 }
 
 .comparisonTable {
@@ -111,6 +119,47 @@
   align-content: space-around;
 }
 
+.addProductButton {
+  display: none;
+}
+
+.addProduct {
+  font-size: 300%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: olive;
+  border: 2px solid olive;
+  width: 80%;
+  height: 45%;
+  margin: 10%;
+}
+
+.addOutfit {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.pictureThumbnail {
+  background-color: olive;
+  border: 2px solid olive;
+  width: 80%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cardInfo {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  height: 30%;
+}
+
+/******* Questions and Answers CSS *******/
+
 .QuestionsAndAnswers {
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -120,6 +169,8 @@
   width: 70%;
   border: 3px solid green;
   padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .questions-searchbox {
@@ -144,20 +195,66 @@
   flex-grow: 0;
 }
 
-/* .questions-list {
-  display: flex;
-  flex-direction: column;
-} */
+.question-buttons > * {
+  background: none;
+  border: 1px solid black;
+  font-weight: bold;
+  margin-right: 20px;
+  padding: 15px;
+}
 
-.answers-box {
-  /* border: 1px solid black; */
+.questions-list {
+  border: 2px solid yellow;
+  padding-bottom: 20px;
+}
+
+.question-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+h4 {
+  /* border: 3px solid pink; */
+}
+
+.question-info {
   display: flex;
   flex-direction: row;
+  /* border: 3px solid magenta; */
+}
+
+.question-helpful {
+  padding-right: 10px;
+  border-right: 2px solid black;
+}
+.answer-add {
+  padding-left: 10px;
+}
+
+.question-item {
+  /* border: 2px dotted purple; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* align-items: space-around; */
+}
+
+.answers-list {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 100%;
+}
+
+.answers-box {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
   white-space: pre-wrap;
 }
 
 .answer {
   border: 1px solid blue;
+  margin-bottom: 10px;
 }
 
 .answer-info {

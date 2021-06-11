@@ -7,35 +7,11 @@ class Related extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
-      currentProduct: {
-        "id": 25168,
-        "campus": "hr-sfo",
-        "name": "Bright Future Sunglasses",
-        "slogan": "You've got to wear shades",
-        "description": "Where you're going you might not need roads, but you definitely need some shades. Give those baby blues a rest and let the future shine bright on these timeless lenses.",
-        "category": "Accessories",
-        "default_price": "69.00",
-        "created_at": "2021-06-02T16:53:33.359Z",
-        "updated_at": "2021-06-02T16:53:33.359Z",
-        "features": [
-            {
-                "feature": "Lenses",
-                "value": "Ultrasheen"
-            },
-            {
-                "feature": "UV Protection",
-                "value": null
-            },
-            {
-                "feature": "Frames",
-                "value": "LightCompose"
-            }
-        ]
-      },
+      currentProduct: this.props.currentProduct,
       relatedProductsList: [],
       relatedCarosel: [],
       //currentUser: this.props.currentUser,
-      userOutfit: [],
+      yourOutfit: [],
       start: 0,
       end: 6,
       outfitShown: [],
@@ -44,10 +20,15 @@ class Related extends React.Component {
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
     this.caroselClickLeft = this.caroselClickLeft.bind(this);
     this.caroselClickRight = this.caroselClickRight.bind(this);
+    this.addToOutfit = this.addToOutfit.bind(this);
+    this.getProductInfo = this.getProductInfo.bind(this);
   }
 
   componentDidMount() {
+    const yourOutfit = localStorage.yourOutfit ? JSON.parse(localStorage.yourOutfit) : this.state.yourOutfit;
+
     this.getRelatedProducts(this.state.currentProduct.id);
+    this.setState({yourOutfit: yourOutfit});
   }
 
   caroselClickRight () {
@@ -63,9 +44,20 @@ class Related extends React.Component {
     const end = this.state.end - 1;
     const carosel = this.state.relatedProductsList.slice(start, end);
 
-    console.log(carosel);
-
     this.setState({relatedCarosel: carosel, start: start, end: end});
+  }
+
+  addToOutfit (product) {
+    const newOutfit = this.state.yourOutfit.slice();
+    const outfitIds = newOutfit.map(product => {return product.id});
+
+    if (outfitIds.includes(product.id) === false) {
+      newOutfit.push(product);
+      this.setState({yourOutfit: newOutfit});
+      localStorage.setItem('yourOutfit', JSON.stringify(newOutfit));
+    } else {
+      console.log('Already there!');
+    }
   }
 
   getRelatedProducts (id) {
@@ -78,20 +70,37 @@ class Related extends React.Component {
     }
     Axios(option)
       .then(response => {
-        this.setState({relatedProductsList: response.data, relatedCarosel: response.data.slice(this.state.start, this.state.end)});
+        this.getProductInfo(response.data);
       })
       .catch(err => {
         console.log(err);
       })
+  }
+
+  getProductInfo (relatedIds) {
+    const option = {
+      "method": 'post',
+      "url": `related/productInfo`,
+      "data": {
+        "products": relatedIds
+      }
     }
+    Axios(option)
+      .then((response) => {
+        console.log('related products API data:', response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
 
   render () {
     return (
-      <div>
+      <div className='relatedProducts'>
         <h3>Related Products</h3>
         <RelatedProducts relatedInfo={this.state} products={this.state.relatedCarosel} caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} comparison={this.comparisonClick}/>
         <h3>Your Outfit</h3>
-        <YourOutfit caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} />
+        <YourOutfit caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} addToOutfit={this.addToOutfit} outfitInfo={this.state} />
       </div>
     )
   }

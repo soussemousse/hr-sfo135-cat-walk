@@ -1,10 +1,14 @@
 import axios from 'axios';
 import React from 'react';
-import {render, screen} from '@testing-library/react';
+import {render, screen, waitFor, fireEvent} from '@testing-library/react';
 import dom from '@testing-library/jest-dom';
-import Related from '../client/src/modules/RelatedProducts/RelatedProductsYourOutfit.jsx';
+import Related from '/Users/Emma/HackReactorApril2021/hr-sfo135-cat-walk/client/src/modules/RelatedProducts/RelatedProductsYourOutfit.jsx';
 import RelatedProducts from '../client/src/modules/RelatedProducts/RelatedProducts.jsx';
 import RelatedCard from '../client/src/modules/RelatedProducts/RelatedCard.jsx';
+import YourOutfit from '../client/src/modules/RelatedProducts/YourOutfit.jsx';
+import OutfitCard from '../client/src/modules/RelatedProducts/OutfitCard.jsx';
+import AddProduct from '../client/src/modules/RelatedProducts/AddProductCard.jsx';
+
 
 const sampleProductsArr = [{
   "id": 25168,
@@ -171,7 +175,7 @@ describe('responds to a GET request', function() {
 //test for Related Products list and Product Cards
 describe('Related Products and Your Outfit', () => {
   test('expect "Related Products" and "Your Outfit" headers', () => {
-    render(<Related />);
+    render(<Related currentProduct={sampleProductsArr[0]}/>);
 
     const relatedElement = screen.getByText('Related Products');
     const outfitEl = screen.getByText('Your Outfit');
@@ -181,14 +185,22 @@ describe('Related Products and Your Outfit', () => {
   })
 })
 
+describe('Related Products should have carousel button', () => {
+  test('expect button to change cards shown', () => {
+    render(<RelatedProducts products={sampleProductsArr} relatedInfo={{start: 0, end: 0, relatedProductsList: sampleProductsArr}} caroselClickLeft={(event) => {console.log('clicked')}} caroselClickRight={(event) => {console.log('clicked')}} />);
+
+    fireEvent.click(screen.getByRole('button'));
+
+    expect(screen.getByText('Morning Joggers')).toBeInTheDocument();
+  })
+})
+
 describe('Related Products should show cards of other products', () => {
   test('expect to have arrow buttons and up to five cards', () => {
-    render(<RelatedProducts products={sampleProductsArr} />);
+    render(<RelatedProducts products={sampleProductsArr} relatedInfo={{start: 0, end: 2, relatedProductsList: sampleProductsArr}} caroselClickLeft={(event) => {console.log('clicked')}} caroselClickRight={(event) => {console.log('clicked')}} />);
 
-    const buttons = screen.getAllByRole('button');
     const cards = screen.getAllByRole('article');
 
-    expect(buttons).toHaveLength(2);
     expect(cards).toHaveLength(2);
   })
 })
@@ -206,5 +218,81 @@ describe('Related Products cards should show category, name, price, rating, and 
     expect(category).toBeInTheDocument();
     expect(price).toBeInTheDocument();
     expect(rating).toBeInTheDocument();
+  })
+})
+
+//your outfit tests
+//HAVE
+    //test that there is a list
+    //test there are cards
+    //test there is add product
+//NEED
+    //refactor cards have pic and rating
+    //test add card button
+    //test carosel buttons
+    //test your outfit action button
+
+describe('Your Outfit should show cards of user added products', () => {
+  test('expect to have arrow buttons and up to five cards', () => {
+    render(<YourOutfit products={sampleProductsArr} outfitInfo={{start: 0, end: 2, yourOutfit: sampleProductsArr}} caroselClickLeft={(event) => {console.log('clicked')}} caroselClickRight={(event) => {console.log('clicked')}} addToOutfit={(event) => {console.log('added')}}/>);
+
+    const cards = screen.getAllByRole('article');
+    const addCard = screen.getByText('Add to Your Outfit');
+
+    expect(cards).toHaveLength(2);
+    expect(addCard).toBeInTheDocument();
+  })
+})
+
+describe('Your Outfit cards should show category, name, price, rating, and image of product', () => {
+  test('expect to have all relevant information', () =>  {
+    render(<OutfitCard product={sampleProductsArr[0]} />);
+
+    const productName = screen.getByText('Bright Future Sunglasses');
+    const category = screen.getByText('Accessories');
+    const price = screen.getByText('69.00');
+    const rating = screen.getByText('Rating');
+
+    expect(productName).toBeInTheDocument();
+    expect(category).toBeInTheDocument();
+    expect(price).toBeInTheDocument();
+    expect(rating).toBeInTheDocument();
+  })
+})
+
+describe('Add Product Card should inform what it is for', () => {
+  test('expect to have plus button and caption \'Add to Your Outfit\'', () => {
+    render(<AddProduct addToOutfit={(event, product) => {console.log(product)}} />);
+
+    const addButton = screen.getAllByRole('radio');
+    const caption = screen.getByText('Add to Your Outfit');
+
+    expect(addButton).toHaveLength(1);
+    expect(caption). toBeInTheDocument();
+  })
+})
+
+describe('Add Product Card should inform what it is for', () => {
+  test('expect to have plus button and caption \'Add to Your Outfit\'', () => {
+    render(<AddProduct addToOutfit={(event, product) => {console.log(product)}} />);
+
+    const addButton = screen.getAllByRole('radio');
+    const caption = screen.getByText('Add to Your Outfit');
+
+    expect(addButton).toHaveLength(1);
+    expect(caption). toBeInTheDocument();
+  })
+})
+
+describe('Add product button should add current product to Your Outfit', () => {
+  test('expect add product button to increase your outfit by one', () => {
+    localStorage.clear();
+
+    render(<Related currentProduct={sampleProductsArr[0]}/>);
+
+    const yourOutfit = screen.getAllByTestId('outfitCard').length;
+    fireEvent.click(screen.getByTestId('addProduct'));
+
+    expect(screen.getAllByTestId('outfitCard')).toHaveLength(yourOutfit + 1);
   })
 })
