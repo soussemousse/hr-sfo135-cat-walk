@@ -32,8 +32,8 @@ app.get('/reviews/:id', (req, res) => {
 
 // });
 
-app.get('/qa/questions', (req, res) => {
-  questionController.getAllQuestions(req.body.id, res);
+app.get('/qa/questions/:product_id/:page/:count', (req, res) => {
+  questionController.getAllQuestions(req.params.product_id, req.params.page, req.params.count, res);
 });
 
 app.get('/related/:id', (req, res) => {
@@ -43,5 +43,5 @@ app.get('/related/:id', (req, res) => {
 });
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  questionController.getAllAnswers(req.body.question_id, res);
+  questionController.getAllAnswers(req.params.question_id, res);
 })

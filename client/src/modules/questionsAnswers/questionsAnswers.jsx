@@ -1,13 +1,15 @@
 import React from 'react';
 import QuestionsList from './QuestionsList.jsx';
 import SearchBox from './SearchBox.jsx';
+import axios from 'axios';
 
 
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      questions: this.props.questions
+      sortedQuestions: true,
+      product_id: this.props.product_id
 
     };
   }
@@ -17,7 +19,8 @@ class QuestionsAndAnswers extends React.Component {
       <div className="QuestionsAndAnswers">
         <h3>{'QUESTIONS & ANSWERS'} </h3>
         <SearchBox />
-        <QuestionsList questions={this.state.questions}/>
+        {(this.state.sortedQuestions !== null) ? <QuestionsList product_id={this.state.product_id}/> : <div></div>}
+
       </div>
     )
   }
