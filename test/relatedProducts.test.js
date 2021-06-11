@@ -175,7 +175,7 @@ describe('responds to a GET request', function() {
 //test for Related Products list and Product Cards
 describe('Related Products and Your Outfit', () => {
   test('expect "Related Products" and "Your Outfit" headers', () => {
-    render(<Related />);
+    render(<Related currentProduct={sampleProductsArr[0]}/>);
 
     const relatedElement = screen.getByText('Related Products');
     const outfitEl = screen.getByText('Your Outfit');
