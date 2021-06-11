@@ -15,21 +15,21 @@ class QuestionItem extends React.Component {
     this.getAnswers = this.getAnswers.bind(this);
   }
 
-  getAnswers(question_id) {
+  getAnswers() {
     const option = {
       'method': 'GET',
-      'url': `/qa/questions/${question_id}/answers`
+      'url': `/qa/questions/${this.state.question_id}/answers`
     }
 
     axios(option)
       .then(response => {
-        response.data.sort((a, b) => {
-          if (a.helpulness === b.helpfulness) {
-            return 0;
-          } else {
-            return (a.helpfulness < b.helpfulness) ? 1 : -1;
-          }
-        });
+        // response.data.sort((a, b) => {
+        //   if (a.helpulness === b.helpfulness) {
+        //     return 0;
+        //   } else {
+        //     return (a.helpfulness < b.helpfulness) ? 1 : -1;
+        //   }
+        // });
         this.setState({
           sortedAnswers: response.data
         })
@@ -40,7 +40,7 @@ class QuestionItem extends React.Component {
   }
 
   componentDidMount() {
-    this.getAnswers(this.state.question_id);
+    this.getAnswers();
   }
 
   render() {
