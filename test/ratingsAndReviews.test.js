@@ -3,6 +3,7 @@ import React from 'react';
 import {render, screen} from '@testing-library/react';
 import RatingsAndReviews from '../client/src/modules/ratingsAndReviews/ratingsAndReviews.jsx';
 import Review from '../client/src/modules/ratingsAndReviews/review.jsx';
+import ReviewFormModal from '../client/src/modules/ratingsAndReviews/reviewFormModal.jsx';
 
 describe('Ratings and reviews', () => {
   test('renders product averages', () => {
@@ -25,6 +26,10 @@ describe('Ratings and reviews', () => {
     const {container} = render(<Review currentReview={review406630}/>);
     expect(container.contains(screen.getByText('Camo Onsie', {exact: false}))).toBe(true);
   });
+  test('modal window functions correctly', () => {
+    const {container} = render(<ReviewFormModal/>);
+    expect(container.contains(screen.getByText('test test portal portal'))).toBe(true);
+  })
 });
 
 describe('test API connection', function() {
