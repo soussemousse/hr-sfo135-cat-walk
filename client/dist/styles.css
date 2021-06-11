@@ -102,6 +102,10 @@
   margin-bottom: 20px;
 }
 
+button {
+  cursor: pointer;
+}
+
 .questions-searchbox {
   border: 1px solid black;
   display: flex;
@@ -203,6 +207,8 @@ h4 {
   padding-left: 8px;
 }
 
-.answer-report {
-  padding-left: 8px;
+.answer-report-button, .answer-helpful-button {
+  /* padding-left: 8px; */
+  background: none;
+  border: none;
 }

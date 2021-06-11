@@ -32,6 +32,7 @@ app.get('/reviews/:id', (req, res) => {
 
 // });
 
+// get questions for a product
 app.get('/qa/questions/:product_id/:page/:count', (req, res) => {
   questionController.getAllQuestions(req.params.product_id, req.params.page, req.params.count, res);
 });
@@ -42,6 +43,27 @@ app.get('/related/:id', (req, res) => {
   relatedProductsController.relatedProductsController(id, res);
 });
 
+// get answers for a question
 app.get('/qa/questions/:question_id/answers/:page/:count', (req, res) => {
   questionController.getAllAnswers(req.params.question_id, req.params.page, req.params.count, res);
+})
+
+// mark question as helpful
+app.put('/qa/questions/:question_id/helpful', (req, res) => {
+  questionController.markHelpfulQuestion(req.params.question_id, res);
+})
+
+// report question
+app.put('/qa/questions/:question_id/report', (req, res) => {
+  questionController.reportQuestion(req.params.question_id, res);
+})
+
+// mark answer as helpful
+app.put('/qa/answers/:answer_id/helpful', (req, res) => {
+  questionController.markHelpfulAnswer(req.params.answer_id, res);
+})
+
+// report answer
+app.put('/qa/answers/:answer_id/report', (req, res) => {
+  questionController.reportAnswer(req.params.answer_id, res);
 })

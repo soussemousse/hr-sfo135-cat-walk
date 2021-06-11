@@ -23,7 +23,6 @@ class AnswersList extends React.Component {
   }
 
   handleLoadAnswersClick() {
-    console.log('button clicked');
     this.setState({
       showButton: false
     })
@@ -31,13 +30,10 @@ class AnswersList extends React.Component {
     if (this.fetchedLastPage) {
       this.updateVisibleAnswers(this.state.allAnswers);
     }
-
-    console.log('fetched last page handle: ', this.fetchedLastPage);
     this.getAnswers(false);
   }
 
   updateVisibleAnswers(answers) {
-    console.log('in update visible answers');
     this.setState({
       visibleAnswers: answers
     })
@@ -58,14 +54,12 @@ class AnswersList extends React.Component {
         //     return (a.helpfulness < b.helpfulness) ? 1 : -1;
         //   }
         // });
-        console.log('got response');
         this.fetchedLastPage = (this.max > response.data.length);
         this.nextPage++;
 
         this.setState({
           allAnswers: this.state.allAnswers.concat(response.data)
         }, () => {
-          console.log('in callback: ', this.state.allAnswers);
           if (isInitialFetch) {
             this.updateVisibleAnswers(this.state.allAnswers.slice(0, this.initialCount));
 
@@ -88,20 +82,10 @@ class AnswersList extends React.Component {
     this.getAnswers(true);
   }
 
-
   render() {
     return (
       <div className="answers-list">
         <div><strong>A: </strong></div>
-
-        {/* <div className="answers-box">
-          {this.state.sortedAnswers.slice(0, this.state.count).map((answer, index) => {
-            return <Answer answer={answer} key={index}/>
-          })}
-
-          {(this.state.sortedAnswers.length > this.state.count) ? (<button className="answers-load-button" onClick={this.handleLoadAnswersClick}>LOAD MORE ANSWERS</button>) : <div></div> }
-
-        </div> */}
 
         <div className="answers-box">
           {this.state.visibleAnswers.map((answer, index) => {
