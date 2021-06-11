@@ -17,6 +17,10 @@
   border-bottom: 1px solid slategray;
 }
 
+.reviewForm {
+  z-index: 1
+}
+
 .carosel {
   display: flex;
   justify-content: center;
