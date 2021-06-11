@@ -10,6 +10,7 @@ class QuestionItem extends React.Component {
       sortedAnswers: null,
       question_id: this.props.QA.question_id,
       question_body: this.props.QA.question_body,
+      question_helpfulness: this.props.QA.question_helpfulness
     };
     this.getAnswers = this.getAnswers.bind(this);
   }
@@ -46,6 +47,12 @@ class QuestionItem extends React.Component {
     return (this.state.sortedAnswers !== null) ? (
       <article className="question-item">
         <h4>{`Q: ${this.state.question_body}`}</h4>
+
+        <div className="question-info">
+          <h6 className="question-helpful">{`Helpful? `}<u>Yes</u>{` (${this.state.question_helpfulness})`}</h6>
+          <h6 className="answer-add"><u>Add Answer</u></h6>
+        </div>
+
         <AnswersList answers={this.state.sortedAnswers}/>
       </article>
     ) : (<div></div>)

@@ -6,19 +6,32 @@ class AnswersList extends React.Component {
     super(props)
 
     this.state = {
-      sortedAnswers: this.props.answers
+      sortedAnswers: this.props.answers,
+      count: 2
     }
+    this.handleLoadAnswersClick = this.handleLoadAnswersClick.bind(this);
+  }
+
+  handleLoadAnswersClick() {
+    this.setState({
+      count: this.state.sortedAnswers.length
+    })
   }
 
   render() {
     return (
-      <div className="answers-box">
+      <div className="answers-list">
         <div><strong>A: </strong></div>
-        <div className="answers-list">
-          {this.state.sortedAnswers.slice(0, 2).map((answer, index) => {
+
+        <div className="answers-box">
+          {this.state.sortedAnswers.slice(0, this.state.count).map((answer, index) => {
             return <Answer answer={answer} key={index}/>
           })}
+
+          {(this.state.sortedAnswers.length > this.state.count) ? (<button onClick={this.handleLoadAnswersClick}>LOAD MORE ANSWERS</button>) : <div></div> }
+
         </div>
+
       </div>
     )
   }

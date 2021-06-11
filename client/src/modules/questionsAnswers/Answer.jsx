@@ -25,10 +25,16 @@ class Answer extends React.Component {
     return (
       <div className="answer">
         <div className="answer-text">{this.state.answer.body}</div>
+
+        {/* <div className="answer-pics"></div> */}
+
         <div className="answer-info">
             <div className="answer-user">{`by ${this.state.answer.answerer_name}, ${this.getFormattedDate()}`}</div>
+
             <div className="answer-helpful">{`Helpful? `}<u>Yes</u>{` (${this.state.answer.helpfulness})`}</div>
+
             <div className="answer-report"><u>Report</u></div>
+
         </div>
       </div>
     )
