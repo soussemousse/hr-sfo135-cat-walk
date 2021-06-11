@@ -540,9 +540,19 @@ BRF:0
 BRH:0
 end_of_record
 TN:
+<<<<<<< HEAD
 SF:client/src/modules/questionsAnswers/sampleData_Questions.js
 FNF:0
 FNH:0
+=======
+SF:client/src/modules/ratingsAndReviews/productAverages.jsx
+FN:4,ProductAverages
+FN:11,render
+FNF:2
+FNH:2
+FNDA:1,ProductAverages
+FNDA:1,render
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
 DA:1,1
 DA:2,1
 DA:3,1
@@ -563,6 +573,7 @@ DA:17,1
 DA:18,1
 DA:19,1
 DA:20,1
+<<<<<<< HEAD
 DA:21,1
 DA:22,1
 DA:23,1
@@ -710,6 +721,26 @@ FN:11,render
 FNF:2
 FNH:2
 FNDA:1,ProductAverages
+=======
+LF:20
+LH:20
+BRDA:4,0,0,1
+BRDA:11,1,0,1
+BRF:2
+BRH:2
+end_of_record
+TN:
+SF:client/src/modules/ratingsAndReviews/ratingsAndReviews.jsx
+FN:7,RatingsAndReviews
+FN:16,componentDidMount
+FN:29,showMoreReviewsButtonPressed
+FN:33,render
+FNF:4
+FNH:3
+FNDA:1,RatingsAndReviews
+FNDA:1,componentDidMount
+FNDA:0,showMoreReviewsButtonPressed
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
 FNDA:1,render
 DA:1,1
 DA:2,1
@@ -729,6 +760,7 @@ DA:15,1
 DA:16,1
 DA:17,1
 DA:18,1
+<<<<<<< HEAD
 DA:19,1
 DA:20,1
 LF:20
@@ -737,6 +769,40 @@ BRDA:4,0,0,1
 BRDA:11,1,0,1
 BRF:2
 BRH:2
+=======
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,1
+DA:27,1
+DA:28,1
+DA:29,1
+DA:30,0
+DA:31,0
+DA:32,1
+DA:33,1
+DA:34,1
+DA:35,1
+DA:36,1
+DA:37,1
+DA:38,1
+DA:39,1
+DA:40,1
+DA:41,1
+DA:42,1
+DA:43,1
+LF:43
+LH:34
+BRDA:7,0,0,1
+BRDA:16,1,0,1
+BRDA:33,2,0,1
+BRF:3
+BRH:3
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
 end_of_record
 TN:
 SF:client/src/modules/ratingsAndReviews/ratingsAndReviews.jsx
@@ -765,8 +831,13 @@ DA:14,1
 DA:15,1
 DA:16,1
 DA:17,1
+<<<<<<< HEAD
 DA:18,0
 DA:19,0
+=======
+DA:18,1
+DA:19,1
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
 DA:20,1
 DA:21,1
 DA:22,1
@@ -774,6 +845,7 @@ DA:23,1
 DA:24,1
 DA:25,1
 DA:26,1
+<<<<<<< HEAD
 DA:27,1
 DA:28,1
 DA:29,1
@@ -826,13 +898,26 @@ LF:25
 LH:9
 BRF:0
 BRH:0
+=======
+LF:26
+LH:26
+BRDA:4,0,0,1
+BRDA:9,1,0,1
+BRF:2
+BRH:2
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
 end_of_record
 TN:
 SF:client/src/modules/ratingsAndReviews/reviewList.jsx
 FN:5,ReviewList
+<<<<<<< HEAD
 FN:14,mapReviews
 FN:17,render
 FNF:3
+=======
+FN:10,render
+FNF:2
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
 FNH:2
 FNDA:1,ReviewList
 FNDA:0,mapReviews
@@ -848,6 +933,7 @@ DA:8,1
 DA:9,1
 DA:10,1
 DA:11,1
+<<<<<<< HEAD
 DA:12,1
 DA:13,1
 DA:14,1
@@ -856,6 +942,16 @@ DA:16,1
 DA:17,1
 DA:18,1
 DA:19,1
+=======
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
 DA:20,0
 DA:21,0
 DA:22,0
@@ -873,10 +969,17 @@ DA:33,1
 DA:34,1
 DA:35,1
 LF:35
+<<<<<<< HEAD
 LH:27
 BRDA:5,0,0,1
 BRDA:17,1,0,1
 BRDA:19,2,0,0
+=======
+LH:20
+BRDA:5,0,0,1
+BRDA:10,1,0,1
+BRDA:11,2,0,0
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
 BRF:3
 BRH:2
 end_of_record

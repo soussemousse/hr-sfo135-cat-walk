@@ -23,9 +23,15 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
                 <span class="strong">77.14% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>27/35</span>
+=======
+                <span class="strong">57.14% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>20/35</span>
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
             </div>
         
             
@@ -44,9 +50,15 @@
         
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
                 <span class="strong">77.14% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>27/35</span>
+=======
+                <span class="strong">57.14% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>20/35</span>
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
             </div>
         
             
@@ -92,6 +104,11 @@
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<<<<<<< HEAD
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+=======
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -102,8 +119,21 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -135,6 +165,7 @@ class ReviewList extends React.Component {
     this.mapReviews = this.mapReviews.bind(this);
   }
 &nbsp;
+<<<<<<< HEAD
 &nbsp;
 &nbsp;
   //render the review list starting with the first two reviews based off of the sort method
@@ -151,6 +182,25 @@ class ReviewList extends React.Component {
 <span class="cstat-no" title="statement not covered" >         })}</span>
 <span class="cstat-no" title="statement not covered" >       &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >      )</span>
+=======
+  render () {
+    if (this.props.list.productReviews) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >      const max = this.props.list.reviewsToRender;</span>
+<span class="cstat-no" title="statement not covered" >      const list = this.props.list.productReviews.slice(0, max);</span>
+<span class="cstat-no" title="statement not covered" >      return (</span>
+<span class="cstat-no" title="statement not covered" >        &lt;div&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;div className="reviewList"&gt;</span>
+<span class="cstat-no" title="statement not covered" >            {list.map((review) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >              return &lt;Review key={review.review_id} currentReview={review}/&gt;</span>
+<span class="cstat-no" title="statement not covered" >            })}</span>
+<span class="cstat-no" title="statement not covered" >          &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;button onClick={this.props.pressButton}&gt;more reviews&lt;/button&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;div className="addReview"&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;button&gt;add review&lt;/button&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >       )</span>
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
     } else {
       return (
         &lt;div&gt;loading..&lt;/div&gt;
@@ -166,7 +216,11 @@ export default ReviewList;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
+<<<<<<< HEAD
                 at Thu Jun 10 2021 19:59:49 GMT-0400 (Eastern Daylight Time)
+=======
+                at Thu Jun 10 2021 13:11:33 GMT-0700 (Pacific Daylight Time)
+>>>>>>> cd452aa079f3ac4c2b0530b6e342e3224e2566bc
             </div>
         </div>
         <script src="../prettify.js"></script>

@@ -2,11 +2,28 @@ const axios = require('axios');
 import React from 'react';
 import {render, screen} from '@testing-library/react';
 import RatingsAndReviews from '../client/src/modules/ratingsAndReviews/ratingsAndReviews.jsx';
+import Review from '../client/src/modules/ratingsAndReviews/review.jsx';
 
 describe('Ratings and reviews', () => {
-  test('renders Review', () => {
-    const {container} = render(<RatingsAndReviews />);
-    expect(container.contains(screen.getByText("Review"))).toBe(true);
+  test('renders product averages', () => {
+    const {container} = render(<RatingsAndReviews itemId={25167}/>);
+    expect(container.contains(screen.getByText("product averages"))).toBe(true);
+  });
+  test('renders a review successfully', () => {
+    const review406630 = {
+      body: "Blend in to your crowd",
+      date: "2021-06-07T00:00:00.000Z",
+      helpfulness: 0,
+      photos: [],
+      rating: 5,
+      recommend: true,
+      response: null,
+      review_id: 406630,
+      reviewer_name: "test post",
+      summary: "Camo Onesie"
+    }
+    const {container} = render(<Review currentReview={review406630}/>);
+    expect(container.contains(screen.getByText('Camo Onsie', {exact: false}))).toBe(true);
   });
 });
 

@@ -1,5 +1,4 @@
 node_modules
 token.js
 client/dist/bundle.js
-coverage/
-
+coverage
