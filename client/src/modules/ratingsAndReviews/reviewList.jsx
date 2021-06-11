@@ -6,7 +6,9 @@ class ReviewList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      openPortal: false
+      openPortal: false,
+      reviewData: {
+      }
     };
     this.closePortal = this.closePortal.bind(this);
   }
@@ -28,7 +30,7 @@ class ReviewList extends React.Component {
           </div>
           <button onClick={this.props.pressButton}>more reviews</button>
           <button onClick={() => {this.setState({openPortal: true})}}>add review</button>
-          {this.state.openPortal ? <ReviewFormModal closePortal={this.closePortal}/> : null}
+          {this.state.openPortal ? <ReviewFormModal this={this} closePortal={this.closePortal}/> : null}
         </div>
        )
     } else {

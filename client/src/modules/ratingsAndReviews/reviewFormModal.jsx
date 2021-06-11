@@ -1,18 +1,13 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-class ReviewFormModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state ={
-      reviewData: []
-    };
-  }
-
-
-  render() {
-    return (<></>)
-  }
-
+const ReviewFormModal = function (props) {
+  console.log(document.getElementById('reviewPortal'));
+  return ReactDOM.createPortal(
+    <div className="reviewForm">test test portal portal</div>,
+    document.getElementById('reviewPortal')
+  );
 }
+
 
 export default ReviewFormModal;

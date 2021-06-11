@@ -12,9 +12,9 @@ class QuestionsList extends React.Component {
 
   render() {
     return (
-      <div className="QuestionsList">
-        <QuestionItem />
-        <QuestionItem />
+      <div className="questions-list">
+        <QuestionItem QA={this.props.questions[1]}/>
+        <QuestionItem QA={this.props.questions[2]}/>
       </div>
     )
   }

@@ -63,6 +63,98 @@
   color: forestgreen;
 }
 
-.radioStar {
+.radio {
   display: none;
+}
+
+.relatedProducts {
+  z-index: 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.comparisonTable {
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, 0);
+  border: 2px outset sienna;
+  border-radius: 3px;
+  background-color: skyblue;
+  width: 90%;
+  justify-content: center;
+  align-content: space-around;
+}
+
+.QuestionsAndAnswers {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  margin: auto;
+  width: 70%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+.questions-searchbox {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+#questions-search-input {
+  background-color: transparent;
+  /* border: 1px solid red; */
+  border: 0;
+  flex-grow: 1;
+}
+
+
+#questions-search-button {
+  background-color: transparent;
+  /* border: 1px solid blue; */
+  border: 0;
+  flex-grow: 0;
+}
+
+/* .questions-list {
+  display: flex;
+  flex-direction: column;
+} */
+
+.answers-box {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  white-space: pre-wrap;
+}
+
+.answer {
+  border: 1px solid blue;
+}
+
+.answer-info {
+  display: flex;
+  flex-direction: row;
+  font-size: small;
+}
+
+.answer-user {
+  padding-right: 8px;
+}
+
+.answer-helpful {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.answer-report {
+  padding-left: 8px;
 }
