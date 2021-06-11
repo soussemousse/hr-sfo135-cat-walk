@@ -14,7 +14,7 @@ class RatingsAndReviews extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3001/reviews/${this.props.itemId}`)
+    axios.get(`http://localhost:3001/reviews/${this.props.product_id}`)
     .then((response) => {
       this.setState({productReviews: response.data.results})
       console.log(response);
@@ -35,7 +35,7 @@ class RatingsAndReviews extends React.Component {
     return (
       <div className="RatingsAndReviews">
         <ProductAverages/>
-        <ReviewList list={this.state} pressButton={this.showMoreReviewsButtonPressed}/>
+        <ReviewList list={this.state} product_id={this.props.product_id} pressButton={this.showMoreReviewsButtonPressed}/>
       </div>
     )
   }
