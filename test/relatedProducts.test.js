@@ -271,3 +271,28 @@ describe('Add Product Card should inform what it is for', () => {
     expect(caption). toBeInTheDocument();
   })
 })
+
+describe('Add Product Card should inform what it is for', () => {
+  test('expect to have plus button and caption \'Add to Your Outfit\'', () => {
+    render(<AddProduct addToOutfit={(event, product) => {console.log(product)}} />);
+
+    const addButton = screen.getAllByRole('radio');
+    const caption = screen.getByText('Add to Your Outfit');
+
+    expect(addButton).toHaveLength(1);
+    expect(caption). toBeInTheDocument();
+  })
+})
+
+describe('Add product button should add current product to Your Outfit', () => {
+  test('expect add product button to increase your outfit by one', () => {
+    localStorage.clear();
+
+    render(<Related currentProduct={sampleProductsArr[0]}/>);
+
+    const yourOutfit = screen.getAllByTestId('outfitCard').length;
+    fireEvent.click(screen.getByTestId('addProduct'));
+
+    expect(screen.getAllByTestId('outfitCard')).toHaveLength(yourOutfit + 1);
+  })
+})

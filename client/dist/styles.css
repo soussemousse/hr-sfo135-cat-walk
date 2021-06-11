@@ -1,3 +1,4 @@
+/******* Ratings and Reviews CSS *******/
 .RatingsAndReviews {
   display: flex;
   justify-content: space-around;
@@ -16,6 +17,8 @@
   padding: 10px;
   border-bottom: 1px solid slategray;
 }
+
+/******* Related Products CSS *******/
 
 .carosel {
   display: flex;
@@ -126,6 +129,8 @@
   grid-template-rows: repeat(4, 1fr);
   height: 30%;
 }
+
+/******* Questions and Answers CSS *******/
 
 .QuestionsAndAnswers {
   font-family: Arial, Helvetica, sans-serif;
