@@ -13,9 +13,12 @@ class AnswersList extends React.Component {
   }
 
   handleLoadAnswersClick() {
-    this.setState({
-      count: this.state.sortedAnswers.length
-    })
+    if (this.state.count < this.state.sortedAnswers.length) {
+      this.setState({
+        count: this.state.sortedAnswers.length
+      })
+    }
+
   }
 
   render() {
@@ -28,7 +31,7 @@ class AnswersList extends React.Component {
             return <Answer answer={answer} key={index}/>
           })}
 
-          {(this.state.sortedAnswers.length > this.state.count) ? (<button onClick={this.handleLoadAnswersClick}>LOAD MORE ANSWERS</button>) : <div></div> }
+          {(this.state.sortedAnswers.length > this.state.count) ? (<button className="answers-load-button" onClick={this.handleLoadAnswersClick}>LOAD MORE ANSWERS</button>) : <div></div> }
 
         </div>
 

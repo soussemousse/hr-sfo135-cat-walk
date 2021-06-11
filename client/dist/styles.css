@@ -120,8 +120,17 @@
   flex-grow: 0;
 }
 
+.question-buttons > * {
+  background: none;
+  border: 1px solid black;
+  font-weight: bold;
+  margin-right: 20px;
+  padding: 15px;
+}
+
 .questions-list {
   border: 2px solid yellow;
+  padding-bottom: 20px;
 }
 
 .question-item {
@@ -170,6 +179,7 @@ h4 {
 
 .answer {
   border: 1px solid blue;
+  margin-bottom: 10px;
 }
 
 .answer-info {
