@@ -28,20 +28,40 @@ class ReviewList extends React.Component {
   }
 
   handleInputChange(event) {
+    console.log(event);
+    console.log(event.target.value);
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
     this.setState({[name]: value});
   }
 
+  handleStarRating(value) {
+    console.log(value);
+    this.setState({rating: value})
+  }
+
+  //<span name="rating" value={1} onClick={()=>{this.handleInputChange({target: {value: 1, name: 'rating'}})}}>&#9734;</span>
   reviewFormModal() {
     //work on page overlay, star rating system and uploading images
+    //could use conditional rendering inside the body of the span to keep stars filled after clicking
     return ReactDOM.createPortal(
       <div className="reviewForm">
+        <div className="reviewStarRating">
+          <span onClick={()=>{this.handleStarRating(5)}}>&#9734;</span>
+          <span onClick={()=>{this.handleStarRating(4)}}>&#9734;</span>
+          <span onClick={()=>{this.handleStarRating(3)}}>&#9734;</span>
+          <span onClick={()=>{this.handleStarRating(2)}}>&#9734;</span>
+          <span onClick={()=>{this.handleStarRating(1)}}>&#9734;</span>
+        </div>
         <form>
           <label>
-            rating
-            <input type="text" name="rating" value={this.state.rating} onChange={this.handleInputChange}></input>
+            Recommended:
+            <input
+              name="recommend"
+              type="checkbox"
+              checked={this.state.recommend}
+              onChange={this.handleInputChange} />
           </label>
           <br></br>
           <label>
@@ -52,15 +72,6 @@ class ReviewList extends React.Component {
           <label>
             body
             <input type="text" name="body" value={this.state.body} onChange={this.handleInputChange}></input>
-          </label>
-          <br></br>
-          <label>
-            Recommended:
-            <input
-              name="recommend"
-              type="checkbox"
-              checked={this.state.recommend}
-              onChange={this.handleInputChange} />
           </label>
           <br></br>
           <label>
