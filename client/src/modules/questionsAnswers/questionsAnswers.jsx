@@ -21,10 +21,8 @@ class QuestionsAndAnswers extends React.Component {
       'method': 'GET',
       'url': `/qa/questions/${product_id}`
     }
-
     axios(options)
       .then(response => {
-        // console.log('response: ', response)
         response.data.sort((a, b) => {
           if (a.question_helpulness === b.question_helpfulness) {
             return 0;

@@ -1,4 +1,4 @@
-[
+const sampleAnswers = [
   {
       "answer_id": 1720132,
       "body": "I've thrown it in the wash and it seems fine",
@@ -39,4 +39,6 @@
       "helpfulness": 0,
       "photos": []
   }
-]
+];
+
+export default sampleAnswers;

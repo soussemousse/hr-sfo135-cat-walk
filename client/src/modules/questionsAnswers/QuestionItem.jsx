@@ -44,10 +44,10 @@ class QuestionItem extends React.Component {
 
   render() {
     return (this.state.sortedAnswers !== null) ? (
-      <div className="question-item">
+      <article className="question-item">
         <h4>{`Q: ${this.state.question_body}`}</h4>
         <AnswersList answers={this.state.sortedAnswers}/>
-      </div>
+      </article>
     ) : (<div></div>)
   }
 }
