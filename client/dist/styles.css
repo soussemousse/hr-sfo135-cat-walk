@@ -208,7 +208,7 @@ button {
 }
 
 .questions-list {
-  border: 2px solid yellow;
+  /* border: 2px solid yellow; */
   padding-bottom: 20px;
 }
 
@@ -248,13 +248,13 @@ button {
   height: 50px;
   display: flex;
   flex-direction: row;
-  border: 3px solid magenta;
+  /* border: 3px solid magenta; */
   justify-content: space-between;
   align-items: flex-start;
 }
 
 .question-text {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .question-item-buttons {
@@ -270,7 +270,7 @@ button {
 }
 
 .answers-box {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   white-space: pre-wrap;

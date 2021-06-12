@@ -11,8 +11,8 @@ const App = function () {
     <div>
       <ProductOverview />
       <Related currentProduct={RelatedSample}/>
-      <QuestionsAndAnswers questions={questionsData}/>
-      <RatingsAndReviews itemId={25167}/>
+      <QuestionsAndAnswers product_id={25167}/>
+      <RatingsAndReviews product_id={25167}/>
     </div>
   );
 }
