@@ -15,41 +15,41 @@
         }
     </style>
 </head>
-
+    
 <body>
 <div class='wrapper'>
     <div class='pad1'>
         <h1><a href="../index.html">All files</a> / <a href="index.html">RelatedProducts</a> RelatedProducts.jsx</h1>
         <div class='clearfix'>
-
+            
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.59% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/27</span>
+                <span class='fraction'>33/33</span>
             </div>
-
-
+        
+            
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">71.43% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>5/7</span>
             </div>
-
-
+        
+            
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>2/2</span>
             </div>
-
-
+        
+            
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.59% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/27</span>
+                <span class='fraction'>33/33</span>
             </div>
-
-
+        
+            
         </div>
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
@@ -83,7 +83,14 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -96,21 +103,27 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import RelatedCard from './RelatedCard.jsx';
+import CompareProducts from './CompareProducts.jsx';
 &nbsp;
 class RelatedProducts extends React.Component {
   constructor (props) {
@@ -121,15 +134,20 @@ class RelatedProducts extends React.Component {
     }
   }
 &nbsp;
+  openCompare = (product) =&gt; {this.setState({compare: true, compareProduct: product})};
+  closeCompare = (event) =&gt; {this.setState({compare: false})};
+&nbsp;
   render () {
     return (
       &lt;div className='carosel'&gt;
         {<span class="branch-0 cbranch-no" title="branch not covered" >this.props.relatedInfo.start !== 0 ? &lt;button c</span>lassName='previous nav' onClick={this.props.caroselClickLeft}&gt;&amp;larr;&lt;/button&gt; : null}
         &lt;div className='RelatedProducts list'&gt;
           {this.props.products.map((product) =&gt; {
-<span class="cstat-no" title="statement not covered" >            return &lt;RelatedCard key={product.id} product={product} /&gt;</span>
-<span class="cstat-no" title="statement not covered" >          })}</span>
+            return &lt;RelatedCard key={product.id} product={product} open={this.openCompare}/&gt;
+          })}
         &lt;/div&gt;
+        {<span class="branch-0 cbranch-no" title="branch not covered" >!this.state.compare ? null : &lt;C</span>ompareProducts close={this.closeCompare} currentProduct={this.props.relatedInfo.currentProduct} compareProduct={this.state.compareProduct}/&gt;}
+        {this.props.relatedInfo.end &lt;= this.props.relatedInfo.relatedProductsList.length ? &lt;button className='next nav' onClick={this.props.caroselClickRight}&gt;&amp;rarr;&lt;/button&gt; : null}
       &lt;/div&gt;
     )
   }
@@ -142,7 +160,7 @@ export default RelatedProducts;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jun 10 2021 19:59:49 GMT-0400 (Eastern Daylight Time)
+                at Thu Jun 10 2021 23:13:24 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../prettify.js"></script>
@@ -155,3 +173,4 @@ export default RelatedProducts;</pre></td></tr></table></pre>
         <script src="../block-navigation.js"></script>
     </body>
 </html>
+    

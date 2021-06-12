@@ -5,7 +5,7 @@ const port = 3001;
 const productController = require('./controller/products.js');
 const questionController = require('./controller/questions.js');
 const ratingsController = require('./controller/ratings.js');
-const relatedProductsController = require('./controller/RelatedProductsController.js');
+const relatedListController = require('./controller/RelatedProductsController.js');
 
 app.listen(port, (err = `connected to ${port}`) => {
   console.log(err);
@@ -24,6 +24,13 @@ app.get('/reviews/:id', (req, res) => {
   ratingsController.ratingsAndReviews(id, res);
 });
 
+app.get('/reviews/meta/:id', (req, res) => {
+  const id = req.params.id;
+  // res.send(id);
+  ratingsController.ratingsAndReviewsMeta(id, res);
+});
+
+
 // app.get('/ratings', (req, res) => {
 
 // });
@@ -32,21 +39,42 @@ app.get('/reviews/:id', (req, res) => {
 
 // });
 
+app.get('/related/:id', (req, res) => {
+  const id = req.params.id;
+
+  relatedListController.relatedListController(id, res);
+});
+
+app.post('/related/productInfo', (req, res) => {
+
+  const productsInfo = req.body.products.map((productId) => {
+    return [relatedListController.relatedProductsController(productId), relatedListController.relatedPhotosController(productId), relatedListController.relatedRatingsController(productId)];
+  })
+
+  const resolveInfoPromises = productsInfo.map((information) => {
+    return Promise.all(information)
+      .then(response => {
+        return response;
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  })
+
+  Promise.all(resolveInfoPromises)
+    .then(response => {
+      res.send(response);
+    })
+})
+
 // get questions for a product
 app.get('/qa/questions/:product_id/:page/:count', (req, res) => {
   questionController.getAllQuestions(req.params.product_id, req.params.page, req.params.count, res);
 });
 
-app.get('/related/:id', (req, res) => {
-  const id = req.params.id;
-
-  relatedProductsController.relatedProductsController(id, res);
-});
-
 // get answers for a question
 app.get('/qa/questions/:question_id/answers/:page/:count', (req, res) => {
   questionController.getAllAnswers(req.params.question_id, req.params.page, req.params.count, res);
-})
 
 // mark question as helpful
 app.put('/qa/questions/:question_id/helpful', (req, res) => {

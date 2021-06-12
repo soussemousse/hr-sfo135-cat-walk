@@ -1,3 +1,4 @@
+/******* Ratings and Reviews CSS *******/
 .RatingsAndReviews {
   display: flex;
   justify-content: space-around;
@@ -21,19 +22,45 @@
   z-index: 1
 }
 
+
+/* */
+.reviewStarRating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+/* .reviewStarRating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+} */
+.reviewStarRating > span:hover:before,
+.reviewStarRating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+/* .reviewStarRating > span:click:before,
+.reviewStarRating > span:click ~ span:before {
+   content: "\2605";
+   position: absolute;
+} */
+/* */
+
+
+/******* Related Products CSS *******/
+
 .carosel {
   display: flex;
   justify-content: center;
 }
 
 .list {
-  border: 2px solid saddlebrown;
-  border-radius: 3px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 3px;
   grid-template-rows: repeat(1, 1fr);
-
+  margin: 10% 15%;
+  height: 40%;
+  width: 80%;
 }
 
 .nav {
@@ -49,6 +76,8 @@
   border: 2px outset peru;
   border-radius: 3px;
   padding: 3px;
+  display: flex;
+  flex-direction: column;
 }
 
 .upperleft {
@@ -69,9 +98,10 @@
 
 .relatedProducts {
   z-index: 0;
-  position: absolute;
+  position: relative;
   left: 50%;
   transform: translate(-50%, 0);
+  height: 20%;
 }
 
 .comparisonTable {
@@ -88,6 +118,47 @@
   justify-content: center;
   align-content: space-around;
 }
+
+.addProductButton {
+  display: none;
+}
+
+.addProduct {
+  font-size: 300%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: olive;
+  border: 2px solid olive;
+  width: 80%;
+  height: 45%;
+  margin: 10%;
+}
+
+.addOutfit {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.pictureThumbnail {
+  background-color: olive;
+  border: 2px solid olive;
+  width: 80%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cardInfo {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  height: 30%;
+}
+
+/******* Questions and Answers CSS *******/
 
 .QuestionsAndAnswers {
   font-family: Arial, Helvetica, sans-serif;

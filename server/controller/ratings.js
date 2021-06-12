@@ -3,14 +3,27 @@ const tokenObj = require('../../token.js');
 
 const ratingsAndReviews = function (id, res) {
   const options = {
-    "method": 'get',
-    "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews?product_id=${id}&page`,
-    "headers": {
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews?product_id=${id}&page`,
+    headers: {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      Authorization: tokenObj.token
     }
   }
   ratingsModel.reviewsAxios(options, res);
 }
 
+const ratingsAndReviewsMeta = function (id, res) {
+  const options = {
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta/?product_id=${id}&page`,
+    headers: {
+      "user-agent": 'request',
+      Authorization: tokenObj.token
+    }
+  }
+  ratingsModel.reviewsAxios(options, res);
+}
+
+module.exports.ratingsAndReviewsMeta = ratingsAndReviewsMeta;
 module.exports.ratingsAndReviews = ratingsAndReviews;
