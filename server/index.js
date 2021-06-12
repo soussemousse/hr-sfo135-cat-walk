@@ -24,6 +24,13 @@ app.get('/reviews/:id', (req, res) => {
   ratingsController.ratingsAndReviews(id, res);
 });
 
+app.get('/reviews/meta/:id', (req, res) => {
+  const id = req.params.id;
+  // res.send(id);
+  ratingsController.ratingsAndReviewsMeta(id, res);
+});
+
+
 // app.get('/ratings', (req, res) => {
 
 // });
