@@ -53,13 +53,35 @@ class QuestionsList extends React.Component {
   }
 
   handleAddQuestionSubmit(e) {
-    // const onSubmit = (event) => {
-    //   event.preventDefault(event);
-    //   console.log(event.target.name.value);
-    //   console.log(event.target.email.value);
-    // };
+      e.preventDefault(e);
 
-    console.log();
+      // var form = document.getElementById("Q-form");
+      // console.log(form);
+      // var data = new FormData(form);
+
+      var body = document.getElementById("QA-body").value;
+      var name = document.getElementById("QA-name").value;
+      var email = document.getElementById("QA-email").value;
+
+
+      // var body = "moo";
+      // var name = "meep";
+      // var email = "a@b.com";
+
+      axios({
+        method: "post",
+        url: "/qa/questions",
+        data: {
+          "product_id": this.props.product_id,
+          "body": body,
+          "name": name,
+          "email": email
+        }
+      })
+      .then(res => {
+        console.log(res.status);
+      })
+      .catch(err => {console.log(err);})
   }
 
   getQuestions() {
@@ -123,22 +145,22 @@ class QuestionsList extends React.Component {
         <>
           <h3>Ask Your Question</h3>
           <h4>About the [Camo Onesie]</h4>
-          <form onSubmit={this.handleAddQuestionSubmit} className="QA-form">
+          <form onSubmit={this.handleAddQuestionSubmit} className="QA-form" id="Q-form">
 
             <div className="QA-form-element">
               <label>Your Question: <em><small>(Required)</small></em></label>
-              <textarea type="text" maxLength="10" className="QA-textarea" required="required"></textarea>
+              <textarea id="QA-body" type="text" maxLength="10" className="QA-textarea" required="required"></textarea>
             </div>
 
             <div className="QA-form-element">
               <label>Your Nickname: <em><small>(Optional)</small></em></label>
-              <input type="text" placeholder="Example: jackson11!" maxLength="5"></input>
+              <input id="QA-name" type="text" placeholder="Example: jackson11!" maxLength="5"></input>
               <em><small>For privacy reasons, do not use your full name or email address</small></em>
             </div>
 
             <div className="QA-form-element">
                 <label>Your Email: <em><small>(Required)</small></em></label>
-                <input type="email" placeholder="Why did you like the product or not?" maxLength="5" required="required"></input>
+                <input id="QA-email" type="email" placeholder="Why did you like the product or not?" maxLength="20" required="required"></input>
                 <em><small>For authentication reasons, you will not be emailed</small></em>
             </div>
 

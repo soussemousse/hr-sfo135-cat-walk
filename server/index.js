@@ -99,6 +99,7 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 
 // add new question
 app.post('/qa/questions', (req, res) => {
+  console.log("body: ", req.body);
   questionController.addQuestion(req.body, res);
 })
 

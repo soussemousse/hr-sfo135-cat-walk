@@ -80,7 +80,6 @@ module.exports.reportAnswer = (answer_id, res) => {
 }
 
 module.exports.addQuestion = (body, res) => {
-  console.log(body);
   const options = {
     "method": "post",
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions`,
