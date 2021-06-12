@@ -5,7 +5,6 @@ import AddOutfit from './AddProductCard.jsx';
 class YourOutfit extends React.Component {
   constructor (props) {
     super (props);
-    console.log(props.outfitInfo);
   }
 
   render () {

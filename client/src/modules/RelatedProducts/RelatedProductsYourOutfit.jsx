@@ -2,12 +2,13 @@ import React from 'react';
 import Axios from 'axios';
 import RelatedProducts from './RelatedProducts.jsx';
 import YourOutfit from './YourOutfit.jsx';
+import sampleData from './SampleRelated.js';
 
 class Related extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
-      currentProduct: this.props.currentProduct,
+      currentProduct: sampleData,
       relatedProductsList: [],
       relatedCarosel: [],
       yourOutfit: [],
