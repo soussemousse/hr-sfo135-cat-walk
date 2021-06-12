@@ -173,6 +173,10 @@
   margin-bottom: 20px;
 }
 
+button {
+  cursor: pointer;
+}
+
 .questions-searchbox {
   border: 1px solid black;
   display: flex;
@@ -208,35 +212,55 @@
   padding-bottom: 20px;
 }
 
-.question-item {
+/* .question-item {
   display: flex;
   justify-content: space-between;
-}
-
-h4 {
-  /* border: 3px solid pink; */
-}
-
-.question-info {
-  display: flex;
-  flex-direction: row;
-  /* border: 3px solid magenta; */
-}
+} */
 
 .question-helpful {
   padding-right: 10px;
   border-right: 2px solid black;
 }
-.answer-add {
+
+.question-helpful-button {
+  border: none;
+  background: none;
+}
+
+.answer-add-button {
+  height: 20px;
+  border: none;
+  background: none;
   padding-left: 10px;
 }
+/* .answer-add {
+  padding-left: 10px;
+} */
 
 .question-item {
   /* border: 2px dotted purple; */
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  /* align-items: space-around; */
+}
+
+.question-info {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  border: 3px solid magenta;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.question-text {
+  border: 1px solid black;
+}
+
+.question-item-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .answers-list {
@@ -274,6 +298,47 @@ h4 {
   padding-left: 8px;
 }
 
-.answer-report {
-  padding-left: 8px;
+.answer-report-button, .answer-helpful-button {
+  /* padding-left: 8px; */
+  background: none;
+  border: none;
+}
+
+
+.popup-box {
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.box {
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+  height: auto;
+  margin-top: 25vh;
+  background: white;
+  border-radius: 4px;
+  padding: 20px;
+  border: 1px solid grey;
+  overflow: auto;
+}
+
+.close-icon {
+  content: 'x';
+  cursor: pointer;
+  position: relative;
+  /* right: calc(15% - 30px);
+  top: calc(100vh - 85vh - 33px); */
+  background: lightgrey;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid grey;
+  font-size: 20px;
 }
