@@ -21,6 +21,9 @@ const getRating = (object) => {
 
 function RelatedCard (props) {
   let rating = getRating(props.product.ratings);
+  const ratingStyle = {width: (rating / 5 * 100)};
+  const onSale = {color: 'red'};
+  const oldPrice = {textDecorationLine: 'line-through'};
 
   return (
     <article className='card' data-testid='relatedCard'>
@@ -29,8 +32,11 @@ function RelatedCard (props) {
       <div className='cardInfo'>
         <small>{props.product.productDetails[2]}</small>
         <h4>{props.product.productDetails[1]}</h4>
-        <span>{props.product.productDetails[3]}</span><br></br>
-        {rating !== 0 ? <label className='relatedRatingLabel'>Rating: <span className='rating'>{rating}</span></label> : null}
+        {props.product.productPhotos[0] !== null ? <div><span className='salePrice' style={onSale}>{props.product.productPhotos[0]}</span><br></br><span className='price' style={oldPrice}>{props.product.productDetails[3]}</span></div> : <span className='price'>{props.product.productDetails[3]}</span>}
+        <div className="cardRating">
+          <div className="cardRating-top" style={ratingStyle}><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+          <div className="cardRating-bottom"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        </div>
       </div>
     </article>
   )

@@ -54,9 +54,20 @@
 
 /******* Related Products CSS *******/
 
+h3 {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  font-weight: bold;
+  width: fit-content;
+}
+
 .carosel {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
 }
 
 .list {
@@ -85,7 +96,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70%;
+  height: 80%;
 }
 
 .upperleft {
@@ -117,7 +128,11 @@
   position: relative;
   left: 50%;
   transform: translate(-50%, 0);
-  height: 20%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid darkmagenta;
 }
 
 .comparisonTable {
@@ -143,25 +158,27 @@
 }
 
 .addProduct {
-  font-size: 300%;
+  font-size: 400%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  background-color: olive;
-  border: 2px solid olive;
+  align-items: center;
+  position: sticky;
+  background-color: lightpink;
+  border: 2px solid darkmagenta;
+  border-radius: 3px;
   width: 80%;
-  height: 45%;
-  margin: 10%;
+  height: 50%;
+  margin: 5%;
 }
 
 .addOutfit {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-self: flex-start;
+  position: sticky;
 }
 
 .pictureThumbnail {
-  background-color: olive;
   border: 2px solid olive;
   width: 80%;
   height: 40%;
@@ -187,6 +204,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.cardRating {
+  unicode-bidi: bidi-override;
+  color: lightgrey;
+  font-size: 25px;
+  height: 25%;
+  width: 80%;
+  position: relative;
+  text-shadow: 0px 1px 0 lightgrey;
+}
+
+.cardRating-top {
+  color: orange;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.cardRating-bottom {
+  padding: 0;
+  display: block;
+  z-index: 0;
 }
 
 /******* Questions and Answers CSS *******/

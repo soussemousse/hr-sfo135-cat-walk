@@ -6,6 +6,7 @@ const sampleData = {
     "description": "Whether you're a morning person or not.  Whether you're gym bound or not.  Everyone looks good in joggers.",
     "category": "Pants",
     "default_price": "40.00",
+    "sale_price": "32.00",
     "created_at": "2021-06-02T16:53:33.359Z",
     "updated_at": "2021-06-02T16:53:33.359Z",
     "features": [
