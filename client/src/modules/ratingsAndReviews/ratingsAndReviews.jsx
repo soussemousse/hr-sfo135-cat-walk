@@ -8,7 +8,8 @@ class RatingsAndReviews extends React.Component {
     super(props)
     this.state = {
       productReviews: undefined,
-      reviewsToRender: 0
+      reviewsToRender: 0,
+      characteristics: {}
     };
     this.showMoreReviewsButtonPressed = this.showMoreReviewsButtonPressed.bind(this);
   }
@@ -17,13 +18,21 @@ class RatingsAndReviews extends React.Component {
     axios.get(`http://localhost:3001/reviews/${this.props.product_id}`)
     .then((response) => {
       this.setState({productReviews: response.data.results})
-      console.log('promise in component did mount')
-      console.log(response);
+      // console.log('promise in component did mount')
+      // console.log(response);
       if (response.data.results.length > 1) {
         this.setState({reviewsToRender: 2})
       } else {
         this.setState({displayedReviews: response.data.results.length})
       }
+    })
+    .catch(console.error)
+
+    axios.get(`http://localhost:3001/reviews/meta/${this.props.product_id}`)
+    .then((response) => {
+      this.setState({characteristics: response.data.characteristics})
+      console.log(this.state);
+
     })
     .catch(console.error)
   }
