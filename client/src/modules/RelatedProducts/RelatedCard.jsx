@@ -11,7 +11,7 @@ const getRating = (object) => {
     numOfRatings += ratings;
     ratingsSum += (ratings * star);
   }
-  console.log(numOfRatings, ratingsSum);
+
   if (ratingsSum === 0 || numOfRatings === 0) {
     return 0;
   } else {

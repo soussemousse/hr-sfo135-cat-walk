@@ -75,6 +75,7 @@ app.get('/qa/questions/:product_id/:page/:count', (req, res) => {
 // get answers for a question
 app.get('/qa/questions/:question_id/answers/:page/:count', (req, res) => {
   questionController.getAllAnswers(req.params.question_id, req.params.page, req.params.count, res);
+})
 
 // mark question as helpful
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
