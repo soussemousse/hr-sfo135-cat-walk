@@ -8,7 +8,7 @@ import questionsData from '../modules/questionsAnswers/sampleData_Questions.js';
 
 const App = function () {
   return (
-    <div>
+    <div className='productPage'>
       <ProductOverview />
       <Related currentProduct={RelatedSample}/>
       <QuestionsAndAnswers product_id={25167}/>

@@ -1,3 +1,9 @@
+/******* Overall Styles *******/
+.productPage {
+  display: gird;
+  grid-template-rows: repeat(4, 1fr);
+}
+
 /******* Ratings and Reviews CSS *******/
 .RatingsAndReviews {
   display: flex;
@@ -78,13 +84,23 @@
   padding: 3px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  height: 70%;
 }
 
 .upperleft {
-  font-size: 30%;
   display: flex;
-  align-self: flex-start;
+  align-self: flex-end;
   justify-content: flex-end;
+  align-items: flex-start;
+  color: fuchsia;
+}
+
+.upperLeft {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin: 1%;
   color: fuchsia;
 }
 
@@ -114,9 +130,12 @@
   border: 2px outset sienna;
   border-radius: 3px;
   background-color: skyblue;
-  width: 90%;
   justify-content: center;
   align-content: space-around;
+}
+
+.compareTable {
+  order: -1;
 }
 
 .addProductButton {
@@ -156,6 +175,18 @@
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(4, 1fr);
   height: 30%;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 5px;
+}
+
+.tableData {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /******* Questions and Answers CSS *******/

@@ -17,14 +17,14 @@ class RelatedProducts extends React.Component {
   render () {
     return (
       <div className='carosel'>
-        {this.props.relatedInfo.start !== 0 ? <button className='previous nav' onClick={this.props.caroselClickLeft}>&larr;</button> : null}
+        {this.props.relatedInfo.relatedStart !== 0 ? <button className='previous nav' onClick={this.props.caroselClickLeft}>&larr;</button> : null}
         <div className='RelatedProducts list'>
           {this.props.products.map((product) => {
             return <RelatedCard key={product.id} product={product} open={this.openCompare}/>
           })}
         </div>
         {!this.state.compare ? null : <CompareProducts close={this.closeCompare} currentProduct={this.props.relatedInfo.currentProduct} compareProduct={this.state.compareProduct}/>}
-        {this.props.relatedInfo.end <= this.props.relatedInfo.relatedProductsList.length ? <button className='next nav' onClick={this.props.caroselClickRight}>&rarr;</button> : null}
+        {this.props.relatedInfo.relatedEnd <= this.props.relatedInfo.relatedProductsList.length ? <button className='next nav' onClick={this.props.caroselClickRight}>&rarr;</button> : null}
       </div>
     )
   }

@@ -25,7 +25,7 @@ function RelatedCard (props) {
   return (
     <article className='card' data-testid='relatedCard'>
       <span className='upperleft'><label>&#9733;<input type='radio' className='radio' onClick={(event) => {props.open(props.product)}}></input></label></span>
-      <img src={props.product.productPhotos[1].thumbnail_url} className='pictureThumbnail'></img><br></br>
+      <img src={props.product.productPhotos[1].thumbnail_url} className='pictureThumbnail' alt='No Image Available'></img><br></br>
       <div className='cardInfo'>
         <small>{props.product.productDetails[2]}</small>
         <h4>{props.product.productDetails[1]}</h4>
