@@ -1,7 +1,7 @@
 import React from 'react';
 import QuestionItem from './QuestionItem.jsx';
 import axios from 'axios';
-import AddQuestionModal from './addQuestionModal.jsx';
+import Modal from './Modal.jsx';
 
 class QuestionsList extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class QuestionsList extends React.Component {
 
     this.handleLoadQuestionsClick = this.handleLoadQuestionsClick.bind(this);
 
-    this.handleAddQuestionClick = this.handleAddQuestionClick.bind(this);
+    this.handleAddQuestionSubmit = this.handleAddQuestionSubmit.bind(this);
 
     this.getQuestions = this.getQuestions.bind(this);
 
@@ -52,12 +52,14 @@ class QuestionsList extends React.Component {
       }
   }
 
-  handleAddQuestionClick() {
+  handleAddQuestionSubmit(e) {
     // const onSubmit = (event) => {
     //   event.preventDefault(event);
     //   console.log(event.target.name.value);
     //   console.log(event.target.email.value);
     // };
+
+    console.log();
   }
 
   getQuestions() {
@@ -117,12 +119,32 @@ class QuestionsList extends React.Component {
           : <></>}
         </div>
 
-        {(this.state.modal) ? <AddQuestionModal content={
+        {(this.state.modal) ? <Modal content={
         <>
-          <h3>Add Question Header</h3>
-          <h5>SubHeader</h5>
-          <p>Form Stuff</p>
-          <button>Submit</button>
+          <h3>Ask Your Question</h3>
+          <h4>About the [Camo Onesie]</h4>
+          <form onSubmit={this.handleAddQuestionSubmit} className="QA-form">
+
+            <div className="QA-form-element">
+              <label>Your Question: <em><small>(Required)</small></em></label>
+              <textarea type="text" maxLength="10" className="QA-textarea" required="required"></textarea>
+            </div>
+
+            <div className="QA-form-element">
+              <label>Your Nickname: <em><small>(Optional)</small></em></label>
+              <input type="text" placeholder="Example: jackson11!" maxLength="5"></input>
+              <em><small>For privacy reasons, do not use your full name or email address</small></em>
+            </div>
+
+            <div className="QA-form-element">
+                <label>Your Email: <em><small>(Required)</small></em></label>
+                <input type="email" placeholder="Why did you like the product or not?" maxLength="5" required="required"></input>
+                <em><small>For authentication reasons, you will not be emailed</small></em>
+            </div>
+
+            <button>Submit</button>
+          </form>
+
         </>} handleClose={this.modalClose}/> : null}
 
         <div className="question-buttons">
