@@ -23,7 +23,7 @@ module.exports.getAllAnswers = (options, res) => {
 module.exports.markHelpfulQuestion = (options, res) => {
   axios(options)
     .then((response) => {
-      res.send(response)
+      res.send(response.status)
     })
     .catch((err) => {
       res.send(err);
@@ -33,7 +33,7 @@ module.exports.markHelpfulQuestion = (options, res) => {
 module.exports.reportQuestion = (options, res) => {
   axios(options)
     .then((response) => {
-      res.send(response)
+      res.send(response.status)
     })
     .catch((err) => {
       res.send(err);

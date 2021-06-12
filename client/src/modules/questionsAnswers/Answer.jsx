@@ -84,10 +84,6 @@ class Answer extends React.Component {
 
             <button className="answer-report-button" onClick={this.handleAnswerReportButton}><u>{(this.state.wasReported) ? 'Reported' : 'Report'}</u></button>
 
-            {/* <div className="answer-report"><u>Report</u></div> */}
-
-
-
         </div>
       </div>
     )
