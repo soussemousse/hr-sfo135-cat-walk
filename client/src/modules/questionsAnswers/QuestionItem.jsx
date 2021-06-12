@@ -1,5 +1,4 @@
 import React from 'react';
-//import Question from './Question.jsx';
 import AnswersList from './AnswersList.jsx';
 import axios from 'axios';
 
@@ -7,55 +6,79 @@ class QuestionItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      sortedAnswers: null,
       question_id: this.props.QA.question_id,
       question_body: this.props.QA.question_body,
-      question_helpfulness: this.props.QA.question_helpfulness
+      helpfulness: this.props.QA.question_helpfulness,
+      wasHelpful: false
+      // wasReported: false
     };
-    this.getAnswers = this.getAnswers.bind(this);
+    this.handleQuestionHelpfulButton = this.handleQuestionHelpfulButton.bind(this);
+    // this.handleQuestionReportButton = this.handleQuestionReportButton.bind(this);
   }
 
-  getAnswers() {
-    const option = {
-      'method': 'GET',
-      'url': `/qa/questions/${this.state.question_id}/answers`
+  handleQuestionHelpfulButton() {
+    if (!this.state.wasHelpful) {
+      this.axiosHelpful();
     }
+  }
 
+  // no report question button yet
+  // handleQuestionReportButton() {
+  //   if (!this.state.wasReported) {
+  //     this.axiosReport();
+  //   }
+  // }
+
+  axiosHelpful() {
+    const option = {
+      'method': 'PUT',
+      'url': `/qa/questions/${this.state.question_id}/helpful`
+    }
     axios(option)
-      .then(response => {
-        // response.data.sort((a, b) => {
-        //   if (a.helpulness === b.helpfulness) {
-        //     return 0;
-        //   } else {
-        //     return (a.helpfulness < b.helpfulness) ? 1 : -1;
-        //   }
-        // });
-        this.setState({
-          sortedAnswers: response.data
-        })
+    .then(response => {
+      this.setState({
+        helpfulness: this.state.helpfulness + 1,
+        wasHelpful: true
       })
-      .catch(err => {
-        console.log(err);
-      })
+    })
+    .catch(err => {console.log(err);})
   }
 
-  componentDidMount() {
-    this.getAnswers();
-  }
+  // axiosReport() {
+  //   const option = {
+  //     'method': 'PUT',
+  //     'url': `/qa/questions/${this.state.question_id}/report`
+  //   }
+  //   axios(option)
+  //   .then(response => {
+  //     this.setState({
+  //       wasReported: true
+  //     })
+  //   })
+  //   .catch(err => {console.log(err);})
+  // }
 
   render() {
-    return (this.state.sortedAnswers !== null) ? (
+    return (
+    // (this.state.sortedAnswers !== null) ? (
       <article className="question-item">
-        <h4>{`Q: ${this.state.question_body}`}</h4>
+        {/* <div><strong>{`Q: ${this.state.question_body}`}</strong></div> */}
 
         <div className="question-info">
-          <h6 className="question-helpful">{`Helpful? `}<u>Yes</u>{` (${this.state.question_helpfulness})`}</h6>
-          <h6 className="answer-add"><u>Add Answer</u></h6>
+          <h4 className="question-text"><strong>{`Q: ${this.state.question_body}`}</strong></h4>
+
+          <div className="question-item-buttons">
+            <h6 className="question-helpful">{`Helpful? `}<button className="question-helpful-button" onClick={this.handleQuestionHelpfulButton}><u>Yes</u></button>{` (${this.state.helpfulness})`}</h6>
+
+            <button className="answer-add-button"><u>Add Answer</u></button>
+          </div>
+
         </div>
 
-        <AnswersList answers={this.state.sortedAnswers}/>
+        <AnswersList question_id={this.state.question_id}/>
       </article>
-    ) : (<div></div>)
+    // ) : (<div></div>)
+    )
   }
 }
 

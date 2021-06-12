@@ -1,6 +1,7 @@
 import React from 'react';
 import QuestionItem from './QuestionItem.jsx';
 import axios from 'axios';
+import AddQuestionModal from './addQuestionModal.jsx';
 
 class QuestionsList extends React.Component {
   constructor(props) {
@@ -10,7 +11,9 @@ class QuestionsList extends React.Component {
       count: 0,
       sortedQuestions: [],
       nextPage: 1,
-      fetchedLastPage: false
+      fetchedLastPage: false,
+
+      modal: false
     };
     this.maxPageCount = 5;
 
@@ -19,6 +22,21 @@ class QuestionsList extends React.Component {
     this.handleAddQuestionClick = this.handleAddQuestionClick.bind(this);
 
     this.getQuestions = this.getQuestions.bind(this);
+
+    this.modalOpen = this.modalOpen.bind(this);
+    this.modalClose = this.modalClose.bind(this);
+  }
+
+  modalOpen() {
+    this.setState({
+      modal: true
+    })
+  }
+
+  modalClose() {
+    this.setState({
+      modal: false
+    })
   }
 
   handleLoadQuestionsClick() {
@@ -35,7 +53,11 @@ class QuestionsList extends React.Component {
   }
 
   handleAddQuestionClick() {
-
+    // const onSubmit = (event) => {
+    //   event.preventDefault(event);
+    //   console.log(event.target.name.value);
+    //   console.log(event.target.email.value);
+    // };
   }
 
   getQuestions() {
@@ -73,21 +95,41 @@ class QuestionsList extends React.Component {
   render() {
     return (
       <>
-        <div className="questions-list">
+        {/* <div className="questions-list">
 
           {(this.state.sortedQuestions.length !== 0) ? this.state.sortedQuestions.slice(0, this.state.count).map((question, index) => {
               return <QuestionItem QA={question} key={index}/>
             })
           : <></>}
-
         </div>
 
         <div className="question-buttons">
           {(this.state.sortedQuestions.length > this.state.count) ? <button id="questions-load-button" onClick={this.handleLoadQuestionsClick}> MORE ANSWERED QUESTIONS </button> : <></>}
 
           <button id="questions-add-button" onClick={this.handleAddQuestionClick}> ADD A QUESTION + </button>
+        </div> */}
+
+        <div className="questions-list">
+
+          {(this.state.sortedQuestions.length !== 0) ? this.state.sortedQuestions.slice(0, this.state.count).map((question, index) => {
+              return <QuestionItem QA={question} key={index}/>
+            })
+          : <></>}
         </div>
 
+        {(this.state.modal) ? <AddQuestionModal content={
+        <>
+          <h3>Add Question Header</h3>
+          <h5>SubHeader</h5>
+          <p>Form Stuff</p>
+          <button>Submit</button>
+        </>} handleClose={this.modalClose}/> : null}
+
+        <div className="question-buttons">
+        {(this.state.sortedQuestions.length > this.state.count) ? <button id="questions-load-button" onClick={this.handleLoadQuestionsClick}> MORE ANSWERED QUESTIONS </button> : <></>}
+
+        <button id="questions-add-button" onClick={this.modalOpen}> ADD A QUESTION + </button>
+        </div>
       </>
     )
   }
