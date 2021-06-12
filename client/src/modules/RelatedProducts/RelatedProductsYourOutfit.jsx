@@ -10,7 +10,6 @@ class Related extends React.Component {
       currentProduct: this.props.currentProduct,
       relatedProductsList: [],
       relatedCarosel: [],
-      //currentUser: this.props.currentUser,
       yourOutfit: [],
       start: 0,
       end: 6,
@@ -87,7 +86,12 @@ class Related extends React.Component {
     }
     Axios(option)
       .then((response) => {
-        console.log('related products API data:', response.data);
+        const relatedObjArr = response.data.map((product) => {
+          return {productDetails: product[0], productPhotos: product[1], ratings: product[2]};
+        })
+        const carosel = relatedObjArr.slice(this.state.start, this.state.end);
+
+        this.setState({relatedProductsList: relatedObjArr, relatedCarosel: carosel});
       })
       .catch(err => {
         console.log(err);
