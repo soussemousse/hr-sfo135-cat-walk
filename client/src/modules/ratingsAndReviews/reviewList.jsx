@@ -23,6 +23,19 @@ class ReviewList extends React.Component {
     this.closePortal = this.closePortal.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleStarRating = this.handleStarRating.bind(this);
+    this.handleCharacteristicRating = this.handleCharacteristicRating.bind(this);
+  }
+
+  componentDidMount() {
+    let characteristicsObj = {};
+    const characteristics = this.props.list.characteristics;
+    Object.keys(characteristics).forEach((key) => {
+      const id = characteristics[key].id;
+      // let id, value;
+      // [id, value] = [characteristics[key].id, characteristics[key].value];
+      characteristicsObj[id] = 0;
+    })
+    this.setState({characteristics: characteristicsObj});
   }
 
   closePortal() {
@@ -46,74 +59,12 @@ class ReviewList extends React.Component {
     return ReactDOM.createPortal(<div>{valueMeaning[value - 1]}</div>, document.getElementById('reactiveStarText'));
   }
 
-  //<span name="rating" value={1} onClick={()=>{this.handleInputChange({target: {value: 1, name: 'rating'}})}}>&#9734;</span>
-
-  // reviewFormModal() {
-  //   //work on page overlay, star rating system and uploading images
-  //   //could use conditional rendering inside the body of the span to keep stars filled after clicking
-  //   return ReactDOM.createPortal(
-  //     <div className="reviewForm">
-  //       <div className="reviewStarRating">
-  //         <div id="reactiveStarText"></div>
-  //         <span onClick={()=>{this.handleStarRating(5)}}>&#9734;</span>
-  //         <span onClick={()=>{this.handleStarRating(4)}}>&#9734;</span>
-  //         <span onClick={()=>{this.handleStarRating(3)}}>&#9734;</span>
-  //         <span onClick={()=>{this.handleStarRating(2)}}>&#9734;</span>
-  //         <span onClick={()=>{this.handleStarRating(1)}}>&#9734;</span>
-  //         gnitar llarevO
-  //       </div>
-  //       <form>
-  //         <label>
-  //         Do you recommend this product?
-  //           <input
-  //             name="recommend"
-  //             type="checkbox"
-  //             checked={this.state.recommend}
-  //             onChange={this.handleInputChange} />
-  //         </label>
-  //         <br></br>
-  //         <label>
-  //           Review summary
-  //           <input type="text" name="summary" value={this.state.summary} onChange={this.handleInputChange}></input>
-  //         </label>
-  //         <br></br>
-  //         <label>
-  //           Review Body
-  //           <input type="text" name="body" value={this.state.body} onChange={this.handleInputChange}></input>
-  //         </label>
-  //         <br></br>
-  //         <label>
-  //           What is your nickname
-  //           <input type="text" name="name" value={this.state.name} onChange={this.handleInputChange}></input>
-  //         </label>
-  //         <br></br>
-  //         <label>
-  //           Your email
-  //           <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange}></input>
-  //         </label>
-  //         <br></br>
-  //         <label>
-  //           images
-  //           <input type="text" name="images" value={this.state.images} onChange={this.handleInputChange}></input>
-  //         </label>
-  //         <div className="reviewFormCharacteristics">
-  //           {/* {
-  //             Object.keys(this.props.list.characteristics).map((characteristic, index)=> (
-  //               <div key={'characteristic' + index}>
-  //                 <label>
-  //                   {characteristic}
-  //                 </label>
-  //               </div>
-  //             ));
-  //           } */}
-  //         </div>
-  //       </form>
-  //     </div>,
-  //     document.getElementById('reviewPortal')
-  //   );
-  // }
-
-
+  handleCharacteristicRating(characteristic, rating, characteristics = {}) {
+    Object.assign(characteristics, this.state.characteristics);
+    characteristics[characteristic] = rating;
+    console.log(characteristics);
+    this.setState({characteristics});
+  }
 
   render() {
     // console.log(this.state);
@@ -132,7 +83,16 @@ class ReviewList extends React.Component {
           <button onClick={() => {this.setState({openPortal: true})}}>add review</button>
           {/* {this.state.openPortal ? <ReviewFormModal this={this} product_id={this.props.product_id} closePortal={this.closePortal}/> : null} */}
           {/* {this.state.openPortal ? this.reviewFormModal() : null} */}
-          {this.state.openPortal ? <NewReviewForm state={this.state} characteristics={this.props.list.characteristics} handleStarRating={this.handleStarRating} handleInputChange={this.handleInputChange} /> : null}
+          {this.state.openPortal
+            ? <NewReviewForm
+                state={this.state}
+                characteristics={this.props.list.characteristics}
+                handleStarRating={this.handleStarRating}
+                handleInputChange={this.handleInputChange}
+                handleCharacteristicRating={this.handleCharacteristicRating}
+              />
+            : null
+          }
         </div>
        )
     } else {

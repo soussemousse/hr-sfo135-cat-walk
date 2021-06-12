@@ -53,7 +53,7 @@ const NewReviewForm = function (props) {
             Object.keys(props.characteristics).map((characteristic, index) => {
               return (
                 <div key={'characteristic' + index}>
-                  <NewReviewFormCharacteristic handleInputChange={props.handleInputChange} characteristic={characteristic} />
+                  <NewReviewFormCharacteristic handleInputChange={props.handleInputChange} characteristic={characteristic} id={props.characteristics[characteristic].id} handleCharacteristicRating={props.handleCharacteristicRating} />
                 </div>
               )
             })
