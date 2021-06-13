@@ -28,14 +28,16 @@ function RelatedCard (props) {
   return (
     <article className='card' data-testid='relatedCard'>
       <span className='upperleft'><label>&#9733;<input type='radio' className='radio' onClick={(event) => {props.open(props.product)}}></input></label></span>
-      <img src={props.product.productPhotos[1].thumbnail_url} className='pictureThumbnail' alt='No Image Available'></img><br></br>
-      <div className='cardInfo'>
+      <div className='clickableCard'>
+        <img src={props.product.productPhotos[1].thumbnail_url} className='pictureThumbnail' alt='No Image Available' onClick={(event) => {props.cardClick(props.product)}}></img><br></br>
+        <div className='cardInfo'>
         <small>{props.product.productDetails[2]}</small>
         <h4>{props.product.productDetails[1]}</h4>
         {props.product.productPhotos[0] !== null ? <div><span className='salePrice' style={onSale}>{props.product.productPhotos[0]}</span><br></br><span className='price' style={oldPrice}>{props.product.productDetails[3]}</span></div> : <span className='price'>{props.product.productDetails[3]}</span>}
         <div className="cardRating">
           <div className="cardRating-top" style={ratingStyle}><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
           <div className="cardRating-bottom"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+          </div>
         </div>
       </div>
     </article>

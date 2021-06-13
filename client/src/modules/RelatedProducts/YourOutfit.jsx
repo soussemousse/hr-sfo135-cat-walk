@@ -17,7 +17,7 @@ class YourOutfit extends React.Component {
             return <OutfitCard key={product.id} product={product} removeFromOutfit={this.props.removeFromOutfit}/>
           }) : null}
         </div>
-        {this.props.outfitInfo.outfitEnd <= this.props.outfitInfo.yourOutfit.length ? <button className='next nav' onClick={this.props.caroselClickRight}>&rarr;</button> : null}
+        {this.props.outfitInfo.outfitEnd < this.props.outfitInfo.yourOutfit.length ? <button className='next nav' onClick={this.props.caroselClickRight}>&rarr;</button> : null}
       </div>
     )
   }
