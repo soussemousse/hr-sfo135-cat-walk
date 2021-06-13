@@ -8,26 +8,20 @@ class RatingsAndReviews extends React.Component {
     super(props)
     this.state = {
       productReviews: undefined,
+      openPortal: false,
       reviewsToRender: 0,
       characteristics: {}
     };
+    this.toggleNewReviewForm = this.toggleNewReviewForm.bind(this);
     this.showMoreReviewsButtonPressed = this.showMoreReviewsButtonPressed.bind(this);
+    this.submitReview = this.submitReview.bind(this);
+  }
+
+  toggleNewReviewForm() {
+    this.setState({openPortal: !this.state.openPortal});
   }
 
   componentDidMount() {
-    // axios.get(`http://localhost:3001/reviews/${this.props.product_id}`)
-    // .then((response) => {
-    //   this.setState({productReviews: response.data.results})
-    //   // console.log('promise in component did mount')
-    //   // console.log(response);
-    //   if (response.data.results.length > 1) {
-    //     this.setState({reviewsToRender: 2})
-    //   } else {
-    //     this.setState({displayedReviews: response.data.results.length})
-    //   }
-    // })
-    // .catch(console.error)
-
     axios.get(`http://localhost:3001/reviews/meta/${this.props.product_id}`)
     .then((response) => {
       this.setState({characteristics: response.data.characteristics})
@@ -47,16 +41,34 @@ class RatingsAndReviews extends React.Component {
     .catch(console.error)
   }
 
+  submitReview(bodyParameters) {
+    axios({
+      method: 'post',
+      url: `http://localhost:3001/reviews/${this.props.product_id}`,
+      data: bodyParameters
+    })
+    .then((response) => console.log(response.data))
+    .catch(console.error)
+  }
+
   showMoreReviewsButtonPressed() {
     this.setState({reviewsToRender: this.state.reviewsToRender + 2})
   }
 
   render() {
+    console.log(this.state);
     if (this.state.productReviews) {
       return (
         <div className="RatingsAndReviews">
           <ProductAverages/>
-          <ReviewList list={this.state} product_id={this.props.product_id} pressButton={this.showMoreReviewsButtonPressed}/>
+          <ReviewList
+            list={this.state}
+            openPortal={this.state.openPortal}
+            product_id={this.props.product_id}
+            toggleNewReviewForm={this.toggleNewReviewForm}
+            pressButton={this.showMoreReviewsButtonPressed}
+            submitReview={this.submitReview}
+          />
         </div>
       )
     } else {

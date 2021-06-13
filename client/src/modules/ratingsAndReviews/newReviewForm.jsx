@@ -16,14 +16,27 @@ const NewReviewForm = function (props) {
       </div>
       <form>
         <label>
-        Do you recommend this product?
+          Do you recommend this product?
           <input
             name="recommend"
             type="checkbox"
             checked={props.state.recommend}
             onChange={props.handleInputChange} />
         </label>
-        <br></br>
+      </form>
+      <br></br>
+      <div className="reviewFormCharacteristics">
+        {
+          Object.keys(props.characteristics).map((characteristic, index) => {
+            return (
+              <div key={'characteristic' + index}>
+                <NewReviewFormCharacteristic handleInputChange={props.handleInputChange} characteristic={characteristic} id={props.characteristics[characteristic].id} handleCharacteristicRating={props.handleCharacteristicRating} />
+              </div>
+            )
+          })
+        }
+      </div>
+      <form>
         <label>
           Review summary
           <input type="text" name="summary" value={props.state.summary} onChange={props.handleInputChange}></input>
@@ -44,22 +57,12 @@ const NewReviewForm = function (props) {
           <input type="email" name="email" value={props.state.email} onChange={props.handleInputChange}></input>
         </label>
         <br></br>
-        <label>
+        {/* <label>
           images
           <input type="text" name="images" value={props.state.images} onChange={props.handleInputChange}></input>
-        </label>
-        <div className="reviewFormCharacteristics">
-          {
-            Object.keys(props.characteristics).map((characteristic, index) => {
-              return (
-                <div key={'characteristic' + index}>
-                  <NewReviewFormCharacteristic handleInputChange={props.handleInputChange} characteristic={characteristic} id={props.characteristics[characteristic].id} handleCharacteristicRating={props.handleCharacteristicRating} />
-                </div>
-              )
-            })
-          }
-        </div>
+        </label> */}
       </form>
+      <button onClick={() => {props.toggleNewReviewForm(); props.submitReview(props.state)}}>Submit review</button>
     </div>,
     document.getElementById('reviewPortal')
   );

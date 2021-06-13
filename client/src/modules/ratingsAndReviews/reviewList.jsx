@@ -8,7 +8,6 @@ class ReviewList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      openPortal: false,
       product_id: '',
       rating: '',
       summary: '',
@@ -31,8 +30,6 @@ class ReviewList extends React.Component {
     const characteristics = this.props.list.characteristics;
     Object.keys(characteristics).forEach((key) => {
       const id = characteristics[key].id;
-      // let id, value;
-      // [id, value] = [characteristics[key].id, characteristics[key].value];
       characteristicsObj[id] = 0;
     })
     this.setState({characteristics: characteristicsObj});
@@ -43,14 +40,10 @@ class ReviewList extends React.Component {
   }
 
   handleInputChange(event) {
-    console.log(event);
-    console.log(event.target.value);
-    console.log(event.target.name);
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
     this.setState({[name]: value});
-    console.log(this.state);
   }
 
   handleStarRating(value) {
@@ -67,8 +60,6 @@ class ReviewList extends React.Component {
   }
 
   render() {
-    // console.log(this.state);
-    // && Object.keys(this.props.characteristics).length
     if (this.props.list.productReviews) {
       const max = this.props.list.reviewsToRender;
       const list = this.props.list.productReviews.slice(0, max);
@@ -80,19 +71,20 @@ class ReviewList extends React.Component {
             })}
           </div>
           <button onClick={this.props.pressButton}>more reviews</button>
-          <button onClick={() => {this.setState({openPortal: true})}}>add review</button>
-          {/* {this.state.openPortal ? <ReviewFormModal this={this} product_id={this.props.product_id} closePortal={this.closePortal}/> : null} */}
-          {/* {this.state.openPortal ? this.reviewFormModal() : null} */}
-          {this.state.openPortal
+          <button onClick={this.props.toggleNewReviewForm}>add review</button>
+          {this.props.openPortal
             ? <NewReviewForm
                 state={this.state}
                 characteristics={this.props.list.characteristics}
                 handleStarRating={this.handleStarRating}
                 handleInputChange={this.handleInputChange}
                 handleCharacteristicRating={this.handleCharacteristicRating}
+                toggleNewReviewForm={this.props.toggleNewReviewForm}
+                submitReview={this.props.submitReview}
               />
             : null
           }
+          {/* <button onClick={() => {this.props.toggleNewReviewForm(); this.props.submitReview(this.state);}}>Submit review</button> */}
         </div>
        )
     } else {
