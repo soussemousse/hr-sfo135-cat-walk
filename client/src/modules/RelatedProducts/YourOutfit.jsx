@@ -14,7 +14,7 @@ class YourOutfit extends React.Component {
         <div className='YourOutfit list'>
           <AddOutfit addToOutfit={this.props.addToOutfit} currentProduct={this.props.outfitInfo.currentProduct} />
           {this.props.outfitInfo.yourOutfit.length > 0 ? this.props.outfitInfo.yourOutfit.map((product) => {
-            return <OutfitCard key={product.id} product={product}/>
+            return <OutfitCard key={product.id} product={product} removeFromOutfit={this.props.removeFromOutfit}/>
           }) : null}
         </div>
         <button className='next nav' onClick={this.props.caroselClickRight}>&rarr;</button>
