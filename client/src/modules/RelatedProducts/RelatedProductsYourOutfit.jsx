@@ -22,6 +22,7 @@ class Related extends React.Component {
     this.caroselClickRight = this.caroselClickRight.bind(this);
     this.addToOutfit = this.addToOutfit.bind(this);
     this.getProductInfo = this.getProductInfo.bind(this);
+    this.removeFromOutfit = this.removeFromOutfit.bind(this);
   }
 
   componentDidMount() {
@@ -58,6 +59,17 @@ class Related extends React.Component {
     } else {
       console.log('Already there!');
     }
+  }
+
+  removeFromOutfit (product) {
+    const oldOutfit = this.state.yourOutfit.slice();
+    const outfitIds = oldOutfit.map(product => {return product.id});
+    const productId = outfitIds.indexOf(product.id);
+
+    oldOutfit.splice(productId, 1);
+
+    this.setState({yourOutfit: oldOutfit});
+    localStorage.setItem('yourOutfit', JSON.stringify(oldOutfit));
   }
 
   getRelatedProducts (id) {
@@ -105,7 +117,7 @@ class Related extends React.Component {
         <h3>Related Products</h3>
         <RelatedProducts relatedInfo={this.state} products={this.state.relatedCarosel} caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} comparison={this.comparisonClick}/>
         <h3>Your Outfit</h3>
-        <YourOutfit caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} addToOutfit={this.addToOutfit} outfitInfo={this.state} />
+        <YourOutfit caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} addToOutfit={this.addToOutfit} outfitInfo={this.state} removeFromOutfit={this.removeFromOutfit} />
       </div>
     )
   }
