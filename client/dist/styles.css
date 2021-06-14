@@ -14,9 +14,55 @@
 }
 
 .review {
+  /* padding: 10px 300px; */
   padding: 10px;
   border-bottom: 1px solid slategray;
+  /* display: flex; */
+  /* flex-direction: column; */
 }
+
+.reviewGroup1 {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: flex-start; */
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+.reviewRating {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.reviewUsername {
+
+}
+
+.reviewDate {
+
+}
+
+/*
+.reviewSummary {
+
+}
+
+.reviewBody {
+
+}
+
+.reviewRecommend {
+
+}
+
+.reviewUsername {
+
+}
+
+.reviewResponse {
+
+} */
 
 .reviewForm {
   z-index: 1

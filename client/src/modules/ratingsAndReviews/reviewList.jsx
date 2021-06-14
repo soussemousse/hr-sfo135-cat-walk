@@ -8,7 +8,6 @@ class ReviewList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      product_id: '',
       rating: '',
       summary: '',
       body: '',
@@ -55,7 +54,6 @@ class ReviewList extends React.Component {
   handleCharacteristicRating(characteristic, rating, characteristics = {}) {
     Object.assign(characteristics, this.state.characteristics);
     characteristics[characteristic] = rating;
-    console.log(characteristics);
     this.setState({characteristics});
   }
 

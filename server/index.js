@@ -30,10 +30,10 @@ app.get('/reviews/meta/:id', (req, res) => {
   ratingsController.ratingsAndReviewsMeta(id, res);
 });
 
-app.post('/reviews/:id', (req, res) => {
+app.post('/reviews', (req, res) => {
   const id = req.params.id;
   // res.send(req.body);
-  ratingsController.postNewReview(id, req.body, res);
+  ratingsController.postNewReview(req.body, res);
 })
 // app.get('/ratings', (req, res) => {
 

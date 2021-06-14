@@ -42,9 +42,10 @@ class RatingsAndReviews extends React.Component {
   }
 
   submitReview(bodyParameters) {
+    bodyParameters.product_id = this.props.product_id;
     axios({
       method: 'post',
-      url: `http://localhost:3001/reviews/${this.props.product_id}`,
+      url: 'http://localhost:3001/reviews',
       data: bodyParameters
     })
     .then((response) => console.log(response.data))
@@ -56,7 +57,7 @@ class RatingsAndReviews extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     if (this.state.productReviews) {
       return (
         <div className="RatingsAndReviews">

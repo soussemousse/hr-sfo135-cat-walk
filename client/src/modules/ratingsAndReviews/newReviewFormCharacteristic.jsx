@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const NewReviewFormCharacteristic = function (props) {
-  console.log('test', props.characteristic, props.id);
+  // console.log('test', props.characteristic, props.id);
   return (
     <div>
       <label>

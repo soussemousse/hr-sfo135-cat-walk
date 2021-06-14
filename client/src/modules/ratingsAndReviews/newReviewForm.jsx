@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import NewReviewFormCharacteristic from './newReviewFormCharacteristic.jsx';
 
 const NewReviewForm = function (props) {
+  const clickHandler = () => {
+    props.toggleNewReviewForm();
+    props.submitReview(props.state);
+  }
   return ReactDOM.createPortal(
     <div className="reviewForm">
       <div className="reviewStarRating">
@@ -62,7 +66,7 @@ const NewReviewForm = function (props) {
           <input type="text" name="images" value={props.state.images} onChange={props.handleInputChange}></input>
         </label> */}
       </form>
-      <button onClick={() => {props.toggleNewReviewForm(); props.submitReview(props.state)}}>Submit review</button>
+      <button onClick={clickHandler}>Submit review</button>
     </div>,
     document.getElementById('reviewPortal')
   );
