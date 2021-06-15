@@ -23,7 +23,7 @@ module.exports.getAllAnswers = (options, res) => {
 module.exports.markHelpfulQuestion = (options, res) => {
   axios(options)
     .then((response) => {
-      res.send(response.status)
+      res.sendStatus(response.status)
     })
     .catch((err) => {
       res.send(err);
@@ -33,7 +33,7 @@ module.exports.markHelpfulQuestion = (options, res) => {
 module.exports.reportQuestion = (options, res) => {
   axios(options)
     .then((response) => {
-      res.send(response.status)
+      res.sendStatus(response.status)
     })
     .catch((err) => {
       res.send(err);
@@ -43,17 +43,37 @@ module.exports.reportQuestion = (options, res) => {
 module.exports.markHelpfulAnswer = (options, res) => {
   axios(options)
     .then((response) => {
-      res.send(response.status)
+      res.sendStatus(response.status)
     })
     .catch((err) => {
-      res.send(err);
+      res.sendStatus(err);
     })
 }
 
 module.exports.reportAnswer = (options, res) => {
   axios(options)
     .then((response) => {
-      res.send(response.status)
+      res.sendStatus(response.status)
+    })
+    .catch((err) => {
+      res.send(err);
+    })
+}
+
+module.exports.addQuestion = (options, res) => {
+  axios(options)
+    .then((response) => {
+      res.sendStatus(response.status)
+    })
+    .catch((err) => {
+      res.send(err);
+    })
+}
+
+module.exports.addAnswer = (options, res) => {
+  axios(options)
+    .then((response) => {
+      res.sendStatus(response.status)
     })
     .catch((err) => {
       res.send(err);

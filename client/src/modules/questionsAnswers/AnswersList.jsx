@@ -10,7 +10,7 @@ class AnswersList extends React.Component {
       question_id: this.props.question_id,
       visibleAnswers: [],
       allAnswers: [],
-      showButton: true
+      showButton: false
     }
     this.max = 3;
     this.initialCount = 2;

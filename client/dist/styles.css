@@ -238,3 +238,22 @@ button {
   border: 1px solid grey;
   font-size: 20px;
 }
+
+.QA-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.QA-form-element {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.QA-form textarea {
+  resize: vertical;
+}
+
+/* input:invalid {
+  border: 2px solid red;
+} */

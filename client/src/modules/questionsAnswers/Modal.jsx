@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddQuestionModal = (props) => {
+const Modal = (props) => {
 
   return (
     <div className="popup-box">
@@ -12,4 +12,4 @@ const AddQuestionModal = (props) => {
   );
 };
 
-export default AddQuestionModal;
+export default Modal;
