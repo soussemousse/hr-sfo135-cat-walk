@@ -4,7 +4,7 @@ const tokenObj = require('../../token.js');
 const ratingsAndReviews = function (id, res) {
   const options = {
     method: 'get',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews?product_id=${id}&page`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews?product_id=${id}&count=${1000}`,
     headers: {
       "user-agent": 'request',
       Authorization: tokenObj.token
@@ -16,7 +16,7 @@ const ratingsAndReviews = function (id, res) {
 const ratingsAndReviewsMeta = function (id, res) {
   const options = {
     method: 'get',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta/?product_id=${id}&page`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta/?product_id=${id}&count=${1000}`,
     headers: {
       "user-agent": 'request',
       Authorization: tokenObj.token

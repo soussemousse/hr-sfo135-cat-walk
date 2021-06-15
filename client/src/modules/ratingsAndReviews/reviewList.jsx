@@ -8,6 +8,7 @@ class ReviewList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      product_id: undefined,
       rating: '',
       summary: '',
       body: '',
@@ -31,6 +32,7 @@ class ReviewList extends React.Component {
       const id = characteristics[key].id;
       characteristicsObj[id] = 0;
     })
+    // this.setState({product_id: this.props.product_id});
     this.setState({characteristics: characteristicsObj});
   }
 
@@ -65,7 +67,7 @@ class ReviewList extends React.Component {
         <div>
           <div className="reviewList">
             {list.map((review) => {
-              return <Review key={review.review_id} currentReview={review}/>
+              return <Review key={review.review_id} review_id={review.review_id} currentReview={review}/>
             })}
           </div>
           <button onClick={this.props.pressButton}>more reviews</button>

@@ -7,19 +7,29 @@ class Review extends React.Component {
   }
 
   render() {
+    const id = this.props.review_id;
     const review = this.props.currentReview;
-    console.log('review 123 ', review.summary);
+    const user = review.reviewer_name ? review.reviewer_name : 'Anonymous';
+    const star = (code, key) => (<div key={key} className="reviewStar">{String.raw`${code}`}</div>);
+    let starRating = new Array(5).fill('').map((empty, index) => {
+      if (index < review.rating) {
+        return <div key={id + index} className="reviewStar">&#9733;</div>;
+        // return star('&#9733;', id + index);
+      }
+      return <div key={id + index} className="reviewStar">&#9734;</div>;
+      // return star('&#9734;', id + index);
+    })
+    console.log(starRating);
     return (
       <div className="review">
-        <div className="reviewGroup1">
-          <div className="reviewRating">{`${review.rating} stars`}</div>
-          <div className="reviewUsername">{'username: ' + review.username}</div>
-          <div className="reviewDate">{review.date}</div>
-        </div>
+        <div className="reviewRating">{starRating}</div>
+        <div className="reviewUsername">{user}</div>
+        <div className="reviewDate">{review.date}</div>
         <div className="reviewSummary">{review.summary}</div>
         <div className="reviewBody">{review.body}</div>
-        <div className="reviewRecommend">{'recommended: ' + review.recommend}</div>
-        <div className="reviewResponse">{'sales response: ' + review.response}</div>
+        {review.recommend ? <div className="reviewRecommend"><div className="reviewRecommendCheckMark">&#10003;</div> I recommend this product</div> : null}
+        {/* {review.recommend ? <div className="reviewRecommend">I recommend this review</div> : null} */}
+        {review.response ? <div className="reviewResponse">{'sales response: ' + review.response}</div> : null}
       </div>
     )
   }
