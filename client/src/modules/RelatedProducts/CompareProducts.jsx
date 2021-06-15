@@ -48,17 +48,17 @@ const compareFeatures = (feature, obj1, obj2) => {
 }
 
 function CompareProducts (props) {
-  const currentProductFeatures = createCurrentObj(props.currentProduct.features);
+  const currentProductFeatures = createCurrentObj(props.currentProduct.productDetails[4]);
   const compareProductFeatures = createCompareObj(props.compareProduct.productDetails[4]);
   const allFeatures = getAllFeatures(currentProductFeatures, compareProductFeatures);
 
   return ReactDOM.createPortal(
-    <div className='comparisonTable'>
-      <span className='upperLeft'><label>&#935;<input type='radio' className='radio' onClick={props.close}></input></label></span>
+    <div className='comparisonTable' data-testid='comparisonTable'>
+      <span className='upperLeft'><label>&#935;<input type='radio' className='radio' onClick={props.close} data-testid='closeButton'></input></label></span>
       <table className='compareTable'>
         <thead>
           <tr className='tableRow'>
-            <th>{props.currentProduct.name}</th>
+            <th>{props.currentProduct.productDetails[1]}</th>
             <th></th>
             <th>{props.compareProduct.productDetails[1]}</th>
           </tr>
