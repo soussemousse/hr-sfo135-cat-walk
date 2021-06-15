@@ -1,0 +1,19 @@
+.upperleft {
+  display: flex;
+  align-self: flex-end;
+  justify-content: flex-end;
+  align-items: flex-start;
+  color: rebeccapurple;
+}
+
+.upperleft:hover {
+  color: forestgreen;
+}
+
+.upperLeft:hover {
+  color: forestgreen;
+}
+
+.radio {
+  display: none;
+}
