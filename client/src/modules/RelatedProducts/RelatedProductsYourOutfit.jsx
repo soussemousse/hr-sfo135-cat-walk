@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import RelatedProducts from './RelatedProducts.jsx';
 import YourOutfit from './YourOutfit.jsx';
+import style from './RelatedCSS/RelatedOutfit.module.css';
 
 class Related extends React.Component {
   constructor (props) {
@@ -140,10 +141,10 @@ class Related extends React.Component {
 
   render () {
     return (
-      <div className='relatedProducts'>
-        <h3>Related Products</h3>
+      <div className={style.relatedProducts}>
+        <h3 className={style.h3}>Related Products</h3>
         <RelatedProducts relatedInfo={this.state} products={this.state.relatedCarosel} caroselClickRight={this.relatedCaroselClickRight} caroselClickLeft={this.relatedCaroselClickLeft} comparison={this.comparisonClick} cardClick={this.relatedCardClick}/>
-        <h3>Your Outfit</h3>
+        <h3 className={style.h3}>Your Outfit</h3>
         <YourOutfit caroselClickRight={this.outfitCaroselClickRight} caroselClickLeft={this.outfitCaroselClickLeft} addToOutfit={this.addToOutfit} outfitInfo={this.state} removeFromOutfit={this.removeFromOutfit} />
       </div>
     )

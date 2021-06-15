@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ComparisonRows from './ComparisonTableRow.jsx';
+import style from './RelatedCSS/ComparisonTable.module.css';
 
 const createCurrentObj = (currentArr) => {
   let currentFeatures = {};
@@ -53,11 +54,11 @@ function CompareProducts (props) {
   const allFeatures = getAllFeatures(currentProductFeatures, compareProductFeatures);
 
   return ReactDOM.createPortal(
-    <div className='comparisonTable' data-testid='comparisonTable'>
-      <span className='upperLeft'><label>&#935;<input type='radio' className='radio' onClick={props.close} data-testid='closeButton'></input></label></span>
-      <table className='compareTable'>
+    <div className={style.comparisonTable} data-testid='comparisonTable'>
+      <span className={style.upperLeft}><label>&#935;<input type='radio' className={style.radio} onClick={props.close} data-testid='closeButton'></input></label></span>
+      <table className={style.compareTable}>
         <thead>
-          <tr className='tableRow'>
+          <tr className={style.tableRow}>
             <th>{props.currentProduct.productDetails[1]}</th>
             <th></th>
             <th>{props.compareProduct.productDetails[1]}</th>

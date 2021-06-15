@@ -1,6 +1,8 @@
 import React from 'react';
 import RelatedCard from './RelatedCard.jsx';
 import CompareProducts from './CompareProducts.jsx';
+import style from './RelatedCSS/Lists.module.css';
+import btnStyle from './RelatedCSS/Buttons.module.css';
 
 class RelatedProducts extends React.Component {
   constructor (props) {
@@ -16,15 +18,15 @@ class RelatedProducts extends React.Component {
 
   render () {
     return (
-      <div className='carosel' data-testid='list'>
-        {this.props.relatedInfo.relatedStart !== 0 ? <button className='previous nav' data-testid='leftClick' onClick={this.props.caroselClickLeft}>&larr;</button> : null}
-        <div className='RelatedProducts list'>
+      <div className={style.carosel} data-testid='list'>
+        {this.props.relatedInfo.relatedStart !== 0 ? <button className={btnStyle.nav} data-testid='leftClick' onClick={this.props.caroselClickLeft}>&larr;</button> : null}
+        <div className={style.list}>
           {this.props.products.map((product) => {
             return <RelatedCard key={product.productDetails[0]} product={product} open={this.openCompare} cardClick={this.props.cardClick}/>
           })}
         </div>
         {!this.state.compare ? null : <CompareProducts close={this.closeCompare} currentProduct={this.props.relatedInfo.currentProduct} compareProduct={this.state.compareProduct} data-testid='compareProducts'/>}
-        {this.props.relatedInfo.relatedEnd < this.props.relatedInfo.relatedProductsList.length ? <button className='next nav' data-testid='rightClick' onClick={this.props.caroselClickRight}>&rarr;</button> : null}
+        {this.props.relatedInfo.relatedEnd < this.props.relatedInfo.relatedProductsList.length ? <button className={btnStyle.nav} data-testid='rightClick' onClick={this.props.caroselClickRight}>&rarr;</button> : null}
       </div>
     )
   }
