@@ -11,7 +11,7 @@ const SearchBox = (props) => {
   return (
     <div className="questions-searchbox">
       <input onChange={props.handleInputChange} type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." id="questions-search-input"></input>
-      <icon id="questions-search-button">{buttonIcon}</icon>
+      <div id="questions-search-button">{buttonIcon}</div>
     </div>
   );
 };

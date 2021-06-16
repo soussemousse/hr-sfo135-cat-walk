@@ -42,10 +42,10 @@ class App extends React.Component {
   render () {
     return (
       <div className='productPage'>
-        <ProductOverview />
-        <Related currentProduct={this.state.currentProduct} cardClick={this.cardClick}/>
+        {/* <ProductOverview />
+        <Related currentProduct={this.state.currentProduct} cardClick={this.cardClick}/> */}
         <QuestionsAndAnswers product_id={25167}/>
-        <RatingsAndReviews product_id={25167}/>
+        {/* <RatingsAndReviews product_id={25167}/> */}
       </div>
     );
   }

@@ -7,12 +7,30 @@ const questionController = require('./controller/questions.js');
 const ratingsController = require('./controller/ratings.js');
 const relatedListController = require('./controller/RelatedProductsController.js');
 
+// const compression = require('compression');
+
 app.listen(port, (err = `connected to ${port}`) => {
   console.log(err);
 });
 
+// app.get('*.js', function (req, res, next) {
+//   req.url = req.url + '.gz';
+//   res.set('Content-Encoding', 'gzip');
+//   res.set('Content-Type', 'text/javascript');
+//   console.log('sent')
+//   next();
+// });
+// app.use(compression());
+// app.get('/bundle.js', function (req, res, next) {
+//   console.log('url: ', req.url);
+//   req.url = req.url + '.gz';
+//   res.set('Content-Encoding', 'gzip');
+//   next();
+// });
+
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(express.json());
+
 
 app.get('/products', (req, res) => {
   productController.productDetailOverview(req.body.id, res);
@@ -91,6 +109,7 @@ app.get('/currentProduct/:id', (req, res) => {
 })
 // get questions for a product
 app.get('/qa/questions/:product_id/:page/:count', (req, res) => {
+  console.log('req received');
   questionController.getAllQuestions(req.params.product_id, req.params.page, req.params.count, res);
 });
 

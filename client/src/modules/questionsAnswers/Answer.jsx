@@ -53,7 +53,7 @@ const Answer = (props) => {
     .catch(err => {console.log(err);})
   }
 
-  var username = (props.answer.answerer_id === 'Seller') ? <b>Seller</b> : <>{props.answer.answerer_id}</>;
+  var username = (props.answer.answerer_name === 'Seller') ? (<b>Seller</b>) : (<>{props.answer.answerer_name}</>);
 
   return (
     <div className="answer">

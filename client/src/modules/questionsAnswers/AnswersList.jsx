@@ -79,7 +79,7 @@ const AnswersList = (props) => {
   )
 }
 
-
+export default AnswersList;
 
 
 
@@ -309,4 +309,3 @@ const AnswersList = (props) => {
 //   }
 // }
 
-export default AnswersList;

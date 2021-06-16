@@ -49,6 +49,8 @@ const QuestionItem = (props) => {
     )
 }
 
+export default QuestionItem;
+
 // class QuestionItem extends React.Component {
 //   constructor(props) {
 //     super(props)
@@ -129,4 +131,3 @@ const QuestionItem = (props) => {
 //   }
 // }
 
-export default QuestionItem;

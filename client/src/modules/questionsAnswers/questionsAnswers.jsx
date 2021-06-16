@@ -1,6 +1,6 @@
 import React from 'react';
 //import QuestionsList from './QuestionsList.jsx';
-//import QuestionsList2 from './QuestionsList2.jsx';
+import QuestionsList2 from './QuestionsList2.jsx';
 import QuestionItem from './QuestionItem.jsx';
 import SearchBox from './SearchBox.jsx';
 import axios from 'axios';
@@ -19,7 +19,7 @@ class QuestionsAndAnswers extends React.Component {
 
       modal: false
     };
-    this.maxPerPage = 50;
+    this.maxPerPage = 5;
     this.nextPage = 1;
     this.doneFetch = false;
 
@@ -76,7 +76,6 @@ class QuestionsAndAnswers extends React.Component {
 
   filterQuestions(searchTerm) {
     var questions = this.state.allQuestions;
-    console.log('filter questions: ', questions);
     var filtered = [];
 
     for (var i = 0; i < questions.length; i++) {
@@ -84,9 +83,6 @@ class QuestionsAndAnswers extends React.Component {
         filtered.push(questions[i]);
       }
     }
-
-    console.log('filtered: ', filtered);
-
     this.setState({
       filteredQuestions: filtered,
       count: 2,
@@ -96,14 +92,9 @@ class QuestionsAndAnswers extends React.Component {
 
   handleSearchBarInputChange(e) {
     var searchTerm = e.target.value;
-
     this.prevVisible = this.prevVisible || this.state.visibleQuestions;
-    console.log('prev: ', this.prevVisible);
 
     if (searchTerm.length >= 3) {
-
-      console.log(searchTerm);
-
       this.setState({
         filterON: true
       })
@@ -171,14 +162,13 @@ class QuestionsAndAnswers extends React.Component {
 
         <SearchBox handleInputChange={this.handleSearchBarInputChange}/>
 
-        <div className="questions-list">
+        {/* <div className="questions-list">
         {this.state.visibleQuestions.map((question, index) => {
           return <QuestionItem QA={question} key={index} />
         })}
-      </div>
-{/*
+      </div> */}
 
-        <QuestionsList2 questions={this.state.visibleQuestions} product_id={this.state.product_id}/> */}
+        <QuestionsList2 questions={this.state.visibleQuestions} product_id={this.state.product_id}/>
 
         {(this.state.modal) ? <Modal content={
         <>
