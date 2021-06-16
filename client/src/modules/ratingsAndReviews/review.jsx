@@ -10,7 +10,7 @@ class Review extends React.Component {
     const id = this.props.review_id;
     const review = this.props.currentReview;
     const user = review.reviewer_name ? review.reviewer_name : 'Anonymous';
-    const star = (code, key) => (<div key={key} className="reviewStar">{String.raw`${code}`}</div>);
+    const star = (code, key) => (<div key={key} className="reviewStar">{code}</div>);
     let starRating = new Array(5).fill('').map((empty, index) => {
       if (index < review.rating) {
         return <div key={id + index} className="reviewStar">&#9733;</div>;
