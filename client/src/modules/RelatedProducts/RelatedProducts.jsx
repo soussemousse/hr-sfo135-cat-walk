@@ -22,11 +22,7 @@ class RelatedProducts extends React.Component {
         {this.props.relatedInfo.relatedStart !== 0 ? <button className={btnStyle.nav} data-testid='leftClick' onClick={this.props.caroselClickLeft}>&larr;</button> : null}
         <div className={style.list}>
           {this.props.products.map((product) => {
-<<<<<<< HEAD
-            return <RelatedCard key={product.productDetails[0]} product={product} open={this.openCompare} cardClick={this.props.cardClick}/>
-=======
             return <ProductCard key={product.productDetails[0]} product={product} actionButton={this.openCompare} cardClick={this.props.cardClick}/>
->>>>>>> 238079c2f6dff8e33e7c75c69431092d98ad579c
           })}
         </div>
         {!this.state.compare ? null : <CompareProducts close={this.closeCompare} currentProduct={this.props.relatedInfo.currentProduct} compareProduct={this.state.compareProduct} data-testid='compareProducts'/>}

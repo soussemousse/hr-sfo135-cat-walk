@@ -16,11 +16,7 @@ class YourOutfit extends React.Component {
         <div className={style.list}>
           <AddOutfit addToOutfit={this.props.addToOutfit} currentProduct={this.props.outfitInfo.currentProduct} />
           {this.props.outfitInfo.yourOutfit.length > 0 ? this.props.outfitInfo.yourOutfit.map((product) => {
-<<<<<<< HEAD
-            return <OutfitCard key={product.id} product={product} removeFromOutfit={this.props.removeFromOutfit}/>
-=======
             return <ProductCard key={product.id} product={product} actionButton={this.props.removeFromOutfit}/>
->>>>>>> 238079c2f6dff8e33e7c75c69431092d98ad579c
           }) : null}
         </div>
         {this.props.outfitInfo.outfitEnd < this.props.outfitInfo.yourOutfit.length ? <button className={btnStyle.nav} data-testid='clickRight' onClick={this.props.caroselClickRight}>&rarr;</button> : null}
