@@ -11,6 +11,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 3px;
+<<<<<<< HEAD
   grid-template-rows: repeat(1, 1fr);
   margin: 10% 15%;
   height: 40%;
@@ -27,3 +28,10 @@
   font-size: 15px;
   text-align: center;
 }
+=======
+  grid-template-rows: 1fr;
+  margin: 10% 15%;
+  height: 40%;
+  width: 80%;
+}
+>>>>>>> 238079c2f6dff8e33e7c75c69431092d98ad579c
