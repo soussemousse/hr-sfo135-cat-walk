@@ -67,6 +67,28 @@ app.post('/related/productInfo', (req, res) => {
     })
 })
 
+app.get('/currentProduct/:id', (req, res) => {
+  const id = req.params.id;
+
+  const productInfo = relatedListController.relatedProductsController(id);
+  const saleAndImage = relatedListController.relatedPhotosController(id);
+  const ratingInfo = relatedListController.relatedRatingsController(id);
+
+  Promise.resolve(productInfo)
+    .then(productResponse => {
+      const productDetails = productResponse;
+      Promise.resolve(saleAndImage)
+        .then(photoResponse => {
+          const photosInfo = photoResponse;
+          Promise.resolve(ratingInfo)
+            .then(ratingResponse => {
+              const ratings = ratingResponse;
+              res.send([productDetails, photosInfo, ratings]);
+            })
+        })
+    })
+    .catch(err => console.log(err));
+})
 // get questions for a product
 app.get('/qa/questions/:product_id/:page/:count', (req, res) => {
   questionController.getAllQuestions(req.params.product_id, req.params.page, req.params.count, res);

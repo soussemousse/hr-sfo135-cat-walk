@@ -1,0 +1,24 @@
+.addProductButton {
+  display: none;
+}
+
+.addProduct {
+  font-size: 400%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  background-color: thistle;
+  border: 2px outset slategray;
+  border-radius: 3px;
+  width: 80%;
+  height: 50%;
+  margin: 5%;
+}
+
+.addOutfit {
+  display: flex;
+  justify-content: center;
+  align-self: flex-start;
+  position: sticky;
+}

@@ -1,0 +1,19 @@
+.relatedProducts {
+  z-index: 0;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid darkmagenta;
+}
+
+h3 {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  font-weight: bold;
+  width: fit-content;
+}
