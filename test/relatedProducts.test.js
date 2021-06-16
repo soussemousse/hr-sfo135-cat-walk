@@ -103,8 +103,8 @@ describe('Related Products and Your Outfit', () => {
     render(<Related currentProduct={sampleProductsArr[0]}/>);
 
     const productLists = screen.getAllByTestId('list');
-    const relatedElement = screen.getByText('Related Products');
-    const outfitEl = screen.getByText('Your Outfit');
+    const relatedElement = screen.getByTestId('rpHeader');
+    const outfitEl = screen.getByTestId('yoHeader');
 
     expect(relatedElement).toBeInTheDocument();
     expect(outfitEl).toBeInTheDocument();
@@ -114,17 +114,19 @@ describe('Related Products and Your Outfit', () => {
 
 describe('Related Products should have carousel button', () => {
   test('expect button to change cards shown', () => {
-    render(<RelatedProducts products={sampleProductsArr} relatedInfo={{start: 0, end: 0, relatedProductsList: sampleProductsArr}} caroselClickLeft={(event) => {console.log('clicked')}} caroselClickRight={(event) => {console.log('clicked')}} />);
+    const click = jest.fn();
 
-    fireEvent.click(screen.getByRole('button'));
+    render(<RelatedProducts products={sampleProductsArr} relatedInfo={{relatedStart: 0, relatedEnd: 0, relatedList: sampleProductsArr}} caroselClickLeft={click} caroselClickRight={click} />);
 
-    expect(screen.getByText('Morning Joggers')).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId('rightClick'));
+
+    expect(click).toHaveBeenCalledTimes(1);
   })
 })
 
 describe('Related Products should show cards of other products', () => {
   test('expect to have arrow buttons and up to five cards', () => {
-    render(<RelatedProducts products={sampleProductsArr} relatedInfo={{start: 0, end: 2, relatedProductsList: sampleProductsArr}} caroselClickLeft={(event) => {console.log('clicked')}} caroselClickRight={(event) => {console.log('clicked')}} />);
+    render(<RelatedProducts products={sampleProductsArr} relatedInfo={{relatedStart: 0, relatedEnd: 2, relatedList: sampleProductsArr}} caroselClickLeft={(event) => {console.log('clicked')}} caroselClickRight={(event) => {console.log('clicked')}} />);
 
     const cards = screen.getAllByRole('article');
 
@@ -225,7 +227,7 @@ describe('Comparison table should compare features of two products', function() 
 
 describe('Your Outfit should show cards of user added products', () => {
   test('expect to have arrow buttons and up to five cards', () => {
-    render(<YourOutfit products={sampleProductsArr} outfitInfo={{start: 0, end: 2, yourOutfit: sampleProductsArr}} caroselClickLeft={(event) => {console.log('clicked')}} caroselClickRight={(event) => {console.log('clicked')}} addToOutfit={(event) => {console.log('added')}}/>);
+    render(<YourOutfit products={sampleProductsArr} outfitInfo={{outfitStart: 0, outfitEnd: 2, outfitList: sampleProductsArr}} caroselClickLeft={(event) => {console.log('clicked')}} caroselClickRight={(event) => {console.log('clicked')}} addToOutfit={(event) => {console.log('added')}}/>);
 
     const cards = screen.getAllByRole('article');
     const addCard = screen.getByText('Add to Your Outfit');
@@ -253,7 +255,7 @@ describe('Your Outfit cards should show category, name, price, rating, and image
 
 describe('Add Product Card should inform what it is for', () => {
   test('expect to have plus button and caption \'Add to Your Outfit\'', () => {
-    render(<AddProduct addToOutfit={(event, product) => {console.log(product)}} />);
+    render(<AddProduct addToOutfit={(event) => {console.log(product)}} />);
 
     const addButton = screen.getAllByRole('radio');
     const caption = screen.getByText('Add to Your Outfit');
