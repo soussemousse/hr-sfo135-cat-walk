@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './relatedCSS/review.module.css';
 
 class Review extends React.Component {
   constructor(props) {
@@ -10,26 +11,18 @@ class Review extends React.Component {
     const id = this.props.review_id;
     const review = this.props.currentReview;
     const user = review.reviewer_name ? review.reviewer_name : 'Anonymous';
-    const star = (code, key) => (<div key={key} className="reviewStar">{code}</div>);
     let starRating = new Array(5).fill('').map((empty, index) => {
-      if (index < review.rating) {
-        return <div key={id + index} className="reviewStar">&#9733;</div>;
-        // return star('&#9733;', id + index);
-      }
-      return <div key={id + index} className="reviewStar">&#9734;</div>;
-      // return star('&#9734;', id + index);
+      return index < review.rating ? <div key={id + index} className={style.reviewStar}>&#9733;</div> : <div key={id + index} className={style.reviewStar}>&#9734;</div>;
     })
-    console.log(starRating);
     return (
-      <div className="review">
-        <div className="reviewRating">{starRating}</div>
-        <div className="reviewUsername">{user}</div>
-        <div className="reviewDate">{review.date}</div>
-        <div className="reviewSummary">{review.summary}</div>
-        <p className="reviewBody">{review.body}</p>
-        {review.recommend ? <div className="reviewRecommend"><div className="reviewRecommendCheckMark">&#10003;</div> I recommend this product</div> : null}
-        {/* {review.recommend ? <div className="reviewRecommend">I recommend this review</div> : null} */}
-        {review.response ? <div className="reviewResponse">{'sales response: ' + review.response}</div> : null}
+      <div className={style.review}>
+        <div className={style.reviewRating}>{starRating}</div>
+        <div className={style.reviewUsername}>{user}</div>
+        <div className={style.reviewDate}>{review.date}</div>
+        <div className={style.reviewSummary}>{review.summary}</div>
+        <p className={style.reviewBody}>{review.body}</p>
+        {review.recommend ? <div className={style.reviewRecommend}><div className={style.reviewRecommendCheckMark}>&#10003;</div> I recommend this product</div> : null}
+        {review.response ? <div className={style.reviewResponse}>{'sales response: ' + review.response}</div> : null}
       </div>
     )
   }

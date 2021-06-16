@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Review from './review.jsx';
-// import ReviewFormModal from './reviewFormModal.jsx';
 import NewReviewForm from './newReviewForm.jsx';
+import style from './relatedCSS/reviewList.module.css';
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -32,7 +32,6 @@ class ReviewList extends React.Component {
       const id = characteristics[key].id;
       characteristicsObj[id] = 0;
     })
-    // this.setState({product_id: this.props.product_id});
     this.setState({characteristics: characteristicsObj});
   }
 
@@ -65,7 +64,7 @@ class ReviewList extends React.Component {
       const list = this.props.list.productReviews.slice(0, max);
       return (
         <div>
-          <div className="reviewList">
+          <div className={style.reviewList}>
             {list.map((review) => {
               return <Review key={review.review_id} review_id={review.review_id} currentReview={review}/>
             })}

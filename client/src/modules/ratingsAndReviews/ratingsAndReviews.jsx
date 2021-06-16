@@ -2,6 +2,7 @@ import React from 'react';
 import ProductAverages from './productAverages.jsx';
 import ReviewList from './reviewList.jsx';
 import axios from 'axios';
+import style from './relatedCSS/ratingsAndReviews.module.css';
 
 class RatingsAndReviews extends React.Component {
   constructor(props) {
@@ -60,7 +61,7 @@ class RatingsAndReviews extends React.Component {
     // console.log(this.state);
     if (this.state.productReviews) {
       return (
-        <div className="RatingsAndReviews">
+        <div className={style.RatingsAndReviews}>
           <ProductAverages/>
           <ReviewList
             list={this.state}

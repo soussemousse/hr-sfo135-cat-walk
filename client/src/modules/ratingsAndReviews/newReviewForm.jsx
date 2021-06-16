@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import NewReviewFormCharacteristic from './newReviewFormCharacteristic.jsx';
+import style from './relatedCSS/newReviewForm.module.css';
 
 const NewReviewForm = function (props) {
   const clickHandler = () => {
@@ -8,8 +9,8 @@ const NewReviewForm = function (props) {
     props.submitReview(props.state);
   }
   return ReactDOM.createPortal(
-    <div className="reviewForm">
-      <div className="reviewStarRating">
+    <div className={style.reviewForm}>
+      <div className={style.reviewStarRating}>
         <div id="reactiveStarText"></div>
         <span onClick={()=>{props.handleStarRating(5)}}>&#9734;</span>
         <span onClick={()=>{props.handleStarRating(4)}}>&#9734;</span>
