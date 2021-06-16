@@ -199,6 +199,11 @@ button {
   flex-grow: 0;
 }
 
+.question-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
 .question-buttons > * {
   background: none;
   border: 1px solid black;
