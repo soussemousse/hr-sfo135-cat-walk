@@ -153,15 +153,9 @@ describe('Related cards should have clickable functionality', function() {
     const open = jest.fn();
     const cardClick = jest.fn();
 
-<<<<<<< HEAD
-    render(<RelatedCard product={sampleProductsArr[0]} open={open} cardClick={cardClick}/>);
-
-    fireEvent.click(screen.getByTestId('showComparison'));
-=======
     render(<ProductCard product={sampleProductsArr[0]} actionButton={open} cardClick={cardClick}/>);
 
     fireEvent.click(screen.getByTestId('actionButton'));
->>>>>>> 238079c2f6dff8e33e7c75c69431092d98ad579c
     fireEvent.click(screen.getByTestId('clickedCard'));
 
     expect(open).toHaveBeenCalledTimes(1);
@@ -277,11 +271,7 @@ describe('Add product button should add current product to Your Outfit', () => {
 
     fireEvent.click(screen.getByTestId('addProduct'));
 
-<<<<<<< HEAD
-    expect(screen.getAllByTestId('outfitCard')).toHaveLength(1);
-=======
     expect(screen.getAllByTestId('ProductCard')).toHaveLength(1);
->>>>>>> 238079c2f6dff8e33e7c75c69431092d98ad579c
     localStorage.clear();
   })
 })
