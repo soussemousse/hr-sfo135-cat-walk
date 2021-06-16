@@ -1,0 +1,43 @@
+.comparisonTable {
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, 0);
+  border: 2px outset slategray;
+  border-radius: 3px;
+  background-color: skyblue;
+  justify-content: center;
+  align-content: space-around;
+  height: max-content;
+  width: max-content;
+}
+
+.compareTable {
+  order: -1;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 5px;
+}
+
+.tableData {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upperLeft {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin: 1%;
+  color: rebeccapurple;
+}
+
+.radio {
+  display: none;
+}

@@ -78,3 +78,31 @@ module.exports.reportAnswer = (answer_id, res) => {
 
   questionsModel.reportAnswer(options, res);
 }
+
+module.exports.addQuestion = (body, res) => {
+  const options = {
+    "method": "post",
+    "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions`,
+    "headers": {
+      "user-agent": 'request',
+      "Authorization": tokenObj.token
+    },
+    "data": body
+  }
+
+  questionsModel.addQuestion(options, res);
+}
+
+module.exports.addAnswer = (question_id, body, res) => {
+  const options = {
+    "method": "post",
+    "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${question_id}/answers`,
+    "headers": {
+      "user-agent": 'request',
+      "Authorization": tokenObj.token
+    },
+    "data": body
+  }
+
+  questionsModel.addAnswer(options, res);
+}

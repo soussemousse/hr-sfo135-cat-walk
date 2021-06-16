@@ -71,6 +71,28 @@ app.post('/related/productInfo', (req, res) => {
     })
 })
 
+app.get('/currentProduct/:id', (req, res) => {
+  const id = req.params.id;
+
+  const productInfo = relatedListController.relatedProductsController(id);
+  const saleAndImage = relatedListController.relatedPhotosController(id);
+  const ratingInfo = relatedListController.relatedRatingsController(id);
+
+  Promise.resolve(productInfo)
+    .then(productResponse => {
+      const productDetails = productResponse;
+      Promise.resolve(saleAndImage)
+        .then(photoResponse => {
+          const photosInfo = photoResponse;
+          Promise.resolve(ratingInfo)
+            .then(ratingResponse => {
+              const ratings = ratingResponse;
+              res.send([productDetails, photosInfo, ratings]);
+            })
+        })
+    })
+    .catch(err => console.log(err));
+})
 // get questions for a product
 app.get('/qa/questions/:product_id/:page/:count', (req, res) => {
   questionController.getAllQuestions(req.params.product_id, req.params.page, req.params.count, res);
@@ -99,4 +121,15 @@ app.put('/qa/answers/:answer_id/helpful', (req, res) => {
 // report answer
 app.put('/qa/answers/:answer_id/report', (req, res) => {
   questionController.reportAnswer(req.params.answer_id, res);
+})
+
+// add new question
+app.post('/qa/questions', (req, res) => {
+  console.log("body: ", req.body);
+  questionController.addQuestion(req.body, res);
+})
+
+// add new answer
+app.post('/qa/questions/:question_id/answers', (req, res) => {
+  questionController.addAnswer(req.params.question_id, req.body, res);
 })

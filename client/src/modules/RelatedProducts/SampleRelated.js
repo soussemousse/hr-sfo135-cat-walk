@@ -1,27 +1,13 @@
 const sampleData = {
-  "id": 25168,
-  "campus": "hr-sfo",
-  "name": "Bright Future Sunglasses",
-  "slogan": "You've got to wear shades",
-  "description": "Where you're going you might not need roads, but you definitely need some shades. Give those baby blues a rest and let the future shine bright on these timeless lenses.",
-  "category": "Accessories",
-  "default_price": "69.00",
-  "created_at": "2021-06-02T16:53:33.359Z",
-  "updated_at": "2021-06-02T16:53:33.359Z",
-  "features": [
-      {
-          "feature": "Lenses",
-          "value": "Ultrasheen"
-      },
-      {
-          "feature": "UV Protection",
-          "value": null
-      },
-      {
-          "feature": "Frames",
-          "value": "LightCompose"
-      }
-  ]
+    "productDetails": [25169, "Morning Joggers", "Pants", "40.00", [{"feature": "Fabric", "value": "100% Cotton"}, {"feature": "Cut", "value": "Skinny"}]],
+    "productPhotos": ["32.00", {"thumbnail_url": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"}],
+    "ratings": {
+        1: "0",
+        2: "3",
+        3: "2",
+        4: "0",
+        5: "1"
+    }
 }
 
 export default sampleData;
