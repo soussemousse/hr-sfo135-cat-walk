@@ -26,7 +26,7 @@ class Review extends React.Component {
         <div className="reviewUsername">{user}</div>
         <div className="reviewDate">{review.date}</div>
         <div className="reviewSummary">{review.summary}</div>
-        <div className="reviewBody">{review.body}</div>
+        <p className="reviewBody">{review.body}</p>
         {review.recommend ? <div className="reviewRecommend"><div className="reviewRecommendCheckMark">&#10003;</div> I recommend this product</div> : null}
         {/* {review.recommend ? <div className="reviewRecommend">I recommend this review</div> : null} */}
         {review.response ? <div className="reviewResponse">{'sales response: ' + review.response}</div> : null}
