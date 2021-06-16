@@ -30,7 +30,7 @@ class Related extends React.Component {
   }
 
   componentDidMount() {
-    const yourOutfit = localStorage.yourOutfit ? JSON.parse(localStorage.yourOutfit) : this.state.yourOutfit;
+    const yourOutfit = localStorage.yourOutfit ? JSON.parse(localStorage.yourOutfit) : this.state.outfitList;
 
     this.getRelatedProducts(this.state.currentProduct.productDetails[0]);
     this.setState({outfitList: yourOutfit});
@@ -67,12 +67,12 @@ class Related extends React.Component {
   }
 
   addToOutfit (product) {
-    const newOutfit = this.state.yourOutfit.slice();
+    const newOutfit = this.state.outfitList.slice();
     const outfitIds = newOutfit.map(product => {return product.productDetails[0]});
     console.log('addProduct', outfitIds, 'productID: ', product.productDetails[0]);
     if (outfitIds.includes(product.productDetails[0]) === false) {
       newOutfit.push(product);
-      this.setState({yourOutfit: newOutfit});
+      this.setState({outfitList: newOutfit});
       localStorage.setItem('yourOutfit', JSON.stringify(newOutfit));
     } else {
       console.log('Already there!');
@@ -80,13 +80,13 @@ class Related extends React.Component {
   }
 
   removeFromOutfit (product) {
-    const oldOutfit = this.state.yourOutfit.slice();
+    const oldOutfit = this.state.outfitList.slice();
     const outfitIds = oldOutfit.map(product => {return product.productDetails[0]});
     const productId = outfitIds.indexOf(product.productDetails[0]);
 
     oldOutfit.splice(productId, 1);
 
-    this.setState({yourOutfit: oldOutfit});
+    this.setState({outfitList: oldOutfit});
     localStorage.setItem('yourOutfit', JSON.stringify(oldOutfit));
   }
 
@@ -122,7 +122,7 @@ class Related extends React.Component {
         })
         const carosel = relatedObjArr.slice(this.state.start, this.state.end);
 
-        this.setState({relatedProductsList: relatedObjArr, relatedCarosel: carosel});
+        this.setState({relatedList: relatedObjArr, relatedCarosel: carosel});
       })
       .catch(err => {
         console.log(err);

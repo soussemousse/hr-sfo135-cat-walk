@@ -103,8 +103,8 @@ describe('Related Products and Your Outfit', () => {
     render(<Related currentProduct={sampleProductsArr[0]}/>);
 
     const productLists = screen.getAllByTestId('list');
-    const relatedElement = screen.getByTestId('rpHeader');
-    const outfitEl = screen.getByTestId('yoHeader');
+    const relatedElement = screen.getByText('Related Products');
+    const outfitEl = screen.getByText('Your Outfit');
 
     expect(relatedElement).toBeInTheDocument();
     expect(outfitEl).toBeInTheDocument();
