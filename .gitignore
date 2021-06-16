@@ -1,5 +1,5 @@
 node_modules
-coverage
 token.js
+client/dist/bundle.js
+coverage
 bundle.js
-testest.js

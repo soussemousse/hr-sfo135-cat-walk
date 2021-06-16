@@ -7,7 +7,7 @@
 }
 
 /******* Ratings and Reviews CSS *******/
-/* .RatingsAndReviews {
+.RatingsAndReviews {
   display: flex;
   justify-content: space-around;
 }
@@ -21,89 +21,14 @@
   padding: 5px;
 }
 
-/* .review {
+.review {
   padding: 10px;
-  margin: 1px;
-  /* background-color: rgb(255, 255, 255); */
   border-bottom: 1px solid slategray;
-  display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(1fr, auto));
-  grid-template-rows: repeat(auto-fit, minmax(1fr, auto)); */
-  grid-template-columns: 1fr minmax(auto, 10%);
-  grid-template-rows: repeat(auto-fit, minmax(1fr, auto));
-  width: 900px;
-  background-color: rgb(255, 255, 255);
 }
-
-/* .review:hover {
-  text-shadow: 1px 1px rgb(244, 247, 248);
-  position: relative;
-  top: -1px;
-} */
-
-/*
-.reviewRating {
-  grid-row: 1;
-  grid-column: 1 / 3;
-  padding: 5px;
-}
-
-.reviewStar {
-  display: inline;
-  color: red;
-}
-
-.reviewUsername {
-  grid-row: 1;
-  grid-column: 8;
-  padding: 5px;
-}
-
-.reviewDate {
-  grid-row: 1;
-  grid-column: 9 / 11;
-  padding: 5px;
-}
-
-
-.reviewSummary {
-  grid-row: 2;
-  grid-column: 1 / 11;
-  font-weight: bold;
-  padding: 5px;
-}
-
-.reviewBody {
-  grid-row: 3;
-  grid-column: 1 / 11;
-  padding: 5px;
-  word-wrap: break-word;
-}
-
-.reviewRecommendCheckMark {
- /* grid-row: 4; */
- /* grid-column: 1; */
- display: inline;
- color: green;
- padding: 5px;
-}
-
-.reviewRecommend {
-  display: inline;
-  grid-row: 4;
-  grid-column: 1 / 6;
-  padding: 5px;
-}
-
-.reviewResponse {
-  grid-row: 5;
-  grid-column: 1 / 6;
-}
-*/
 
 .reviewForm {
   z-index: 1
-} */
+}
 
 
 /* */
@@ -128,198 +53,6 @@
 } */
 /* */
 
-
-/******* Related Products CSS *******/
-
-h3 {
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  font-weight: bold;
-  width: fit-content;
-}
-
-.carosel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  height: 90%;
-  width: 90%;
-}
-
-.list {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 3px;
-  grid-template-rows: repeat(1, 1fr);
-  margin: 10% 15%;
-  height: 40%;
-  width: 80%;
-  overflow: hidden;
-}
-
-.nav {
-  display: flex;
-  height: 35px;
-  align-self: center;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  text-align: center;
-}
-
-.card {
-  background-color: gainsboro;
-  border: 2px outset slategray;
-  border-radius: 3px;
-  padding: 3px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 80%;
-}
-
-.upperleft {
-  display: flex;
-  align-self: flex-end;
-  justify-content: flex-end;
-  align-items: flex-start;
-  color: rebeccapurple;
-}
-
-.upperLeft {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  margin: 1%;
-  color: rebeccapurple;
-}
-
-.upperleft :hover {
-  color: forestgreen;
-}
-
-.upperLeft :hover {
-  color: forestgreen;
-}
-
-.radio {
-  display: none;
-}
-
-.relatedProducts {
-  z-index: 0;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border: 2px solid darkmagenta;
-}
-
-.comparisonTable {
-  z-index: 1;
-  position: absolute;
-  display: flex;
-  left: 50%;
-  top: 20%;
-  transform: translate(-50%, 0);
-  border: 2px outset slategray;
-  border-radius: 3px;
-  background-color: skyblue;
-  justify-content: center;
-  align-content: space-around;
-  height: max-content;
-  width: max-content;
-}
-
-.compareTable {
-  order: -1;
-}
-
-.addProductButton {
-  display: none;
-}
-
-.addProduct {
-  font-size: 400%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: sticky;
-  background-color: thistle;
-  border: 2px outset slategray;
-  border-radius: 3px;
-  width: 80%;
-  height: 50%;
-  margin: 5%;
-}
-
-.addOutfit {
-  display: flex;
-  justify-content: center;
-  align-self: flex-start;
-  position: sticky;
-}
-
-.pictureThumbnail {
-  background-color: thistle;
-  border: 2px outset slategray;
-  border-radius: 3px;
-  width: 80%;
-  height: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.cardInfo {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  height: 30%;
-}
-
-.tableRow {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 5px;
-}
-
-.tableData {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cardRating {
-  unicode-bidi: bidi-override;
-  color: lightgrey;
-  font-size: 25px;
-  height: 25%;
-  width: 80%;
-  position: relative;
-  text-shadow: 0px 1px 0 lightgrey;
-}
-
-.cardRating-top {
-  color: orange;
-  position: absolute;
-  z-index: 1;
-  display: block;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-}
-
-.cardRating-bottom {
-  padding: 0;
-  display: block;
-  z-index: 0;
-}
 
 /******* Questions and Answers CSS *******/
 
