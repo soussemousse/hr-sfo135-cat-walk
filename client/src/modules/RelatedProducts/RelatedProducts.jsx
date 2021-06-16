@@ -1,5 +1,5 @@
 import React from 'react';
-import RelatedCard from './RelatedCard.jsx';
+import ProductCard from './ProductCard.jsx';
 import CompareProducts from './CompareProducts.jsx';
 import style from './RelatedCSS/Lists.module.css';
 import btnStyle from './RelatedCSS/Buttons.module.css';

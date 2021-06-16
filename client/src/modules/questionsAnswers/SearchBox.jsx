@@ -2,14 +2,16 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const SearchBox = () => {
+const SearchBox = (props) => {
 
   const buttonIcon = <FontAwesomeIcon icon={faSearch} />;
 
+
+
   return (
     <div className="questions-searchbox">
-      <input type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." id="questions-search-input"></input>
-      <button type="button" id="questions-search-button">{buttonIcon}</button>
+      <input onChange={props.handleInputChange} type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." id="questions-search-input"></input>
+      <icon id="questions-search-button">{buttonIcon}</icon>
     </div>
   );
 };

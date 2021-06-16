@@ -1,5 +1,5 @@
 import React from 'react';
-import OutfitCard from './OutfitCard.jsx';
+import ProductCard from './ProductCard.jsx';
 import AddOutfit from './AddProductCard.jsx';
 import style from './RelatedCSS/Lists.module.css';
 import btnStyle from './RelatedCSS/Buttons.module.css';
