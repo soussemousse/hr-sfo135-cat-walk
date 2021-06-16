@@ -1,5 +1,5 @@
 import React from 'react';
-import OutfitCard from './OutfitCard.jsx';
+import ProductCard from './ProductCard.jsx';
 import AddOutfit from './AddProductCard.jsx';
 import style from './RelatedCSS/Lists.module.css';
 import btnStyle from './RelatedCSS/Buttons.module.css';
@@ -16,7 +16,7 @@ class YourOutfit extends React.Component {
         <div className={style.list}>
           <AddOutfit addToOutfit={this.props.addToOutfit} currentProduct={this.props.outfitInfo.currentProduct} />
           {this.props.outfitInfo.yourOutfit.length > 0 ? this.props.outfitInfo.yourOutfit.map((product) => {
-            return <OutfitCard key={product.id} product={product} removeFromOutfit={this.props.removeFromOutfit}/>
+            return <ProductCard key={product.id} product={product} actionButton={this.props.removeFromOutfit}/>
           }) : null}
         </div>
         {this.props.outfitInfo.outfitEnd < this.props.outfitInfo.yourOutfit.length ? <button className={btnStyle.nav} data-testid='clickRight' onClick={this.props.caroselClickRight}>&rarr;</button> : null}

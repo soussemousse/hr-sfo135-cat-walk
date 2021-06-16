@@ -4,9 +4,8 @@ import {render, screen, waitFor, fireEvent, cleanup} from '@testing-library/reac
 import dom from '@testing-library/jest-dom';
 import Related from '/Users/Emma/HackReactorApril2021/hr-sfo135-cat-walk/client/src/modules/RelatedProducts/RelatedProductsYourOutfit.jsx';
 import RelatedProducts from '../client/src/modules/RelatedProducts/RelatedProducts.jsx';
-import RelatedCard from '../client/src/modules/RelatedProducts/RelatedCard.jsx';
+import ProductCard from '../client/src/modules/RelatedProducts/ProductCard.jsx';
 import YourOutfit from '../client/src/modules/RelatedProducts/YourOutfit.jsx';
-import OutfitCard from '../client/src/modules/RelatedProducts/OutfitCard.jsx';
 import AddProduct from '../client/src/modules/RelatedProducts/AddProductCard.jsx';
 import CompareProducts from '../client/src/modules/RelatedProducts/CompareProducts.jsx';
 
@@ -135,7 +134,7 @@ describe('Related Products should show cards of other products', () => {
 
 describe('Related Products cards should show category, name, price, rating, and image of product', () => {
   test('expect to have all relevant information', () =>  {
-    render(<RelatedCard product={sampleProductsArr[0]} />);
+    render(<ProductCard product={sampleProductsArr[0]} />);
 
     const productName = screen.getByText('Bright Future Sunglasses');
     const category = screen.getByText('Accessories');
@@ -154,9 +153,9 @@ describe('Related cards should have clickable functionality', function() {
     const open = jest.fn();
     const cardClick = jest.fn();
 
-    render(<RelatedCard product={sampleProductsArr[0]} open={open} cardClick={cardClick}/>);
+    render(<ProductCard product={sampleProductsArr[0]} actionButton={open} cardClick={cardClick}/>);
 
-    fireEvent.click(screen.getByTestId('showComparison'));
+    fireEvent.click(screen.getByTestId('actionButton'));
     fireEvent.click(screen.getByTestId('clickedCard'));
 
     expect(open).toHaveBeenCalledTimes(1);
@@ -238,7 +237,7 @@ describe('Your Outfit should show cards of user added products', () => {
 
 describe('Your Outfit cards should show category, name, price, rating, and image of product', () => {
   test('expect to have all relevant information', () =>  {
-    render(<OutfitCard product={sampleProductsArr[0]} />);
+    render(<ProductCard product={sampleProductsArr[0]} />);
 
     const productName = screen.getByText('Bright Future Sunglasses');
     const category = screen.getByText('Accessories');
@@ -272,7 +271,7 @@ describe('Add product button should add current product to Your Outfit', () => {
 
     fireEvent.click(screen.getByTestId('addProduct'));
 
-    expect(screen.getAllByTestId('outfitCard')).toHaveLength(1);
+    expect(screen.getAllByTestId('ProductCard')).toHaveLength(1);
     localStorage.clear();
   })
 })
