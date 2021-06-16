@@ -55,9 +55,18 @@ class QuestionsList extends React.Component {
   handleAddQuestionSubmit(e) {
       e.preventDefault(e);
 
+      // var form = document.getElementById("Q-form");
+      // console.log(form);
+      // var data = new FormData(form);
+
       var body = document.getElementById("QA-body").value;
       var name = document.getElementById("QA-name").value;
       var email = document.getElementById("QA-email").value;
+
+
+      // var body = "moo";
+      // var name = "meep";
+      // var email = "a@b.com";
 
       axios({
         method: "post",

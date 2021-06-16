@@ -3,12 +3,15 @@ import React from 'react';
 import {render, screen} from '@testing-library/react';
 import RatingsAndReviews from '../client/src/modules/ratingsAndReviews/ratingsAndReviews.jsx';
 import Review from '../client/src/modules/ratingsAndReviews/review.jsx';
-import ReviewFormModal from '../client/src/modules/ratingsAndReviews/reviewFormModal.jsx';
+import NewReviewForm from '../client/src/modules/ratingsAndReviews/newReviewForm.jsx';
+import ProductAverages from '../client/src/modules/ratingsAndReviews/productAverages.jsx';
+
+
 
 describe('Ratings and reviews', () => {
   test('renders product averages', () => {
     const {container} = render(<RatingsAndReviews itemId={25167}/>);
-    expect(container.contains(screen.getByText("product averages"))).toBe(true);
+    expect(container.contains(screen.getByText('product averages'))).toBe(true);
   });
   test('renders a review successfully', () => {
     const review406630 = {
@@ -27,13 +30,49 @@ describe('Ratings and reviews', () => {
     expect(container.contains(screen.getByText('Camo Onsie', {exact: false}))).toBe(true);
   });
   test('modal window functions correctly', () => {
-    const {container} = render(<ReviewFormModal/>);
-    expect(container.contains(screen.getByText('test test portal portal'))).toBe(true);
+    const {container} = render(<NewReviewForm/>);
+    expect(container.contains(screen.getByText('Do you recommend this product?'))).toBe(true);
+  });
+});
+
+describe('newReviewForm', () => {
+  test('Submit review', () => {
+    const {container} = render(<NewReviewForm/>)
+    expect(container.contains(screen.getByText('Submit review'))).toBe(true);
+  })
+});
+
+describe('ProductAverages', () => {
+  test('renders static data', () => {
+    const {container} = render(<ProductAverages/>)
+    expect(container.contains(screen.getByText('product averages'))).toBe(true);
+
+  })
+});
+
+describe('Review', () => {
+  test('renders data for an individual review', () => {
+    const review = {
+      "review_id": 348639,
+      "rating": 4,
+      "summary": "This product was ok!",
+      "recommend": false,
+      "response": "",
+      "body": "I really did not like this product solely because I am tiny and do not fit into it.",
+      "date": "2019-01-11T00:00:00.000Z",
+      "reviewer_name": "mymainstreammother",
+      "helpfulness": 2,
+      "photos": []
+    }
+    const {container} = render(<Review key={'test123'} currentReview={review} review_id={'test123'}/>)
+    // console.error(container);
+    expect(container.contains(screen.getByText('This product was ok!'))).toBe(true);
+
   })
 });
 
 describe('test API connection', function() {
-  test('should respond to a GET request for reviews', function () {
+  test('should respond to a GET request for a specific review', function () {
     axios({
       url: "http://localhost:3001/reviews",
       data: {id: 25167}

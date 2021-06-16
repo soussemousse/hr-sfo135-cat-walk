@@ -9,8 +9,16 @@ const AnswersList = (props) => {
   const [fetchDone, setFetchDone] = useState(false);
   const [nextPage, setNextPage] = useState(1);
 
-  var max = 5;
-  var initialCount = 2;
+    this.state = {
+      question_id: this.props.question_id,
+      visibleAnswers: [],
+      allAnswers: [],
+      showButton: false
+    }
+    this.max = 3;
+    this.initialCount = 2;
+    this.nextPage = 1;
+    this.fetchedLastPage = false;
 
   useEffect(() => {
     if (!fetchDone) {

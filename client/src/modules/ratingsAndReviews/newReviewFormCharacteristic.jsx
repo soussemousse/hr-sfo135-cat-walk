@@ -7,19 +7,19 @@ const NewReviewFormCharacteristic = function (props) {
       <label>
         {props.characteristic}
         <br></br>
-        <label>1</label>
-        <input type="radio" name={props.characteristic} onChange={props.handleInputChange} value={1}></input>
-        <label>2</label>
-        <input type="radio" name={props.characteristic} value={2}></input>
-        <label>3</label>
-        <input type="radio" name={props.characteristic} value={3}></input>
-        <label>4</label>
-        <input type="radio" name={props.characteristic} value={4}></input>
-        <label>5</label>
-        <input type="radio" name={props.characteristic} value={5}></input>
+        {
+          [1,2,3,4,5].map((rating) => {
+            return (
+              <span key={props.characteristic + rating}>
+                <label>{rating}</label>
+                <input type="radio" name={props.characteristic} onChange={() => props.handleCharacteristicRating(props.id, rating)} value={rating}></input>
+              </span>
+            )
+          })
+        }
       </label>
     </div>
-  );
+  )
 }
 
 export default NewReviewFormCharacteristic;
