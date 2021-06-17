@@ -133,9 +133,9 @@ class Related extends React.Component {
     return (
       <div className={style.relatedProducts}>
         <h3 className={style.h3}>Related Products</h3>
-        <RelatedProducts relatedInfo={this.state} products={this.state.relatedCarosel} caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} comparison={this.comparisonClick} cardClick={this.relatedCardClick}/>
+        <RelatedProducts relatedInfo={this.state} products={this.state.relatedCarosel} caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} comparison={this.comparisonClick} cardClick={this.relatedCardClick} list='related'/>
         <h3 className={style.h3}>Your Outfit</h3>
-        <YourOutfit caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} addToOutfit={this.addToOutfit} outfitInfo={this.state} removeFromOutfit={this.removeFromOutfit} />
+        <YourOutfit caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} addToOutfit={this.addToOutfit} outfitInfo={this.state} removeFromOutfit={this.removeFromOutfit} cardClick={this.relatedCardClick} list='outfit'/>
       </div>
     )
   }

@@ -96,7 +96,7 @@ describe('responds to a GET request for current product', function() {
   })
 })
 
-//Related Products Tests
+//Overall module tests
 
 describe('Related Products and Your Outfit', () => {
   test('expect "Related Products" and "Your Outfit" headers', () => {
@@ -112,11 +112,13 @@ describe('Related Products and Your Outfit', () => {
   })
 })
 
+//Related Products Tests
+
 describe('Related Products should have carousel button', () => {
   test('expect button to change cards shown', () => {
     const click = jest.fn();
 
-    render(<RelatedProducts products={sampleProductsArr} relatedInfo={{relatedStart: 0, relatedEnd: 0, relatedList: sampleProductsArr}} caroselClickLeft={click} caroselClickRight={click} />);
+    render(<RelatedProducts products={sampleProductsArr} relatedInfo={{relatedStart: 0, relatedEnd: 0, relatedList: sampleProductsArr}} caroselClickLeft={click} caroselClickRight={click} list='related'/>);
 
     fireEvent.click(screen.getByTestId('rightClick'));
 
@@ -126,7 +128,7 @@ describe('Related Products should have carousel button', () => {
 
 describe('Related Products should show cards of other products', () => {
   test('expect to have arrow buttons and up to five cards', () => {
-    render(<RelatedProducts products={sampleProductsArr} relatedInfo={{relatedStart: 0, relatedEnd: 2, relatedList: sampleProductsArr}} caroselClickLeft={(event) => {console.log('clicked')}} caroselClickRight={(event) => {console.log('clicked')}} />);
+    render(<RelatedProducts products={sampleProductsArr} relatedInfo={{relatedStart: 0, relatedEnd: 2, relatedList: sampleProductsArr}} caroselClickLeft={(event) => {console.log('clicked')}} caroselClickRight={(event) => {console.log('clicked')}} list='related'/>);
 
     const cards = screen.getAllByRole('article');
 
@@ -136,7 +138,7 @@ describe('Related Products should show cards of other products', () => {
 
 describe('Related Products cards should show category, name, price, rating, and image of product', () => {
   test('expect to have all relevant information', () =>  {
-    render(<ProductCard product={sampleProductsArr[0]} />);
+    render(<ProductCard product={sampleProductsArr[0]} list='related'/>);
 
     const productName = screen.getByText('Bright Future Sunglasses');
     const category = screen.getByText('Accessories');
@@ -155,7 +157,7 @@ describe('Related cards should have clickable functionality', function() {
     const open = jest.fn();
     const cardClick = jest.fn();
 
-    render(<ProductCard product={sampleProductsArr[0]} actionButton={open} cardClick={cardClick}/>);
+    render(<ProductCard product={sampleProductsArr[0]} actionButton={open} cardClick={cardClick} list='related'/>);
 
     fireEvent.click(screen.getByTestId('actionButton'));
     fireEvent.click(screen.getByTestId('clickedCard'));
@@ -227,7 +229,7 @@ describe('Comparison table should compare features of two products', function() 
 
 describe('Your Outfit should show cards of user added products', () => {
   test('expect to have arrow buttons and up to five cards', () => {
-    render(<YourOutfit products={sampleProductsArr} outfitInfo={{outfitStart: 0, outfitEnd: 2, outfitList: sampleProductsArr}} caroselClickLeft={(event) => {console.log('clicked')}} caroselClickRight={(event) => {console.log('clicked')}} addToOutfit={(event) => {console.log('added')}}/>);
+    render(<YourOutfit products={sampleProductsArr} outfitInfo={{outfitStart: 0, outfitEnd: 2, outfitList: sampleProductsArr}} caroselClickLeft={(event) => {console.log('clicked')}} caroselClickRight={(event) => {console.log('clicked')}} addToOutfit={(event) => {console.log('added')}} list='outfit'/>);
 
     const cards = screen.getAllByRole('article');
     const addCard = screen.getByText('Add to Your Outfit');
@@ -239,7 +241,7 @@ describe('Your Outfit should show cards of user added products', () => {
 
 describe('Your Outfit cards should show category, name, price, rating, and image of product', () => {
   test('expect to have all relevant information', () =>  {
-    render(<ProductCard product={sampleProductsArr[0]} />);
+    render(<ProductCard product={sampleProductsArr[0]} list='outfit'/>);
 
     const productName = screen.getByText('Bright Future Sunglasses');
     const category = screen.getByText('Accessories');
