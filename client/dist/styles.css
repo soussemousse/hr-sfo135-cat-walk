@@ -153,10 +153,11 @@ button {
   justify-content: space-between;
   align-items: flex-start;
 }
-
+/*
 .question-text {
-  /* border: 1px solid black; */
+  /* border: 1px solid black;
 }
+*/
 
 .question-item-buttons {
   display: flex;
