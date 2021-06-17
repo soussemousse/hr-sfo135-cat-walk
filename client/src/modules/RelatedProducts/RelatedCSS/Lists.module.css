@@ -11,8 +11,27 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 3px;
+<<<<<<< HEAD
   grid-template-rows: 1fr;
   margin: 10% 15%;
   height: 40%;
   width: 80%;
 }
+=======
+  grid-template-rows: repeat(1, 1fr);
+  margin: 10% 15%;
+  height: 40%;
+  width: 80%;
+  overflow: hidden;
+}
+
+.nav {
+  display: flex;
+  height: 35px;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  text-align: center;
+}
+>>>>>>> 19dcb33f7f3ef60885ad27e140773dc60b9190d3

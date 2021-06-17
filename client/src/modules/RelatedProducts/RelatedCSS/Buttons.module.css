@@ -16,6 +16,7 @@
 
 .radio {
   display: none;
+<<<<<<< HEAD
 }
 
 .nav {
@@ -33,4 +34,6 @@
 
 .nav:hover {
   color: forestgreen;
+=======
+>>>>>>> 19dcb33f7f3ef60885ad27e140773dc60b9190d3
 }

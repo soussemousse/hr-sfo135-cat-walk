@@ -21,6 +21,13 @@ const getRating = (object) => {
   }
 }
 
+const button = (list) => {
+  if (list === 'related') {
+    return <label htmlFor='actionButton' >&#9733;</label>
+  } else if (list === 'outfit') {
+    return <label htmlFor='actionButton' >&#935;</label>
+  }
+}
 function ProductCard (props) {
   let rating = getRating(props.product.ratings);
   const ratingStyle = {width: (rating / 5 * 100)};
@@ -29,7 +36,7 @@ function ProductCard (props) {
 
   return (
     <article className={style.card} data-testid='ProductCard'>
-      <span className={btnStyle.upperleft}><label>&#9733;<input type='radio' data-testid={`actionButton`} className={btnStyle.radio} onClick={(event) => {props.actionButton(props.product)}}></input></label></span>
+      <span className={btnStyle.upperleft}>{button(props.list)}<input type='radio' data-testid={`actionButton`} id='actionButton' className={btnStyle.radio} onClick={(event) => {props.actionButton(props.product)}}></input></span>
       <div className='clickableCard' onClick={(event) => {props.cardClick(props.product)}} data-testid='clickedCard'>
         <img src={props.product.productPhotos[1].thumbnail_url} className={style.pictureThumbnail} alt='No Image Available'></img><br></br>
         <div className={style.cardInfo}>
