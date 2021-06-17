@@ -21,7 +21,7 @@ class RelatedProducts extends React.Component {
       <div className={style.carosel} data-testid='list'>
         {this.props.relatedInfo.relatedStart !== 0 ? <button className={btnStyle.nav} data-testid='leftClick' onClick={(event) => {this.props.caroselClickLeft('related')}}>&larr;</button> : null}
         <div className={style.list}>
-          {this.props.products.map((product) => {
+          {this.props.products.map((product, index) => {
             return <ProductCard key={index + 'related' + product.productDetails[0]} product={product} actionButton={this.openCompare} cardClick={this.props.cardClick} list={this.props.list}/>
           })}
         </div>
