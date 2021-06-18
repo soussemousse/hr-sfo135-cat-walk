@@ -16,4 +16,24 @@
 
 .radio {
   display: none;
+<<<<<<< HEAD
+}
+
+.nav {
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+  font-size: 200%;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.nav:hover {
+  color: forestgreen;
+=======
+>>>>>>> 19dcb33f7f3ef60885ad27e140773dc60b9190d3
 }
