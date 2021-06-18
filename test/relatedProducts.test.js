@@ -157,7 +157,15 @@ describe('Related cards should have clickable functionality', function() {
     const open = jest.fn();
     const cardClick = jest.fn();
 
+<<<<<<< HEAD
     render(<ProductCard product={sampleProductsArr[0]} actionButton={open} cardClick={cardClick} list='related'/>);
+=======
+<<<<<<< HEAD
+    render(<ProductCard product={sampleProductsArr[0]} actionButton={open} cardClick={cardClick}/>);
+=======
+    render(<ProductCard product={sampleProductsArr[0]} actionButton={open} cardClick={cardClick} list='related'/>);
+>>>>>>> 19dcb33f7f3ef60885ad27e140773dc60b9190d3
+>>>>>>> 197b4a6da41ab219133bfe44388ceaade4e66ae7
 
     fireEvent.click(screen.getByTestId('actionButton'));
     fireEvent.click(screen.getByTestId('clickedCard'));
