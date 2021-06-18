@@ -58,7 +58,6 @@ class RatingsAndReviews extends React.Component {
   }
 
   render() {
-    // console.log(this.state);
     if (this.state.productReviews) {
       return (
         <div className={style.RatingsAndReviews}>

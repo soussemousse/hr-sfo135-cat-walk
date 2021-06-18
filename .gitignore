@@ -4,3 +4,5 @@ client/dist/bundle.js
 client/dist/bundle.js.gz
 coverage
 bundle.js
+bundle.[contentHash].js
+4d3654f073eac1111890.css
