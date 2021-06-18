@@ -5,7 +5,7 @@ import Related from '../modules/RelatedProducts/RelatedProductsYourOutfit.jsx';
 import RelatedSample from '../modules/RelatedProducts/SampleRelated.js';
 import RatingsAndReviews from '../modules/ratingsAndReviews/ratingsAndReviews.jsx';
 import QuestionsAndAnswers from '../modules/questionsAnswers/questionsAnswers.jsx';
-import questionsData from '../modules/questionsAnswers/sampleData_Questions.js';
+import style from './AppCss.module.css';
 
 class App extends React.Component {
   constructor (props) {
@@ -41,7 +41,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className='productPage'>
+      <div className={style.productPage}>
         <ProductOverview />
         <Related currentProduct={this.state.currentProduct} cardClick={this.cardClick}/>
         <QuestionsAndAnswers product_id={25167}/>

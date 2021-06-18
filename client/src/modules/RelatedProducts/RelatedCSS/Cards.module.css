@@ -1,20 +1,25 @@
 .card {
   background-color: gainsboro;
   border: 2px outset slategray;
-  border-radius: 3px;
-  padding: 3px;
+  padding: 3%;
+  margin: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 80%;
 }
 
+.card:hover{
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px grey, 0 4px 8px grey;
+}
+
 .pictureThumbnail {
   background-color: thistle;
   border: 2px outset slategray;
-  border-radius: 3px;
   width: 80%;
   height: 40%;
+  margin: 5%;
   display: flex;
   justify-content: center;
   align-items: flex-start;

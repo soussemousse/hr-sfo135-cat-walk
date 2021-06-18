@@ -10,7 +10,9 @@ function CompareProducts (props) {
 
   return ReactDOM.createPortal(
     <div className={style.comparisonTable} data-testid='comparisonTable'>
-      <span className={style.upperLeft}><label>&#935;<input type='radio' className={style.radio} onClick={props.close} data-testid='closeButton'></input></label></span>
+      <span className={style.upperLeft}>
+        <label>&#935;<input type='radio' className={style.radio} onClick={props.close} data-testid='closeButton'></input></label>
+      </span>
       <table className={style.compareTable}>
         <thead>
           <tr className={style.tableRow}>

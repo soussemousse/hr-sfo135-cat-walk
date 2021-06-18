@@ -1,30 +1,30 @@
 import React from 'react';
 import ComparisonRows from './ComparisonTableRow.jsx';
 
-const createCurrentObj = (currentArr) => {
-  let currentFeatures = {};
+const createCurrentObj = (currentProductInfoArr) => {
+  let currentProductFeatures = {};
 
-  currentArr.forEach(detail => {
-    currentFeatures[detail.feature] = detail.value;
+  currentProductInfoArr.forEach(detail => {
+    currentProductFeatures[detail.feature] = detail.value;
   });
 
-  return currentFeatures;
+  return currentProductFeatures;
 }
 
-const createCompareObj = (compareArr) => {
-  let compareFeatures = {};
+const createCompareObj = (compareProductInfoArr) => {
+  let compareProductFeatures = {};
 
-  compareArr.forEach(detail => {
-    compareFeatures[detail.feature] = detail.value;
+  compareProductInfoArr.forEach(detail => {
+    compareProductFeatures[detail.feature] = detail.value;
   })
 
-  return compareFeatures;
+  return compareProductFeatures;
 }
 
-const getAllFeatures = (currentObj, compareObj) => {
-  const currentKeys = Object.keys(currentObj);
-  const compareKeys = Object.keys(compareObj);
-  const allKeysArr = currentKeys.concat(compareKeys);
+const getAllFeatures = (currentProductObj, compareProductObj) => {
+  const currentProductKeys = Object.keys(currentProductObj);
+  const compareProductKeys = Object.keys(compareProductObj);
+  const allKeysArr = currentProductKeys.concat(compareProductKeys);
   const allFeaturesArr = [];
 
   allKeysArr.forEach(key => {
@@ -36,14 +36,40 @@ const getAllFeatures = (currentObj, compareObj) => {
   return allKeysArr;
 }
 
-const compareFeatures = (feature, obj1, obj2) => {
-  if (obj1[feature] && obj2[feature]) {
-    return <ComparisonRows key={feature} currentFeature={obj1[feature]} feature={feature} compareFeature={obj2[feature]} />;
-  } else if (obj1[feature] && obj2[feature] === undefined) {
-    return <ComparisonRows key={feature} currentFeature={obj1[feature]} feature={feature} compareFeature='null' />;
-  } else if (obj1[feature] === undefined && obj2[feature]) {
-    return <ComparisonRows key={feature} currentFeature='null' feature={feature} compareFeature={obj2[feature]} />;
+const compareFeatures = (feature, currentProductObj, compareProductObj) => {
+  if (currentProductObj[feature] && compareProductObj[feature]) {
+    return <ComparisonRows
+             key={feature}
+             currentFeature={currentProductObj[feature]}
+             feature={feature}
+             compareFeature={compareProductObj[feature]}
+            />;
+  } else if (currentProductObj[feature] && compareProductObj[feature] === undefined) {
+    return <ComparisonRows
+             key={feature}
+             currentFeature={currentProductObj[feature]}
+             feature={feature}
+             compareFeature='null'
+            />;
+  } else if (currentProductObj[feature] === undefined && compareProductObj[feature]) {
+    return <ComparisonRows
+             key={feature}
+             currentFeature='null'
+             feature={feature}
+             compareFeature={compareProductObj[feature]}
+            />;
   }
 }
 
-export default {createCurrentObj, createCompareObj, getAllFeatures, compareFeatures}
+const caroselBeingClicked = (list) => {
+  const listUsed = list + 'List';
+  const caroselUsed = list + 'Carosel';
+  const usedStart = list + 'Start';
+  const usedEnd = list + 'End';
+
+  const caroselInfoArray = [listUsed, caroselUsed, usedStart, usedEnd];
+
+  return caroselInfoArray;
+}
+
+export default {createCurrentObj, createCompareObj, getAllFeatures, compareFeatures, caroselBeingClicked}

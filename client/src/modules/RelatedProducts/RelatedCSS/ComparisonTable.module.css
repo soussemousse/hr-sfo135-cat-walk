@@ -12,6 +12,7 @@
   align-content: space-around;
   height: max-content;
   width: max-content;
+  box-shadow: 0 2px 2px 0 grey;
 }
 
 .compareTable {
