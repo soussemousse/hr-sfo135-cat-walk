@@ -44,6 +44,7 @@
     "babel-loader": "^8.2.2",
     "compression-webpack-plugin": "^8.0.0",
     "css-loader": "^5.2.6",
+    "dotenv": "^10.0.0",
     "eslint": "^7.27.0",
     "eslint-plugin-react": "^7.24.0",
     "html-loader": "^2.1.2",

@@ -1,5 +1,5 @@
 const questionsModel = require('../model/questionsAndAnswers.js');
-const tokenObj = require('../../token.js');
+require('dotenv').config();
 
 module.exports.getAllQuestions = (id, page, count, res) => {
   const options = {
@@ -7,7 +7,7 @@ module.exports.getAllQuestions = (id, page, count, res) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=${id}&page=${page}&count=${count}`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     }
   }
 
@@ -20,7 +20,7 @@ module.exports.getAllAnswers = (question_id, page, count , res) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${question_id}/answers?page=${page}&count=${count}`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     }
   }
 
@@ -33,7 +33,7 @@ module.exports.markHelpfulQuestion = (question_id, res) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${question_id}/helpful`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     }
   }
 
@@ -46,7 +46,7 @@ module.exports.reportQuestion = (question_id, res) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${question_id}/report`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     }
   }
 
@@ -59,7 +59,7 @@ module.exports.markHelpfulAnswer = (answer_id, res) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/answers/${answer_id}/helpful`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     }
   }
 
@@ -72,7 +72,7 @@ module.exports.reportAnswer = (answer_id, res) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/answers/${answer_id}/report`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     }
   }
 
@@ -85,7 +85,7 @@ module.exports.addQuestion = (body, res) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     },
     "data": body
   }
@@ -99,7 +99,7 @@ module.exports.addAnswer = (question_id, body, res) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${question_id}/answers`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     },
     "data": body
   }
