@@ -10,15 +10,4 @@ const reviewsAxios = (options, res) => {
     })
 };
 
-// const postAxios = (options, res) => {
-//   axios.post(options)
-//     .then((response) => {
-//       res.send(response.data)
-//     })
-//     .catch((err) => {
-//       res.send(err);
-//     })
-// };
-
 module.exports.reviewsAxios = reviewsAxios;
-// module.exports.postAxios = postAxios;

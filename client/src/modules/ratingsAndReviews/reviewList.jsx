@@ -8,7 +8,7 @@ class ReviewList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      product_id: undefined,
+      // product_id: undefined,
       rating: '',
       summary: '',
       body: '',

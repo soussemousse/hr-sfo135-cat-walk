@@ -4,7 +4,7 @@ const path = require('path');
 const port = 3001;
 const productController = require('./controller/products.js');
 const questionController = require('./controller/questions.js');
-const ratingsController = require('./controller/ratingsAndReviews.js');
+const ratingsController = require('./controller/ratings.js');
 const relatedListController = require('./controller/RelatedProductsController.js');
 
 app.listen(port, (err = `connected to ${port}`) => {
@@ -30,11 +30,7 @@ app.get('/reviews/meta/:id', (req, res) => {
   ratingsController.ratingsAndReviewsMeta(id, res);
 });
 
-app.post('/reviews', (req, res) => {
-  const id = req.params.id;
-  // res.send(req.body);
-  ratingsController.postNewReview(req.body, res);
-})
+
 // app.get('/ratings', (req, res) => {
 
 // });

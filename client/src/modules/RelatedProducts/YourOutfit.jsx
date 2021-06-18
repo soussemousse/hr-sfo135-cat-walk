@@ -12,14 +12,14 @@ class YourOutfit extends React.Component {
   render () {
     return (
       <div className={style.carosel} data-testid='list'>
-        {this.props.outfitInfo.outfitStart !== 0 ? <button className={btnStyle.nav} data-testid='clickLeft' onClick={this.props.caroselClickLeft}>&larr;</button> : null}
+        {this.props.outfitInfo.outfitStart !== 0 ? <button className={btnStyle.nav} data-testid='clickLeft' onClick={(event) => {this.props.caroselClickLeft('related')}}>&larr;</button> : null}
         <div className={style.list}>
           <AddOutfit addToOutfit={this.props.addToOutfit} currentProduct={this.props.outfitInfo.currentProduct} />
-          {this.props.outfitInfo.yourOutfit.length > 0 ? this.props.outfitInfo.yourOutfit.map((product) => {
-            return <OutfitCard key={product.id} product={product} removeFromOutfit={this.props.removeFromOutfit}/>
+          {this.props.outfitInfo.outfitList.length > 0 ? this.props.outfitInfo.outfitList.map((product, index) => {
+            return <ProductCard key={index + 'outfit' + product.productDetails[0]} product={product} actionButton={this.props.removeFromOutfit} cardClick={this.props.cardClick} list={this.props.list}/>
           }) : null}
         </div>
-        {this.props.outfitInfo.outfitEnd < this.props.outfitInfo.yourOutfit.length ? <button className={btnStyle.nav} data-testid='clickRight' onClick={this.props.caroselClickRight}>&rarr;</button> : null}
+        {this.props.outfitInfo.outfitEnd < this.props.outfitInfo.outfitList.length ? <button className={btnStyle.nav} data-testid='clickRight' onClick={(event) => {this.props.caroselClickRight('related')}}>&rarr;</button> : null}
       </div>
     )
   }

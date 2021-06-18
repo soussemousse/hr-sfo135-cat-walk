@@ -1,9 +1,12 @@
 const path = require('path');
+const CompressionPlugin = require("compression-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 
 module.exports = {
   entry: path.join(__dirname, '/client/index.js'),
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.[contentHash].js',
     path: path.join(__dirname, '/client/dist'),
   },
   mode: 'development',
@@ -29,37 +32,22 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
-      }
+      },
+      {
+        test: /\.html$/i,
+        use: 'html-loader'
+      },
     ]
-  }
+  },
+  plugins: [
+    // new CompressionPlugin({
+    //   filename: '/bundle.[contentHash].js.gz',
+    //   deleteOriginalAssets: true
+    // }),
+    new HtmlWebpackPlugin({
+      template: './client/dist/template.html'
+    }),
+  ],
 };
 
 
-// var path = require('path');
-// var SRC_DIR = path.join(__dirname, '/client/src');
-// var DIST_DIR = path.join(__dirname, '/client/dist');
-
-// module.exports = {
-//   entry: `${SRC_DIR}/index.js`,
-//   output: {
-//     filename: 'bundle.js',
-//     path: DIST_DIR
-//   },
-//   module: {
-//     rules: [
-//       {
-//         test: /\.(js|jsx)?/,
-//         exclude: /node_modules/,
-//         use: {
-//           loader: "babel-loader",
-//           options: {
-//             presets: [
-//               "@babel/preset-env",
-//               "@babel/preset-react"
-//             ]
-//           }
-//         }
-//       }
-//     ]
-//   }
-// };
