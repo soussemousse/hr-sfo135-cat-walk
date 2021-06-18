@@ -1,0 +1,17 @@
+.reviewForm {
+  z-index: 1
+}
+
+/* .reviewFormCharacteristics {
+} */
+
+.reviewStarRating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.reviewStarRating > span:hover:before,
+.reviewStarRating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
