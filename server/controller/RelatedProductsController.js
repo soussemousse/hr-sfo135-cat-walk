@@ -1,5 +1,5 @@
 const relatedProductsModel = require('../model/RelatedProductsModel.js');
-const tokenObj = require('../../token.js')
+require('dotenv').config();
 
 const relatedListController = (id, res) => {
   const relatedOption = {
@@ -7,7 +7,7 @@ const relatedListController = (id, res) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}/related`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     }
   }
 
@@ -20,7 +20,7 @@ const relatedProductsController = (id) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     }
   }
 
@@ -33,7 +33,7 @@ const relatedPhotosController = (id) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}/styles`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     }
   }
 
@@ -46,7 +46,7 @@ const relatedRatingsController = (id) => {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta?product_id=${id}`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     }
   }
 

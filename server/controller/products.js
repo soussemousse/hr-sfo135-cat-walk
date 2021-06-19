@@ -1,5 +1,5 @@
 const productModel = require('../model/productDetailOverview.js');
-const tokenObj = require('../../token.js');
+require('dotenv').config();
 
 const productDetailOverview = function (id, res) {
   const options = {
@@ -7,7 +7,7 @@ const productDetailOverview = function (id, res) {
     "url": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}`,
     "headers": {
       "user-agent": 'request',
-      "Authorization": tokenObj.token
+      "Authorization": process.env.token
     }
   }
 
