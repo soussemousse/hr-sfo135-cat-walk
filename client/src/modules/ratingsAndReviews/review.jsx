@@ -7,6 +7,13 @@ class Review extends React.Component {
     this.state = {};
   }
 
+  displayDate() {
+    const reviewDate = new Date(this.props.currentReview.date);
+    console.log(reviewDate);
+    const localDate = reviewDate.toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric'});
+    return (<div className={style.reviewDate}>{localDate}</div>);
+  }
+
   render() {
     const id = this.props.review_id;
     const review = this.props.currentReview;
@@ -18,7 +25,7 @@ class Review extends React.Component {
       <div className={style.review}>
         <div className={style.reviewRating}>{starRating}</div>
         <div className={style.reviewUsername}>{user}</div>
-        <div className={style.reviewDate}>{review.date}</div>
+        {this.displayDate()}
         <div className={style.reviewSummary}>{review.summary}</div>
         <p className={style.reviewBody}>{review.body}</p>
         {review.recommend ? <div className={style.reviewRecommend}><div className={style.reviewRecommendCheckMark}>&#10003;</div> I recommend this product</div> : null}

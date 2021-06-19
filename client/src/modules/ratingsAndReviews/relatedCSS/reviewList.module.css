@@ -1,3 +1,5 @@
 .reviewList {
   padding: 5px;
+  height: 450px;
+  overflow: auto;
 }
