@@ -32,7 +32,7 @@ const postNewReview = function (reqBody, res) {
     data: reqBody,
     headers: {
       "user-agent": 'request',
-      Authorization: tokenObj.token
+      Authorization: process.env.token
     },
   }
   ratingsModel.reviewsAxios(options, res);
