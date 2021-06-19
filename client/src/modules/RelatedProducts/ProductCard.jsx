@@ -21,13 +21,34 @@ const getRating = (object) => {
   }
 }
 
-const button = (list) => {
+const actionButton = (list, product, callback) => {
   if (list === 'related') {
-    return <label htmlFor='actionButton' >&#9733;</label>
-  } else if (list === 'outfit') {
-    return <label htmlFor='actionButton' >&#935;</label>
+    return (
+      <label>&#9733;
+        <input
+            type='radio'
+            id='actionButton'
+            data-testid='actionButton'
+            className={btnStyle.radio}
+            onClick={(event) => {callback(product)}}
+        ></input>
+      </label>
+    )
+  } else {
+    return (
+      <label>&#935;
+        <input
+            type='radio'
+            id='actionButton'
+            data-testid='actionButton'
+            className={btnStyle.radio}
+            onClick={(event) => {callback(product)}}
+          ></input>
+      </label>
+    )
   }
 }
+
 function ProductCard (props) {
   let rating = getRating(props.product.ratings);
   const ratingStyle = {width: (rating / 5 * 100)};
@@ -36,14 +57,8 @@ function ProductCard (props) {
 
   return (
     <article className={style.card} data-testid='ProductCard'>
-      <span className={btnStyle.upperleft}>{button(props.list)}
-        <input
-          type='radio'
-          data-testid={`actionButton`}
-          id='actionButton'
-          className={btnStyle.radio}
-          onClick={(event) => {props.actionButton(props.product)}}>
-        </input>
+      <span className={btnStyle.upperleft}>
+      {actionButton(props.list, props.product, props.actionButton)}
       </span>
       <div
         className='clickableCard'

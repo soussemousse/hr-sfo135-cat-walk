@@ -134,7 +134,8 @@ class Related extends React.Component {
           caroselClickRight={this.caroselClickRight}
           caroselClickLeft={this.caroselClickLeft}
           comparison={this.comparisonClick}
-          cardClick={this.relatedCardClick} list='related'
+          cardClick={this.relatedCardClick}
+          list='related'
         />
         <h3 className={style.h3}>Your Outfit</h3>
         <YourOutfit
