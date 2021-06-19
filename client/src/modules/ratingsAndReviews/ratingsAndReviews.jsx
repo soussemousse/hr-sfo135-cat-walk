@@ -9,10 +9,9 @@ class RatingsAndReviews extends React.Component {
     super(props)
     this.state = {
       productReviews: undefined,
+      meta: undefined,
       openPortal: false,
       reviewsToRender: 0,
-      meta: {},
-
     };
     this.toggleNewReviewForm = this.toggleNewReviewForm.bind(this);
     this.showMoreReviewsButtonPressed = this.showMoreReviewsButtonPressed.bind(this);

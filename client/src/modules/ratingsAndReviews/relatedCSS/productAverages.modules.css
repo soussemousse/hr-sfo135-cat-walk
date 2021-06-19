@@ -1,4 +1,11 @@
 .averages {
   padding: 50px;
-  background-color: grey;
+  background-color: rgb(240, 240, 240);
+}
+
+.averageRating {
+  color: red;
+  font-size: 40px;
+  font-weight: bold;
+  text-shadow: 1px 2px rgb(220, 220, 220);
 }

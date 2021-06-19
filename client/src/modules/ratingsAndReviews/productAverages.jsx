@@ -10,12 +10,15 @@ class ProductAverages extends React.Component {
   }
 
   render () {
-    console.log('meta ', this.props.list.meta);
-    return (
-      <div className={style.averages}>
-        product averages
-      </div>
-    )
+    if (this.props.list.productReviews) {
+      const ratingsArray = this.props.list.productReviews.map(review => review.rating);
+      const averageRating = ratingsArray.map((rating) => Number.parseInt(rating)).reduce((total, next) => total + next) / ratingsArray.length;
+      return (
+        <div className={style.averages}>
+          <div className={style.averageRating}>{averageRating.toString().substring(0, 3)}</div>
+        </div>
+      )
+    }
   }
 }
 
