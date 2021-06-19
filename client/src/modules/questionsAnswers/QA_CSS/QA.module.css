@@ -1,0 +1,49 @@
+.QuestionsAndAnswers {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  margin: auto;
+  width: 70%;
+  border: 3px solid green;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttons > * {
+  background: none;
+  border: 1px solid black;
+  font-weight: bold;
+  margin-right: 20px;
+  padding: 15px;
+}
+
+.list {
+  /* border: 2px solid yellow; */
+  padding-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formelement {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form textarea {
+  resize: vertical;
+}

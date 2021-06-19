@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import style from './QA_CSS/answerItem.module.css';
 
 const Answer = (props) => {
   var wasHelpful = false;
@@ -56,17 +57,17 @@ const Answer = (props) => {
   var username = (props.answer.answerer_id === 'Seller') ? <b>Seller</b> : <>{props.answer.answerer_id}</>;
 
   return (
-    <div className="answer">
+    <div className={style.answer}>
       <div className="answer-text">{props.answer.body}</div>
 
       {/* <div className="answer-pics"></div> */}
 
-      <div className="answer-info">
-          <div className="answer-user">{`by `}{username}{`, ${getFormattedDate()}`}</div>
+      <div className={style.answerinfo}>
+          <div className={style.answeruser}>{`by `}{username}{`, ${getFormattedDate()}`}</div>
 
-          <div className="answer-helpful">{`Helpful? `}<button className="answer-helpful-button" onClick={handleAnswerHelpfulButton}><u>Yes</u></button>{` (${helpfulness})`}</div>
+          <div className={style.answerhelpful}>{`Helpful? `}<button className={style.helpfulbutton} onClick={handleAnswerHelpfulButton}><u>Yes</u></button>{` (${helpfulness})`}</div>
 
-          <button className="answer-report-button" onClick={handleAnswerReportButton}><u>{(wasReported) ? 'Reported' : 'Report'}</u></button>
+          <button className={style.reportbutton} onClick={handleAnswerReportButton}><u>{(wasReported) ? 'Reported' : 'Report'}</u></button>
 
       </div>
     </div>

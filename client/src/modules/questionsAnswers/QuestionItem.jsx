@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AnswersList from './AnswersList.jsx';
 import axios from 'axios';
+import style from './QA_CSS/questionItem.module.css';
 
 const QuestionItem = (props) => {
   const [helpfulness, setHelpfulness] = useState(props.QA.question_helpfulness);
@@ -30,15 +31,15 @@ const QuestionItem = (props) => {
   }
 
   return (
-    <article className="question-item">
+    <article className={style.question}>
 
-      <div className="question-info">
+      <div className={style.info}>
         <h4 className="question-text"><strong>{`Q: ${props.QA.question_body}`}</strong></h4>
 
-        <div className="question-item-buttons">
-          <h6 className="question-helpful">{`Helpful? `}<button className="question-helpful-button" onClick={handleQuestionHelpfulButton}><u>Yes</u></button>{` (${helpfulness})`}</h6>
+        <div className={style.buttons}>
+          <h6 className={style.helpful}>{`Helpful? `}<button className={style.helpfulbutton} onClick={handleQuestionHelpfulButton}><u>Yes</u></button>{` (${helpfulness})`}</h6>
 
-          <button className="answer-add-button"><u>Add Answer</u></button>
+          <button className={style.addanswerbutton}><u>Add Answer</u></button>
         </div>
 
       </div>
