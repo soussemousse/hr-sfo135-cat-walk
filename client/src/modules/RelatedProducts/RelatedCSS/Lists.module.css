@@ -10,7 +10,9 @@
 .list {
   display: grid;
   grid-template-columns: repeat(5, 20%);
-  gap: 3px;
+  gap: 1vh;
   grid-template-rows: repeat(1, auto);
+  grid-auto-flow: column;
+  padding: 3vh;
+  overflow: scroll;
 }
-
