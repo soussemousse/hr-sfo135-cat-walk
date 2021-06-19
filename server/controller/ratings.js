@@ -1,5 +1,5 @@
 const ratingsModel = require('../model/ratingsAndReviews.js');
-const tokenObj = require('../../token.js');
+require('dotenv').config();
 
 const ratingsAndReviews = function (id, res) {
   const options = {
@@ -7,7 +7,7 @@ const ratingsAndReviews = function (id, res) {
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews?product_id=${id}&count=${1000}`,
     headers: {
       "user-agent": 'request',
-      Authorization: tokenObj.token
+      Authorization: process.env.token
     }
   }
   ratingsModel.reviewsAxios(options, res);
@@ -19,7 +19,7 @@ const ratingsAndReviewsMeta = function (id, res) {
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta/?product_id=${id}&count=${1000}`,
     headers: {
       "user-agent": 'request',
-      Authorization: tokenObj.token
+      Authorization: process.env.token
     }
   }
   ratingsModel.reviewsAxios(options, res);

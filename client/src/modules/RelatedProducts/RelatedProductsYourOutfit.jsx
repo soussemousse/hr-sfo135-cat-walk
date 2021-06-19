@@ -3,6 +3,7 @@ import Axios from 'axios';
 import RelatedProducts from './RelatedProducts.jsx';
 import YourOutfit from './YourOutfit.jsx';
 import style from './RelatedCSS/RelatedOutfit.module.css';
+import helpers from './helpers.jsx';
 
 class Related extends React.Component {
   constructor (props) {
@@ -36,42 +37,36 @@ class Related extends React.Component {
     this.setState({outfitList: yourOutfit});
   }
 
-  relatedCardClick(product) {
-    this.setState({currentProduct: product});
-    this.props.cardClick(product);
-    this.getRelatedProducts(product.productDetails[0]);
+  relatedCardClick(productCardClicked) {
+    this.setState({currentProduct: productCardClicked});
+    this.props.cardClick(productCardClicked);
+    this.getRelatedProducts(productCardClicked.productDetails[0]);
   }
 
   caroselClickRight (list) {
-    const listUsed = list + 'List';
-    const caroselUsed = list + 'Carosel';
-    const usedStart = list + 'Start';
-    const usedEnd = list + 'End';
-    const start = this.state[usedStart] + 1;
-    const end = this.state[usedEnd] + 1;
-    const carosel = this.state[listUsed].slice(start, end);
+    const caroselInfoArray = helpers.caroselBeingClicked(list);
+    const start = this.state[caroselInfoArray[2]] + 1;
+    const end = this.state[caroselInfoArray[3]] + 1;
+    const carosel = this.state[caroselInfoArray[0]].slice(start, end);
 
-    this.setState({[caroselUsed]: carosel, [usedStart]: start, [usedEnd]: end});
+    this.setState({[caroselInfoArray[1]]: carosel, [caroselInfoArray[2]]: start, [caroselInfoArray[3]]: end});
   }
 
   caroselClickLeft (list) {
-    const listUsed = list + 'List';
-    const caroselUsed = list + 'Carosel';
-    const usedStart = list + 'Start';
-    const usedEnd = list + 'End';
-    const start = this.state[usedStart] - 1;
-    const end = this.state[usedEnd] - 1;
-    const carosel = this.state[listUsed].slice(start, end);
+    const caroselInfoArray = helpers.caroselBeingClicked(list);
+    const start = this.state[caroselInfoArray[2]] - 1;
+    const end = this.state[caroselInfoArray[3]] - 1;
+    const carosel = this.state[caroselInfoArray[0]].slice(start, end);
 
-    this.setState({[caroselUsed]: carosel, [usedStart]: start, [usedEnd]: end});
+    this.setState({[caroselInfoArray[1]]: carosel, [caroselInfoArray[2]]: start, [caroselInfoArray[3]]: end});
   }
 
-  addToOutfit (product) {
+  addToOutfit (currentProduct) {
     const newOutfit = this.state.outfitList.slice();
     const outfitIds = newOutfit.map(product => {return product.productDetails[0]});
-    console.log('addProduct', outfitIds, 'productID: ', product.productDetails[0]);
-    if (outfitIds.includes(product.productDetails[0]) === false) {
-      newOutfit.push(product);
+
+    if (outfitIds.includes(currentProduct.productDetails[0]) === false) {
+      newOutfit.push(currentProduct);
       this.setState({outfitList: newOutfit});
       localStorage.setItem('yourOutfit', JSON.stringify(newOutfit));
     } else {
@@ -79,10 +74,10 @@ class Related extends React.Component {
     }
   }
 
-  removeFromOutfit (product) {
+  removeFromOutfit (outfitCardProduct) {
     const oldOutfit = this.state.outfitList.slice();
     const outfitIds = oldOutfit.map(product => {return product.productDetails[0]});
-    const productId = outfitIds.indexOf(product.productDetails[0]);
+    const productId = outfitIds.indexOf(outfitCardProduct.productDetails[0]);
 
     oldOutfit.splice(productId, 1);
 
@@ -133,9 +128,24 @@ class Related extends React.Component {
     return (
       <div className={style.relatedProducts}>
         <h3 className={style.h3}>Related Products</h3>
-        <RelatedProducts relatedInfo={this.state} products={this.state.relatedCarosel} caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} comparison={this.comparisonClick} cardClick={this.relatedCardClick} list='related'/>
+        <RelatedProducts
+          relatedInfo={this.state}
+          products={this.state.relatedCarosel}
+          caroselClickRight={this.caroselClickRight}
+          caroselClickLeft={this.caroselClickLeft}
+          comparison={this.comparisonClick}
+          cardClick={this.relatedCardClick} list='related'
+        />
         <h3 className={style.h3}>Your Outfit</h3>
-        <YourOutfit caroselClickRight={this.caroselClickRight} caroselClickLeft={this.caroselClickLeft} addToOutfit={this.addToOutfit} outfitInfo={this.state} removeFromOutfit={this.removeFromOutfit} cardClick={this.relatedCardClick} list='outfit'/>
+        <YourOutfit
+          caroselClickRight={this.caroselClickRight}
+          caroselClickLeft={this.caroselClickLeft}
+          addToOutfit={this.addToOutfit}
+          outfitInfo={this.state}
+          removeFromOutfit={this.removeFromOutfit}
+          cardClick={this.relatedCardClick}
+          list='outfit'
+        />
       </div>
     )
   }
