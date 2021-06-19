@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import Axios from 'axios';
 import ProductOverview from '../modules/ProductOverview/ProductOverview.jsx';
 import Related from '../modules/RelatedProducts/RelatedProductsYourOutfit.jsx';
@@ -6,6 +6,8 @@ import RelatedSample from '../modules/RelatedProducts/SampleRelated.js';
 import RatingsAndReviews from '../modules/ratingsAndReviews/ratingsAndReviews.jsx';
 import QuestionsAndAnswers from '../modules/questionsAnswers/questionsAnswers.jsx';
 import style from './AppCss.module.css';
+//const Related = React.lazy(() => import('../modules/RelatedProducts/RelatedProductsYourOutfit.jsx'));
+//import Load from './Loading.jsx';
 
 class App extends React.Component {
   constructor (props) {
@@ -32,7 +34,6 @@ class App extends React.Component {
           productPhotos: response.data[1],
           ratings: response.data[2]
         }});
-        console.log(this.state.currentProduct);
       })
       .catch(err => {
         console.log(err);
