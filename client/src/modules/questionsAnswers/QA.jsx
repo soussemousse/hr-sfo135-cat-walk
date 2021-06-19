@@ -5,6 +5,7 @@ import QuestionItem from './QuestionItem.jsx';
 import SearchBox from './SearchBox.jsx';
 import axios from 'axios';
 import Modal from './Modal.jsx';
+import style from './QA_CSS/QA.module.css';
 
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
@@ -85,7 +86,7 @@ class QuestionsAndAnswers extends React.Component {
       }
     }
 
-    console.log('filtered: ', filtered);
+    // console.log('filtered: ', filtered);
 
     this.setState({
       filteredQuestions: filtered,
@@ -102,7 +103,7 @@ class QuestionsAndAnswers extends React.Component {
 
     if (searchTerm.length >= 3) {
 
-      console.log(searchTerm);
+      // console.log(searchTerm);
 
       this.setState({
         filterON: true
@@ -165,13 +166,13 @@ class QuestionsAndAnswers extends React.Component {
     // console.log('render filtered: ', this.state.filteredQuestions);
     // console.log('prev visible: ', this.prevVisible);
     return (
-      <div className="QuestionsAndAnswers">
+      <div className={style.QuestionsAndAnswers}>
 
         <h3>{'QUESTIONS & ANSWERS'} </h3>
 
         <SearchBox handleInputChange={this.handleSearchBarInputChange}/>
 
-        <div className="questions-list">
+        <div className={style.list}>
         {this.state.visibleQuestions.map((question, index) => {
           return <QuestionItem QA={question} key={index} />
         })}
@@ -184,20 +185,20 @@ class QuestionsAndAnswers extends React.Component {
         <>
           <h3>Ask Your Question</h3>
           <h4>About the [Camo Onesie]</h4>
-          <form onSubmit={this.handleAddQuestionSubmit} className="QA-form" id="Q-form">
+          <form onSubmit={this.handleAddQuestionSubmit} className={style.form} id="Q-form">
 
-            <div className="QA-form-element">
+            <div className={style.formelement}>
               <label>Your Question: <em><small>(Required)</small></em></label>
               <textarea id="QA-body" type="text" maxLength="10" className="QA-textarea" required="required"></textarea>
             </div>
 
-            <div className="QA-form-element">
+            <div className={style.formelement}>
               <label>Your Nickname: <em><small>(Optional)</small></em></label>
               <input id="QA-name" type="text" placeholder="Example: jackson11!" maxLength="5"></input>
               <em><small>For privacy reasons, do not use your full name or email address</small></em>
             </div>
 
-            <div className="QA-form-element">
+            <div className={style.formelement}>
                 <label>Your Email: <em><small>(Required)</small></em></label>
                 <input id="QA-email" type="email" placeholder="Why did you like the product or not?" maxLength="20" required="required"></input>
                 <em><small>For authentication reasons, you will not be emailed</small></em>
@@ -208,7 +209,7 @@ class QuestionsAndAnswers extends React.Component {
 
         </>} handleClose={this.modalClose}/> : null}
 
-        <div className="question-buttons">
+        <div className={style.buttons}>
         {(((!this.state.filterON) ? this.state.allQuestions.length : this.state.filteredQuestions.length) > this.state.count) ? <button id="questions-load-button" onClick={this.handleLoadQuestionsClick}> MORE ANSWERED QUESTIONS </button> : <></>}
 
         <button id="questions-add-button" onClick={this.modalOpen}> ADD A QUESTION + </button>
