@@ -1,6 +1,5 @@
 import React from 'react';
-//import QuestionsList from './QuestionsList.jsx';
-//import QuestionsList2 from './QuestionsList2.jsx';
+import QuestionsList from './QuestionsList.jsx';
 import QuestionItem from './QuestionItem.jsx';
 import SearchBox from './SearchBox.jsx';
 import axios from 'axios';
@@ -86,8 +85,6 @@ class QuestionsAndAnswers extends React.Component {
       }
     }
 
-    // console.log('filtered: ', filtered);
-
     this.setState({
       filteredQuestions: filtered,
       count: 2,
@@ -102,9 +99,6 @@ class QuestionsAndAnswers extends React.Component {
     console.log('prev: ', this.prevVisible);
 
     if (searchTerm.length >= 3) {
-
-      // console.log(searchTerm);
-
       this.setState({
         filterON: true
       })
@@ -161,10 +155,6 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
-    // console.log('visible: ', this.state.visibleQuestions);
-    // console.log('all: ', this.state.allQuestions);
-    // console.log('render filtered: ', this.state.filteredQuestions);
-    // console.log('prev visible: ', this.prevVisible);
     return (
       <div className={style.QuestionsAndAnswers}>
 
@@ -172,14 +162,13 @@ class QuestionsAndAnswers extends React.Component {
 
         <SearchBox handleInputChange={this.handleSearchBarInputChange}/>
 
-        <div className={style.list}>
+        {/* <div className={style.list}>
         {this.state.visibleQuestions.map((question, index) => {
           return <QuestionItem QA={question} key={index} />
         })}
-      </div>
-{/*
+      </div> */}
 
-        <QuestionsList2 questions={this.state.visibleQuestions} product_id={this.state.product_id}/> */}
+        <QuestionsList questions={this.state.visibleQuestions} product_id={this.state.product_id}/>
 
         {(this.state.modal) ? <Modal content={
         <>
