@@ -13,7 +13,7 @@ class RelatedProducts extends React.Component {
     }
   }
 
-  openCompare = (productOnCarad) => {this.setState({compare: true, compareProduct: product})};
+  openCompare = (productOnCard) => {this.setState({compare: true, compareProduct: productOnCard})};
   closeCompare = (event) => {this.setState({compare: false})};
 
   render () {
