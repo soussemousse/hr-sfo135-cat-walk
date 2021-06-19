@@ -1,0 +1,12 @@
+.answerslist {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 100%;
+}
+
+.answersbox {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  white-space: pre-wrap;
+}

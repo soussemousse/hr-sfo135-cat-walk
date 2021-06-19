@@ -1,0 +1,27 @@
+.answer {
+  border: 1px solid blue;
+  margin-bottom: 10px;
+}
+
+.answerinfo {
+  display: flex;
+  flex-direction: row;
+  font-size: small;
+}
+
+.answeruser {
+  padding-right: 8px;
+}
+
+.answerhelpful {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.reportbutton, .helpfulbutton {
+  /* padding-left: 8px; */
+  background: none;
+  border: none;
+}

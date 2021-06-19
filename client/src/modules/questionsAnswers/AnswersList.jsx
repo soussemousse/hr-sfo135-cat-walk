@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Answer from './Answer.jsx';
+import AnswerItem from './AnswerItem.jsx';
 import axios from 'axios';
+import style from './QA_CSS/answersList.module.css';
 
 const AnswersList = (props) => {
   const [visibleAnswers, setVisibleAnswers] = useState([]);
@@ -64,12 +65,12 @@ const AnswersList = (props) => {
   }
 
   return (
-    <div className="answers-list">
+    <div className={style.answerslist}>
       <div><strong>A: </strong></div>
 
-      <div className="answers-box">
+      <div className={style.answersbox}>
         {visibleAnswers.map((answer, index) => {
-          return <Answer answer={answer} key={index}/>
+          return <AnswerItem answer={answer} key={index}/>
         })}
 
         {(allAnswers.length > 2) ? <button className="answers-load-button" onClick={handleLoadAnswersClick}>{(buttonExpand) ? 'LOAD MORE ANSWERS' : 'COLLAPSE ANSWERS'}</button> : <></>}
