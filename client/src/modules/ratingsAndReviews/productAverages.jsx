@@ -10,6 +10,7 @@ class ProductAverages extends React.Component {
   }
 
   render () {
+    console.log('meta ', this.props.list.meta);
     return (
       <div className={style.averages}>
         product averages
