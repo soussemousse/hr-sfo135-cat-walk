@@ -9,12 +9,13 @@
   transform: translate(-50%, 0);
   border: 2px outset slategray;
   border-radius: 3px;
-  background-color: rgb(215, 242, 253);
+  background-color: rgba(202, 200, 200);
   justify-content: center;
   align-content: space-around;
   box-shadow: 0 2px 2px 0 grey;
   animation-name: modalFade;
   animation-duration: .7s;
+  padding: 20vh;
 }
 
 @keyframes modalFade {

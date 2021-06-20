@@ -8,11 +8,8 @@
 }
 
 .list {
-  display: grid;
-  grid-template-columns: repeat(5, 20%);
-  gap: 1vh;
-  grid-template-rows: repeat(1, auto);
-  grid-auto-flow: column;
+  display: flex;
+  justify-content: flex-start;
   padding: 3vh;
   overflow: scroll;
 }

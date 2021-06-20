@@ -3,7 +3,6 @@ import ProductCard from './ProductCard.jsx';
 import AddOutfit from './AddProductCard.jsx';
 import style from './RelatedCSS/Lists.module.css';
 import btnStyle from './RelatedCSS/Buttons.module.css';
-import cardStyle from './RelatedCSS/Cards.module.css';
 
 class YourOutfit extends React.Component {
   constructor (props) {
@@ -17,7 +16,7 @@ class YourOutfit extends React.Component {
         ? <button
             className={btnStyle.nav}
             data-testid='clickLeft'
-            onClick={(event) => {this.props.caroselClickLeft('related')}}
+            onClick={(event) => {this.props.caroselClickLeft('outfit')}}
           >&larr;</button>
         : null}
         <div className={style.list}>
@@ -26,7 +25,7 @@ class YourOutfit extends React.Component {
             currentProduct={this.props.outfitInfo.currentProduct}
           />
           {this.props.outfitInfo.outfitList.length > 0
-          ? this.props.outfitInfo.outfitList.map((product, index) => {
+          ? this.props.outfitInfo.outfitCarosel.map((product, index) => {
               return <ProductCard
                        key={index + 'outfit' + product.productDetails[0]}
                        product={product}
@@ -41,7 +40,7 @@ class YourOutfit extends React.Component {
           ? <button
               className={btnStyle.nav}
               data-testid='clickRight'
-              onClick={(event) => {this.props.caroselClickRight('related')}}
+              onClick={(event) => {this.props.caroselClickRight('outfit')}}
             >&rarr;</button>
           : null}
       </div>
