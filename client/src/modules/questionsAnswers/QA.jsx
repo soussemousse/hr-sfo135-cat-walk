@@ -54,9 +54,9 @@ class QuestionsAndAnswers extends React.Component {
   handleAddQuestionSubmit(e) {
       e.preventDefault(e);
 
-      var body = document.getElementById("QA-body").value;
-      var name = document.getElementById("QA-name").value;
-      var email = document.getElementById("QA-email").value;
+      var body = document.getElementById("body").value;
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
 
       axios({
         method: "post",
@@ -76,11 +76,10 @@ class QuestionsAndAnswers extends React.Component {
 
   filterQuestions(searchTerm) {
     var questions = this.state.allQuestions;
-    console.log('filter questions: ', questions);
     var filtered = [];
 
     for (var i = 0; i < questions.length; i++) {
-      if (questions[i].question_body.indexOf(searchTerm) > -1) {
+      if (questions[i].question_body.toUpperCase().indexOf(searchTerm) > -1) {
         filtered.push(questions[i]);
       }
     }
@@ -93,16 +92,14 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   handleSearchBarInputChange(e) {
-    var searchTerm = e.target.value;
+    var searchTerm = e.target.value.toUpperCase();
 
     this.prevVisible = this.prevVisible || this.state.visibleQuestions;
-    console.log('prev: ', this.prevVisible);
 
     if (searchTerm.length >= 3) {
       this.setState({
         filterON: true
       })
-
       this.filterQuestions(searchTerm);
     } else {
       this.setState({
@@ -170,38 +167,14 @@ class QuestionsAndAnswers extends React.Component {
 
         <QuestionsList questions={this.state.visibleQuestions} product_id={this.state.product_id}/>
 
-        {(this.state.modal) ? <Modal content={
-        <>
-          <h3>Ask Your Question</h3>
-          <h4>About the [Camo Onesie]</h4>
-          <form onSubmit={this.handleAddQuestionSubmit} className={style.form} id="Q-form">
 
-            <div className={style.formelement}>
-              <label>Your Question: <em><small>(Required)</small></em></label>
-              <textarea id="QA-body" type="text" maxLength="10" className="QA-textarea" required="required"></textarea>
-            </div>
 
-            <div className={style.formelement}>
-              <label>Your Nickname: <em><small>(Optional)</small></em></label>
-              <input id="QA-name" type="text" placeholder="Example: jackson11!" maxLength="5"></input>
-              <em><small>For privacy reasons, do not use your full name or email address</small></em>
-            </div>
+        {(this.state.modal) ? <Modal handleSubmit={this.handleAddQuestionSubmit} handleClose={this.modalClose} /> : null}
 
-            <div className={style.formelement}>
-                <label>Your Email: <em><small>(Required)</small></em></label>
-                <input id="QA-email" type="email" placeholder="Why did you like the product or not?" maxLength="20" required="required"></input>
-                <em><small>For authentication reasons, you will not be emailed</small></em>
-            </div>
+        <div className={style.questionbuttons}>
+          {(((!this.state.filterON) ? this.state.allQuestions.length : this.state.filteredQuestions.length) > this.state.count) ? <button id="questions-load-button" onClick={this.handleLoadQuestionsClick}> MORE ANSWERED QUESTIONS </button> : <></>}
 
-            <button>Submit</button>
-          </form>
-
-        </>} handleClose={this.modalClose}/> : null}
-
-        <div className={style.buttons}>
-        {(((!this.state.filterON) ? this.state.allQuestions.length : this.state.filteredQuestions.length) > this.state.count) ? <button id="questions-load-button" onClick={this.handleLoadQuestionsClick}> MORE ANSWERED QUESTIONS </button> : <></>}
-
-        <button id="questions-add-button" onClick={this.modalOpen}> ADD A QUESTION + </button>
+          <button id="questions-add-button" onClick={this.modalOpen}> ADD A QUESTION + </button>
         </div>
 
       </div>

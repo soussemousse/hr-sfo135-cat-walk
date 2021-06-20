@@ -54,20 +54,34 @@ const Answer = (props) => {
     .catch(err => {console.log(err);})
   }
 
-  var username = (props.answer.answerer_id === 'Seller') ? <b>Seller</b> : <>{props.answer.answerer_id}</>;
+  var username = (props.answer.answerer_name === 'Seller') ? <b>Seller</b> : <>{props.answer.answerer_name}</>;
+
+  // var helpfulbutton = (wasHelpful) ? <span className={style.checked}>&#10003;</span> : <u>Yes</u>;
 
   return (
     <div className={style.answer}>
-      <div className="answer-text">{props.answer.body}</div>
+      <div className={style.answertext}>{props.answer.body}</div>
 
       {/* <div className="answer-pics"></div> */}
 
       <div className={style.answerinfo}>
-          <div className={style.answeruser}>{`by `}{username}{`, ${getFormattedDate()}`}</div>
+          <span className={style.answeruser}>{`by `}{username}{`, ${getFormattedDate()}`}</span>
 
-          <div className={style.answerhelpful}>{`Helpful? `}<button className={style.helpfulbutton} onClick={handleAnswerHelpfulButton}><u>Yes</u></button>{` (${helpfulness})`}</div>
+          <span className={style.divider}>|</span>
 
-          <button className={style.reportbutton} onClick={handleAnswerReportButton}><u>{(wasReported) ? 'Reported' : 'Report'}</u></button>
+          {/* <span className={style.answerhelpful}>{`Helpful? `}<button className={style.helpfulbutton} onClick={handleAnswerHelpfulButton}>{helpfulbutton}</button>{` (${helpfulness})`}</span> */}
+
+          <span>Helpful? </span>
+
+          {(!wasHelpful) ? <button className={style.helpfulbutton} onClick={handleAnswerHelpfulButton}><u>Yes</u></button> : <span style={{color: "green"}}>&#10003;</span>}
+
+          <span>{` (${helpfulness}) `}</span>
+
+          <span className={style.divider}>|</span>
+{/*
+          <button className={style.reportbutton} onClick={handleAnswerReportButton}><u>{(wasReported) ? 'Reported' : 'Report'}</u></button> */}
+
+          {(!wasReported) ? <button className={style.reportbutton} onClick={handleAnswerReportButton}><u>Report</u></button> : <span style={{color: "red"}}><u>Reported</u></span>}
 
       </div>
     </div>

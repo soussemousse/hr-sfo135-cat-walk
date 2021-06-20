@@ -65,17 +65,19 @@ const AnswersList = (props) => {
   }
 
   return (
-    <div className={style.answerslist}>
+    <div className={style.answersbox}>
       <div><strong>A: </strong></div>
 
-      <div className={style.answersbox}>
-        {visibleAnswers.map((answer, index) => {
-          return <AnswerItem answer={answer} key={index}/>
-        })}
+      <div className={style.wrapper}>
+        <div className={style.answerslist}>
+          {visibleAnswers.map((answer, index) => {
+            return <AnswerItem answer={answer} key={index}/>
+          })}
+        </div>
 
-        {(allAnswers.length > 2) ? <button className="answers-load-button" onClick={handleLoadAnswersClick}>{(buttonExpand) ? 'LOAD MORE ANSWERS' : 'COLLAPSE ANSWERS'}</button> : <></>}
-
+        {(allAnswers.length > 2) ? <button className={style.answerloadbutton} onClick={handleLoadAnswersClick}>{(buttonExpand) ? 'LOAD MORE ANSWERS' : 'COLLAPSE ANSWERS'}</button> : <></>}
       </div>
+
     </div>
   )
 }
