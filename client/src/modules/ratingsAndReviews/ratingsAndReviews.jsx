@@ -9,13 +9,14 @@ class RatingsAndReviews extends React.Component {
     super(props)
     this.state = {
       productReviews: undefined,
+      meta: undefined,
       openPortal: false,
       reviewsToRender: 0,
-      characteristics: {}
     };
     this.toggleNewReviewForm = this.toggleNewReviewForm.bind(this);
     this.showMoreReviewsButtonPressed = this.showMoreReviewsButtonPressed.bind(this);
     this.submitReview = this.submitReview.bind(this);
+    this.showLessReviewsButtonPressed = this.showLessReviewsButtonPressed.bind(this);
   }
 
   toggleNewReviewForm() {
@@ -25,7 +26,7 @@ class RatingsAndReviews extends React.Component {
   componentDidMount() {
     axios.get(`http://localhost:3001/reviews/meta/${this.props.product_id}`)
     .then((response) => {
-      this.setState({characteristics: response.data.characteristics})
+      this.setState({meta: response.data})
 
       axios.get(`http://localhost:3001/reviews/${this.props.product_id}`)
       .then((response) => {
@@ -54,20 +55,29 @@ class RatingsAndReviews extends React.Component {
   }
 
   showMoreReviewsButtonPressed() {
-    this.setState({reviewsToRender: this.state.reviewsToRender + 2})
+    this.setState({reviewsToRender: this.state.productReviews.length})
+  }
+
+  showLessReviewsButtonPressed() {
+    if (this.state.productReviews.length > 1) {
+      this.setState({reviewsToRender: 2})
+    } else {
+      this.setState({reviewToRender: this.state.productReviews.length})
+    }
   }
 
   render() {
     if (this.state.productReviews) {
       return (
         <div className={style.RatingsAndReviews}>
-          <ProductAverages/>
+          <ProductAverages list={this.state}/>
           <ReviewList
             list={this.state}
             openPortal={this.state.openPortal}
             product_id={this.props.product_id}
             toggleNewReviewForm={this.toggleNewReviewForm}
-            pressButton={this.showMoreReviewsButtonPressed}
+            showMoreReviewsButtonPressed={this.showMoreReviewsButtonPressed}
+            showLessReviewsButtonPressed={this.showLessReviewsButtonPressed}
             submitReview={this.submitReview}
           />
         </div>

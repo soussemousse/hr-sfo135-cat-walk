@@ -9,7 +9,6 @@ class Review extends React.Component {
 
   displayDate() {
     const reviewDate = new Date(this.props.currentReview.date);
-    console.log(reviewDate);
     const localDate = reviewDate.toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric'});
     return (<div className={style.reviewDate}>{localDate}</div>);
   }
@@ -34,5 +33,5 @@ class Review extends React.Component {
     )
   }
 }
-
+//<div className={style.reviewUserCheckmark}>&#9989;</div>{' '}
 export default Review;

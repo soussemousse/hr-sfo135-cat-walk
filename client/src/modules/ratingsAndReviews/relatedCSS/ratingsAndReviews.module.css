@@ -1,4 +1,6 @@
 .RatingsAndReviews {
   display: flex;
   justify-content: space-around;
+  /* display: grid;
+  grid-template-columns: 2; */
 }
