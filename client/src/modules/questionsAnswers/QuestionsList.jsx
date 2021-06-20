@@ -2,7 +2,7 @@ import React from 'react';
 import QuestionItem from './QuestionItem.jsx';
 import style from './QA_CSS/questionsList.module.css';
 
-const QuestionsList2 = (props) => {
+const QuestionsList = (props) => {
   return (
     <>
       <div className={style.questionlist}>
@@ -14,4 +14,4 @@ const QuestionsList2 = (props) => {
   )
 }
 
-export default QuestionsList2;
+export default QuestionsList;

@@ -1,6 +1,5 @@
 import React from 'react';
 import QuestionsList from './QuestionsList.jsx';
-import QuestionItem from './QuestionItem.jsx';
 import SearchBox from './SearchBox.jsx';
 import axios from 'axios';
 import Modal from './Modal.jsx';
@@ -70,6 +69,7 @@ class QuestionsAndAnswers extends React.Component {
       })
       .then(res => {
         console.log(res.status);
+        this.modalClose();
       })
       .catch(err => {console.log(err);})
   }
@@ -159,15 +159,7 @@ class QuestionsAndAnswers extends React.Component {
 
         <SearchBox handleInputChange={this.handleSearchBarInputChange}/>
 
-        {/* <div className={style.list}>
-        {this.state.visibleQuestions.map((question, index) => {
-          return <QuestionItem QA={question} key={index} />
-        })}
-      </div> */}
-
         <QuestionsList questions={this.state.visibleQuestions} product_id={this.state.product_id}/>
-
-
 
         {(this.state.modal) ? <Modal handleSubmit={this.handleAddQuestionSubmit} handleClose={this.modalClose} /> : null}
 

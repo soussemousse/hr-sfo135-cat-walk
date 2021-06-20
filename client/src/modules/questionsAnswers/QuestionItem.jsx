@@ -39,6 +39,7 @@ const QuestionItem = (props) => {
     })
     .then(res => {
       console.log(res.status);
+      modalClose();
     })
     .catch(err => {console.log(err);})
   }

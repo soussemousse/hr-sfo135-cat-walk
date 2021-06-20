@@ -62,7 +62,17 @@ const Answer = (props) => {
     <div className={style.answer}>
       <div className={style.answertext}>{props.answer.body}</div>
 
-      {/* <div className="answer-pics"></div> */}
+
+
+      {/* {console.log('answer: ', props.answer.photos)} */}
+        {(props.answer.photos.length !== 0) ?
+           <div className={style.pictures}>
+            {(props.answer.photos.map(photo =>
+              <img src={photo.url} alt="Answer Image" key={photo.id}></img>)
+            )}
+          </div> : <></>
+      }
+
 
       <div className={style.answerinfo}>
           <span className={style.answeruser}>{`by `}{username}{`, ${getFormattedDate()}`}</span>
