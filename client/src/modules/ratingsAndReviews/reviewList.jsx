@@ -27,7 +27,7 @@ class ReviewList extends React.Component {
 
   componentDidMount() {
     let characteristicsObj = {};
-    const characteristics = this.props.list.characteristics;
+    const characteristics = this.props.list.meta.characteristics;
     Object.keys(characteristics).forEach((key) => {
       const id = characteristics[key].id;
       characteristicsObj[id] = 0;
@@ -61,20 +61,23 @@ class ReviewList extends React.Component {
   render() {
     if (this.props.list.productReviews) {
       const max = this.props.list.reviewsToRender;
-      const list = this.props.list.productReviews.slice(0, max);
+      const reviews = this.props.list.productReviews.slice(0, max);
+      const renderButton = this.props.list.productReviews.length > 2 && this.props.list.productReviews.length !== reviews.length;
       return (
         <div>
+            {this.props.list.productReviews.length === reviews.length ? <button className={style.reviewListButton} onClick={this.props.showLessReviewsButtonPressed}>less reviews</button> : null}
+            {this.props.list.productReviews.length === reviews.length ? <button className={style.reviewListButton} onClick={this.props.toggleNewReviewForm}>add review</button> : null}
           <div className={style.reviewList}>
-            {list.map((review) => {
+            {reviews.map((review) => {
               return <Review key={review.review_id} review_id={review.review_id} currentReview={review}/>
             })}
+            {renderButton ? <button className={style.reviewListButton} onClick={this.props.showMoreReviewsButtonPressed}>more reviews</button> : null}
+            {this.props.list.productReviews.length !== reviews.length ? <button className={style.reviewListButton} onClick={this.props.toggleNewReviewForm}>add review</button> : null}
           </div>
-          <button onClick={this.props.pressButton}>more reviews</button>
-          <button onClick={this.props.toggleNewReviewForm}>add review</button>
           {this.props.openPortal
             ? <NewReviewForm
                 state={this.state}
-                characteristics={this.props.list.characteristics}
+                characteristics={this.props.list.meta.characteristics}
                 handleStarRating={this.handleStarRating}
                 handleInputChange={this.handleInputChange}
                 handleCharacteristicRating={this.handleCharacteristicRating}

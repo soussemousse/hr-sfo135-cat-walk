@@ -3,6 +3,7 @@ import ProductCard from './ProductCard.jsx';
 import AddOutfit from './AddProductCard.jsx';
 import style from './RelatedCSS/Lists.module.css';
 import btnStyle from './RelatedCSS/Buttons.module.css';
+import cardStyle from './RelatedCSS/Cards.module.css';
 
 class YourOutfit extends React.Component {
   constructor (props) {

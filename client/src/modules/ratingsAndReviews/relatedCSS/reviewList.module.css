@@ -1,5 +1,22 @@
 .reviewList {
   padding: 5px;
-  height: 450px;
+  height: 600px;
   overflow: auto;
+}
+
+.reviewListButton {
+  padding: 15px 50px;
+  font-weight: bold;
+  color: rgb(85, 85, 85);
+  background-color: white;
+  border-radius: 3px;
+  border-color: rgb(243, 243, 243);
+  border-width: 1px;
+}
+.reviewListButton:hover {
+  color: black;
+  position: relative;
+  top: -1px;
+  box-shadow: 0px 1px rgb(221, 221, 221);
+  /* shape-rendering: auto; */
 }

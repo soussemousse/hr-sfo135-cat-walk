@@ -25,22 +25,33 @@
 }
 
 .reviewStar {
+  font-size: large;
   display: inline;
   color: red;
 }
 
 .reviewUsername {
+  position: relative;
   grid-row: 1;
   grid-column: 8;
   padding: 5px;
 }
 
+/* .reviewUserCheckmark {
+  font-size: x-small;
+  display: inline;
+  position: relative;
+  top: -2px;
+} */
+
 .reviewDate {
+  font-size: small;
   grid-row: 1;
   grid-column: 9 / 11;
   padding: 5px;
+  position: relative;
+  top: 2px;
 }
-
 
 .reviewSummary {
   grid-row: 2;
